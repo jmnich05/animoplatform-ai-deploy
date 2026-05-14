@@ -214,13 +214,11 @@ p { color: var(--animo-charcoal); }
 .hero h1 {
   color: var(--animo-cream);
   margin: 18px 0 28px;
-  max-width: 920px;
 }
 .hero h1 .accent { color: var(--animo-marigold); font-style: italic; }
 .hero-lede {
   font-size: 1.2rem;
   color: rgba(245,235,216,0.88);
-  max-width: 660px;
   margin-bottom: 14px;
 }
 .hero-tag {
@@ -229,10 +227,48 @@ p { color: var(--animo-charcoal); }
   font-size: 1.05rem;
   border-left: 3px solid var(--animo-marigold);
   padding-left: 16px;
-  max-width: 620px;
   margin: 26px 0 40px;
 }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* Hero two-column grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+}
+
+/* Founder video block */
+.hero-video-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45), 0 0 0 1px rgba(245,235,216,0.12);
+  background: #0f0d0c;
+}
+.hero-video-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero-video-label {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  font-family: var(--font-eyebrow);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(245,235,216,0.7);
+  pointer-events: none;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -635,13 +671,32 @@ footer ul a:hover { color: var(--animo-marigold); }
 <!-- ============== HERO ============== -->
 <header class="hero" id="top">
   <div class="container">
-    <span class="eyebrow">Build · Deploy · Sustain</span>
-    <h1>From <em class="accent">AI-novice</em> to <em class="accent">AI-native</em> — a complete intelligence layer your team actually owns.</h1>
-    <p class="hero-lede">Ánimo is an enterprise AI deployment firm for companies of 5–50 employees. We design, deploy, and document a portable intelligence layer — then instrument it so you can measure what it's actually worth. No internal dev team required.</p>
-    <p class="hero-tag">"We don't just ship and walk away — we measure ROI on the back end so you know exactly what your intelligence layer is delivering."</p>
-    <div class="hero-actions">
-      <a href="https://calendar.app.google/CNBMa5QPoXz4HTHMA" target="_blank" rel="noopener" class="btn btn-primary">Book a discovery call →</a>
-      <a href="#services" class="btn btn-ghost">See how it works</a>
+    <div class="hero-grid">
+
+      <!-- Left: copy -->
+      <div>
+        <span class="eyebrow">Build · Deploy · Sustain</span>
+        <h1>From <em class="accent">AI-novice</em> to <em class="accent">AI-native</em> — a complete intelligence layer your team actually owns.</h1>
+        <p class="hero-lede">Ánimo is an enterprise AI deployment firm for companies of 5–50 employees. We design, deploy, and document a portable intelligence layer — then instrument it so you can measure what it's actually worth. No internal dev team required.</p>
+        <p class="hero-tag">"We don't just ship and walk away — we measure ROI on the back end so you know exactly what your intelligence layer is delivering."</p>
+        <div class="hero-actions">
+          <a href="https://calendar.app.google/CNBMa5QPoXz4HTHMA" target="_blank" rel="noopener" class="btn btn-primary">Book a discovery call →</a>
+          <a href="#services" class="btn btn-ghost">See how it works</a>
+        </div>
+      </div>
+
+      <!-- Right: founder video -->
+      <div class="hero-video-wrap">
+        <video
+          src="assets/video/animo_pitch_final.mp4"
+          controls
+          playsinline
+          preload="metadata"
+          aria-label="Jonathan Nichols, CEO &amp; Founder of Ánimo — introduction"
+        ></video>
+        <span class="hero-video-label">Jonathan Nichols · CEO &amp; Founder</span>
+      </div>
+
     </div>
   </div>
 </header>
