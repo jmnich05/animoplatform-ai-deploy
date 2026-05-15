@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ánimo · AI Readiness Assessment</title>
+<meta name="description" content="Free 3-minute assessment for Louisville-area companies. Score your AI readiness and see the productivity ROI you may be missing." />
+<link rel="icon" type="image/png" href="../assets/animo-app-icon.png" />
+<link rel="apple-touch-icon" href="../assets/animo-app-icon.png" />
+
+<!-- ============================================================
+     CONFIG — paste your IDs here. Both are optional.
+     - GA4_MEASUREMENT_ID: from analytics.google.com → Admin → Data Streams → "Measurement ID" (looks like G-XXXXXXXXXX)
+     - FORM_ENDPOINT: from formspree.io or formsubmit.co (handles the email-results submission)
+                      If left blank, the form falls back to a mailto link.
+     ============================================================ -->
+<script>
+  window.ANIMO_CONFIG = {
+    GA4_MEASUREMENT_ID: "",
+    FORM_ENDPOINT: ""
+  };
+</script>
+
+<!-- Conditionally load GA4 if a measurement ID is set -->
+<script>
+  if (window.ANIMO_CONFIG.GA4_MEASUREMENT_ID) {
+    const ga = document.createElement("script");
+    ga.async = true;
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=" + window.ANIMO_CONFIG.GA4_MEASUREMENT_ID;
+    document.head.appendChild(ga);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", window.ANIMO_CONFIG.GA4_MEASUREMENT_ID, {
+      page_title: "AI Readiness Assessment",
+      page_location: window.location.href
+    });
+  } else {
+    window.gtag = function(){};   // no-op until GA4 is wired
+  }
+</script>
+
+<style>
+:root {
+  --animo-sage:        #7A8C5D;
+  --animo-deep-sage:   #4A5D3A;
+  --animo-cream:       #F5EBD8;
+  --animo-coral:       #E8826B;
+  --animo-marigold:    #F5A623;
+  --animo-deep-coral:  #C85A3D;
+  --animo-charcoal:    #2F2F2C;
+  --animo-bg-dark:     #161311;
+  --animo-on-dark:     #EAE1DD;
+
+  --font-display:  Georgia, "Times New Roman", serif;
+  --font-eyebrow:  Impact, "Ferry Black", "Arial Black", sans-serif;
+  --font-body:     Georgia, "Lyon Text", serif;
+  --font-mono:     "SF Mono", Menlo, Consolas, monospace;
+
+  --line: rgba(74,93,58,0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: var(--font-body);
+  color: var(--animo-charcoal);
+  background: var(--animo-cream);
+  line-height: 1.6;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+a { color: inherit; }
+
+/* ===== TOP NAV ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(245,235,216,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+}
+.brand-mark img { width: 38px; height: 38px; }
+.brand-mark .fallback {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--animo-deep-sage);
+  color: var(--animo-cream);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+}
+.brand-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--animo-charcoal);
+  line-height: 1;
+}
+.brand-sub {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.6rem;
+  color: var(--animo-deep-sage);
+  display: block;
+  margin-top: 4px;
+}
+.nav-back {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  color: var(--animo-deep-sage);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--animo-coral); }
+
+/* ===== STAGE SHELL ===== */
+.stage {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 56px 28px 80px;
+}
+
+/* ===== INTRO ===== */
+.intro .stacked-mark {
+  width: 110px;
+  height: auto;
+  margin-bottom: 28px;
+  display: block;
+}
+@media (max-width: 640px) {
+  .intro .stacked-mark { width: 88px; margin-bottom: 22px; }
+}
+.intro .eyebrow {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.78rem;
+  color: var(--animo-coral);
+  margin-bottom: 20px;
+}
+.intro h1 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.05;
+  color: var(--animo-charcoal);
+  margin-bottom: 24px;
+}
+.intro h1 em { color: var(--animo-deep-sage); }
+.intro .lede {
+  font-size: 1.15rem;
+  color: var(--animo-charcoal);
+  margin-bottom: 18px;
+  max-width: 620px;
+}
+.intro .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 36px 0 40px;
+  padding: 22px 26px;
+  background: white;
+  border-left: 4px solid var(--animo-marigold);
+}
+.intro .meta-row .meta {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.68rem;
+  color: var(--animo-deep-sage);
+}
+.intro .meta-row .meta strong {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: 1.4rem;
+  color: var(--animo-charcoal);
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 4px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.78rem;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform 0.15s, background 0.2s, color 0.2s;
+}
+.btn-primary {
+  background: var(--animo-deep-sage);
+  color: var(--animo-cream);
+}
+.btn-primary:hover { background: var(--animo-deep-coral); transform: translateY(-2px); }
+.btn-marigold {
+  background: var(--animo-marigold);
+  color: var(--animo-charcoal);
+}
+.btn-marigold:hover { background: var(--animo-coral); color: var(--animo-cream); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--animo-deep-sage);
+  border: 1.5px solid var(--animo-deep-sage);
+}
+.btn-ghost:hover { background: var(--animo-deep-sage); color: var(--animo-cream); }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+/* ===== PROGRESS ===== */
+.progress-shell {
+  margin-bottom: 36px;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.progress-meta .label {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.68rem;
+  color: var(--animo-deep-sage);
+}
+.progress-meta .count {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--animo-deep-sage);
+}
+.progress-bar {
+  height: 4px;
+  background: rgba(74,93,58,0.18);
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: linear-gradient(90deg, var(--animo-sage), var(--animo-marigold));
+  transition: width 0.4s ease;
+}
+
+/* ===== QUESTION CARD ===== */
+.question {
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.question .q-eyebrow {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.68rem;
+  color: var(--animo-coral);
+  margin-bottom: 14px;
+}
+.question h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  line-height: 1.15;
+  color: var(--animo-charcoal);
+  margin-bottom: 8px;
+}
+.question .helper {
+  font-size: 0.95rem;
+  color: var(--animo-deep-sage);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+
+/* ===== ANSWER CHOICES ===== */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.choice {
+  display: block;
+  background: white;
+  border: 1.5px solid var(--line);
+  padding: 18px 22px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 1rem;
+  color: var(--animo-charcoal);
+  position: relative;
+  font-family: var(--font-body);
+}
+.choice:hover {
+  border-color: var(--animo-sage);
+  background: rgba(122,140,93,0.05);
+  transform: translateX(2px);
+}
+.choice.selected {
+  border-color: var(--animo-deep-sage);
+  background: var(--animo-deep-sage);
+  color: var(--animo-cream);
+}
+.choice.selected::after {
+  content: "✦";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--animo-marigold);
+  font-size: 1.1rem;
+}
+
+/* ===== NAV BUTTONS ===== */
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== RESULTS ===== */
+.results { animation: fadeIn 0.6s ease; }
+.results .eyebrow {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.78rem;
+  color: var(--animo-coral);
+  margin-bottom: 18px;
+}
+.results h1 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+  line-height: 1.05;
+  color: var(--animo-charcoal);
+  margin-bottom: 16px;
+}
+.results h1 em { color: var(--animo-deep-sage); }
+.results .verdict {
+  font-size: 1.05rem;
+  color: var(--animo-charcoal);
+  margin-bottom: 40px;
+  max-width: 620px;
+}
+
+/* Big score ring */
+.score-ring-wrap {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin: 24px 0 40px;
+  padding: 28px 32px;
+  background: var(--animo-deep-sage);
+  color: var(--animo-cream);
+  position: relative;
+  overflow: hidden;
+}
+.score-ring-wrap::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 60%; height: 200%;
+  background: radial-gradient(ellipse, rgba(245,166,35,0.22), transparent 70%);
+}
+.score-ring-wrap > * { position: relative; }
+.score-ring {
+  width: 140px; height: 140px;
+  position: relative;
+  flex-shrink: 0;
+}
+.score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.score-ring .ring-bg { stroke: rgba(245,235,216,0.18); }
+.score-ring .ring-fill {
+  stroke: var(--animo-marigold);
+  stroke-dasharray: 0 999;
+  transition: stroke-dasharray 1.2s cubic-bezier(0.2,0.7,0.3,1);
+}
+.score-ring .score-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.6rem;
+  color: var(--animo-marigold);
+}
+.score-summary {
+  flex: 1;
+}
+.score-summary .label {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  color: var(--animo-marigold);
+  margin-bottom: 8px;
+}
+.score-summary h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: var(--animo-cream);
+}
+.score-summary p {
+  color: rgba(245,235,216,0.82);
+  font-size: 0.95rem;
+}
+
+/* Sub-scores */
+.subscores {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+@media (max-width: 640px) { .subscores { grid-template-columns: 1fr; } }
+.sub {
+  background: white;
+  padding: 22px 24px;
+  border-left: 4px solid var(--animo-sage);
+}
+.sub .label {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.65rem;
+  color: var(--animo-deep-sage);
+  margin-bottom: 6px;
+}
+.sub .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--animo-deep-sage);
+  line-height: 1;
+}
+.sub .num .out {
+  font-size: 0.9rem;
+  color: var(--animo-deep-sage);
+  opacity: 0.6;
+  font-style: normal;
+}
+.sub .blurb {
+  font-size: 0.85rem;
+  color: var(--animo-deep-sage);
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* ROI band */
+.roi {
+  background: var(--animo-marigold);
+  color: var(--animo-charcoal);
+  padding: 32px 36px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.roi::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px; height: 4px;
+  background: var(--animo-deep-coral);
+}
+.roi .label {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  margin-bottom: 14px;
+}
+.roi .figure {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.roi .note {
+  font-size: 0.9rem;
+  font-style: italic;
+  max-width: 540px;
+  opacity: 0.86;
+}
+
+/* Fit badge */
+.fit-badge {
+  display: inline-block;
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  padding: 8px 16px;
+  background: var(--animo-sage);
+  color: var(--animo-cream);
+  margin-bottom: 20px;
+}
+.fit-badge.partial { background: var(--animo-deep-coral); }
+
+/* Email capture card */
+.email-capture {
+  background: white;
+  border-left: 4px solid var(--animo-sage);
+  padding: 26px 30px;
+  margin-bottom: 20px;
+}
+.email-capture .label {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  color: var(--animo-deep-sage);
+  margin-bottom: 8px;
+}
+.email-capture h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: 1.4rem;
+  color: var(--animo-charcoal);
+  margin-bottom: 6px;
+}
+.email-capture p {
+  font-size: 0.92rem;
+  color: var(--animo-deep-sage);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.email-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.email-form input[type="email"] {
+  flex: 1;
+  min-width: 220px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 13px 16px;
+  border: 1.5px solid var(--line);
+  background: var(--animo-cream);
+  color: var(--animo-charcoal);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.email-form input[type="email"]:focus { border-color: var(--animo-deep-sage); }
+.email-form input[type="email"].error { border-color: var(--animo-deep-coral); }
+.email-form button {
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  padding: 0 24px;
+  background: var(--animo-deep-sage);
+  color: var(--animo-cream);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.email-form button:hover { background: var(--animo-deep-coral); }
+.email-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+.email-success {
+  display: none;
+  padding: 16px 20px;
+  background: rgba(122,140,93,0.12);
+  border-left: 3px solid var(--animo-sage);
+  font-style: italic;
+  color: var(--animo-deep-sage);
+  font-size: 0.95rem;
+}
+.email-success.show { display: block; }
+.email-success strong { color: var(--animo-charcoal); font-style: normal; }
+
+/* Final CTA */
+.final-cta {
+  background: var(--animo-charcoal);
+  color: var(--animo-cream);
+  padding: 40px 36px;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::after {
+  content: "";
+  position: absolute;
+  top: -40%; right: -10%;
+  width: 50%; height: 180%;
+  background: radial-gradient(ellipse, rgba(245,166,35,0.18), transparent 70%);
+}
+.final-cta > * { position: relative; }
+.final-cta h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: normal;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 12px;
+}
+.final-cta h2 em { color: var(--animo-marigold); }
+.final-cta p {
+  color: rgba(245,235,216,0.8);
+  margin: 0 auto 24px;
+  max-width: 500px;
+  font-size: 1rem;
+}
+.final-cta .actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.final-cta .small {
+  font-size: 0.85rem;
+  color: rgba(245,235,216,0.55);
+  font-style: italic;
+  margin-top: 22px;
+}
+
+.disclaimer {
+  margin-top: 32px;
+  font-size: 0.85rem;
+  color: var(--animo-deep-sage);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Restart link */
+.restart {
+  display: inline-block;
+  margin-top: 24px;
+  font-family: var(--font-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.65rem;
+  color: var(--animo-deep-sage);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Hide / show panels */
+.panel { display: none; }
+.panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark">
+        <img src="../assets/animo-app-icon.svg" alt="ánimo" />
+      </span>
+      <span>
+        <span class="brand-text"><em>ánimo</em></span>
+        <span class="brand-sub">AI Consulting</span>
+      </span>
+    </a>
+    <a href="../index.html" class="nav-back">← Back to home</a>
+  </div>
+</nav>
+
+<!-- ============== STAGE ============== -->
+<main class="stage">
+
+  <!-- INTRO PANEL -->
+  <div id="panel-intro" class="panel intro active">
+    <img src="../assets/animo-stacked.svg" alt="ánimo" class="stacked-mark" />
+    <div class="eyebrow">AI Readiness Assessment</div>
+    <h1>How AI integrated is your business, and what <em>ROI gains could be unlocked?</em></h1>
+    <p class="lede">Ten quick questions. A rough score. A back-of-the-napkin estimate of the productivity you might be leaving on the table. Free, no email required.</p>
+    <p class="lede" style="color: var(--animo-deep-sage); font-style: italic; font-size: 1.02rem;">This isn't a serious diagnostic — it's a baseline conversation starter. Take the results with a grain of salt and a glass of bourbon.</p>
+
+    <div class="meta-row">
+      <div class="meta"><strong>10</strong>Questions</div>
+      <div class="meta"><strong>3 min</strong>To complete</div>
+      <div class="meta"><strong>$0</strong>To take it</div>
+      <div class="meta"><strong>1</strong>Insight at the end</div>
+    </div>
+
+    <button class="btn btn-primary" onclick="startAssessment()">Start the assessment →</button>
+  </div>
+
+  <!-- QUESTION PANEL -->
+  <div id="panel-question" class="panel">
+    <div class="progress-shell">
+      <div class="progress-meta">
+        <span class="label">Question <span id="q-num">1</span> of 10</span>
+        <span class="count" id="q-percent">10%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <div class="question">
+      <div class="q-eyebrow" id="q-eyebrow"></div>
+      <h2 id="q-text"></h2>
+      <p class="helper" id="q-helper"></p>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn btn-ghost" id="btn-prev" onclick="prevQuestion()">← Back</button>
+      <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS PANEL -->
+  <div id="panel-results" class="panel results">
+    <span class="eyebrow">Your Ánimo Readiness Profile</span>
+    <h1 id="r-headline">A rough read on <em>where you stand.</em></h1>
+    <div id="r-fit"></div>
+    <p class="verdict" id="r-verdict"></p>
+
+    <!-- Score ring -->
+    <div class="score-ring-wrap">
+      <div class="score-ring">
+        <svg viewBox="0 0 100 100">
+          <circle class="ring-bg" cx="50" cy="50" r="44" stroke-width="6" fill="none"/>
+          <circle class="ring-fill" id="ring-fill" cx="50" cy="50" r="44" stroke-width="6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="score-text" id="score-text">0</div>
+      </div>
+      <div class="score-summary">
+        <div class="label">Overall Readiness</div>
+        <h3 id="r-band-label"></h3>
+        <p id="r-band-blurb"></p>
+      </div>
+    </div>
+
+    <!-- Sub-scores -->
+    <div class="subscores">
+      <div class="sub">
+        <div class="label">AI Adoption</div>
+        <div class="num"><span id="sub-adoption">0</span><span class="out"> / 100</span></div>
+        <p class="blurb" id="sub-adoption-blurb"></p>
+      </div>
+      <div class="sub">
+        <div class="label">Data Readiness</div>
+        <div class="num"><span id="sub-data">0</span><span class="out"> / 100</span></div>
+        <p class="blurb" id="sub-data-blurb"></p>
+      </div>
+      <div class="sub">
+        <div class="label">Team Readiness</div>
+        <div class="num"><span id="sub-team">0</span><span class="out"> / 100</span></div>
+        <p class="blurb" id="sub-team-blurb"></p>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div class="roi">
+      <div class="label">Rough productivity estimate</div>
+      <div class="figure" id="roi-figure">$0/yr</div>
+      <p class="note" id="roi-note"></p>
+    </div>
+
+    <!-- Email capture (optional) -->
+    <div class="email-capture" id="email-card">
+      <div class="label">Want a copy?</div>
+      <h3>Email me my results.</h3>
+      <p>We'll send a copy of this report to your inbox and Jon will follow up if you're a fit. No newsletter, no spam — just this one email.</p>
+      <form class="email-form" id="email-form" onsubmit="submitEmail(event)">
+        <input type="email" id="email-input" placeholder="you@yourcompany.com" required autocomplete="email" />
+        <button type="submit" id="email-submit">Send me the report →</button>
+      </form>
+      <div class="email-success" id="email-success">
+        <strong>Sent.</strong> Check your inbox in a minute — Jon will be in touch.
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta">
+      <h2 id="cta-headline">Talk it through with <em>Jonathan.</em></h2>
+      <p id="cta-blurb">30-minute discovery call. No deck, no pitch — just a conversation about where AI fits your specific business.</p>
+      <div class="actions">
+        <a href="https://calendar.app.google/axoDDDcpxvVbbHH99" target="_blank" rel="noopener"
+           class="btn btn-marigold" onclick="trackBookCall()">Book a 30-min discovery call →</a>
+        <a href="mailto:letsconnect@animoplatform.net?subject=AI%20Readiness%20Assessment%20follow-up"
+           class="btn btn-ghost" style="color: var(--animo-cream); border-color: rgba(245,235,216,0.6);"
+           onclick="trackEmailDirect()">Email instead</a>
+      </div>
+      <p class="small">All inquiries reach Jonathan Nichols, CEO & Founder.</p>
+    </div>
+
+    <p class="disclaimer">Score and ROI estimates are based on industry averages and your inputs — directional only, not a precise audit. Built by Ánimo for Louisville-area small businesses.</p>
+    <div style="text-align: center;"><a class="restart" onclick="restart()">Take it again →</a></div>
+  </div>
+
+</main>
+
+<script>
+// ============================================================
+// QUESTIONS
+// Each option has scores for sub-dimensions plus a "fit" flag.
+// adoption / data / team are 0–10 each, summed across questions
+// and then normalized to 0–100 per dimension.
+// fit_block = true → "soft fit issue" flag for the results page.
+// roi_hourly = dollar value used in the ROI estimate.
+// roi_team   = team-size multiplier for the ROI estimate.
+// ============================================================
+const QUESTIONS = [
+  {
+    eyebrow: "Question 01 · About you",
+    text: "Where is your business based?",
+    helper: "Ánimo focuses on the Louisville region for in-person depth — but most engagements happen remotely.",
+    options: [
+      { label: "Louisville metro (within 30 miles)", fit: "strong" },
+      { label: "Within 90 miles of Louisville",       fit: "strong" },
+      { label: "Kentucky, Indiana, Ohio, or Tennessee", fit: "ok" },
+      { label: "Somewhere else in the US or world",     fit: "weak" }
+    ]
+  },
+  {
+    eyebrow: "Question 02 · About you",
+    text: "How many people are on your team?",
+    helper: "Including you and any part-time staff.",
+    options: [
+      { label: "Just me",         fit: "weak", roi_team: 1 },
+      { label: "2 to 4 people",   fit: "ok",   roi_team: 3 },
+      { label: "5 to 25 people",  fit: "strong", roi_team: 12 },
+      { label: "26 to 100 people",fit: "ok",   roi_team: 50 }
+    ]
+  },
+  {
+    eyebrow: "Question 03 · Current AI usage",
+    text: "How does your team use AI today?",
+    helper: "Be honest — \"a little bit\" is a perfectly normal starting place.",
+    options: [
+      { label: "We don't really use it yet",                              adoption: 1 },
+      { label: "A few of us use ChatGPT or Claude casually",              adoption: 4 },
+      { label: "We use AI in some specific workflows officially",         adoption: 7 },
+      { label: "AI is integrated across most of what we do",              adoption: 10 }
+    ]
+  },
+  {
+    eyebrow: "Question 04 · Current AI usage",
+    text: "Has anyone on your team built a custom AI tool or prompt for the business?",
+    helper: "Custom prompts, GPTs, Claude projects, an internal helper, anything beyond chat.",
+    options: [
+      { label: "No, just generic chat",                                   adoption: 1 },
+      { label: "One or two people have tried but it didn't stick",        adoption: 4 },
+      { label: "We have one or two homegrown tools in use",               adoption: 7 },
+      { label: "We have a library of custom prompts or skills",           adoption: 10 }
+    ]
+  },
+  {
+    eyebrow: "Question 05 · Your data",
+    text: "How organized is your business data today?",
+    helper: "Customer info, sales data, inventory, ops docs — the stuff you'd want AI to reason over.",
+    options: [
+      { label: "Honestly? It's mostly in heads and random spreadsheets",  data: 1 },
+      { label: "Most stuff is in Google Drive / Dropbox but unstructured", data: 4 },
+      { label: "We have real tools (CRM, ERP, etc.) but they don't talk", data: 7 },
+      { label: "Our systems are connected and we can query across them",  data: 10 }
+    ]
+  },
+  {
+    eyebrow: "Question 06 · Your data",
+    text: "If you needed to answer \"how many of product X did we sell to Y last quarter,\" how long would it take?",
+    helper: "Roughly. The honest version.",
+    options: [
+      { label: "A day or two of digging",                                 data: 1 },
+      { label: "A few hours and a couple of Slack messages",              data: 4 },
+      { label: "About 15 minutes in our reporting tool",                  data: 7 },
+      { label: "A few clicks — or AI could just answer it",               data: 10 }
+    ]
+  },
+  {
+    eyebrow: "Question 07 · Your bottlenecks",
+    text: "What slows your team down most?",
+    helper: "Pick the one that hurts the most. Most people have all four.",
+    options: [
+      { label: "Finding information we already have somewhere",           bottleneck: "lookup" },
+      { label: "Drafting and responding (emails, quotes, proposals)",     bottleneck: "drafting" },
+      { label: "Manual data entry and updates between tools",             bottleneck: "data-entry" },
+      { label: "We're cruising, no major bottlenecks",                    bottleneck: "none" }
+    ]
+  },
+  {
+    eyebrow: "Question 08 · Your team",
+    text: "How does your team feel about using AI for work?",
+    helper: "Vibes count.",
+    options: [
+      { label: "Suspicious or worried about it",                          team: 2 },
+      { label: "Curious, but no time to figure it out",                   team: 5 },
+      { label: "Some champions, some skeptics",                           team: 7 },
+      { label: "Excited and already experimenting",                       team: 10 }
+    ]
+  },
+  {
+    eyebrow: "Question 09 · Your team",
+    text: "Who would champion an AI rollout day-to-day?",
+    helper: "After the consultant leaves, someone has to keep it alive.",
+    options: [
+      { label: "Honestly, no one — that's part of why we'd need help",    team: 2 },
+      { label: "I would, but I don't know where to start",                team: 5 },
+      { label: "I have a vision and need execution help",                 team: 8 },
+      { label: "We have a tech-savvy team member ready to own it",        team: 10 }
+    ]
+  },
+  {
+    eyebrow: "Question 10 · Your priorities",
+    text: "If we shipped one AI improvement to your business in the next 30 days, what should it do?",
+    helper: "Gut answer — what would your team actually feel?",
+    options: [
+      { label: "Speed up customer or client responses",                  priority: "customer-speed" },
+      { label: "Take repetitive admin work off our plates",              priority: "admin-relief" },
+      { label: "Pull insights from data we already have",                priority: "data-insights" },
+      { label: "Help us draft, write, and communicate faster",           priority: "drafting" }
+    ]
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let currentQ = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+let lastResults = null;          // cached after computeResults() for the email body
+
+// ============================================================
+// ANALYTICS — thin wrapper around gtag (no-op if GA4 not configured)
+// ============================================================
+function track(eventName, params) {
+  try {
+    window.gtag("event", eventName, params || {});
+  } catch (e) { /* silent — analytics never breaks UX */ }
+}
+
+// Fire page-view-equivalent on initial load
+track("assessment_page_view");
+
+// ============================================================
+// PANEL CONTROL
+// ============================================================
+function showPanel(id) {
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function startAssessment() {
+  currentQ = 0;
+  track("assessment_started");
+  showPanel("panel-question");
+  renderQuestion();
+}
+
+function restart() {
+  for (let i = 0; i < answers.length; i++) answers[i] = null;
+  currentQ = 0;
+  showPanel("panel-intro");
+}
+
+// ============================================================
+// RENDER QUESTION
+// ============================================================
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById("q-num").textContent = currentQ + 1;
+  document.getElementById("q-percent").textContent = `${Math.round(((currentQ + 1) / QUESTIONS.length) * 100)}%`;
+  document.getElementById("progress-fill").style.width = `${((currentQ + 1) / QUESTIONS.length) * 100}%`;
+  document.getElementById("q-eyebrow").textContent = q.eyebrow;
+  document.getElementById("q-text").textContent = q.text;
+  document.getElementById("q-helper").textContent = q.helper;
+
+  const choices = document.getElementById("choices");
+  choices.innerHTML = "";
+  q.options.forEach((opt, idx) => {
+    const el = document.createElement("div");
+    el.className = "choice";
+    if (answers[currentQ] === idx) el.classList.add("selected");
+    el.textContent = opt.label;
+    el.onclick = () => selectAnswer(idx);
+    choices.appendChild(el);
+  });
+
+  document.getElementById("btn-prev").style.visibility = currentQ === 0 ? "hidden" : "visible";
+  document.getElementById("btn-next").textContent = currentQ === QUESTIONS.length - 1 ? "See my results →" : "Next →";
+  document.getElementById("btn-next").disabled = answers[currentQ] === null;
+}
+
+function selectAnswer(idx) {
+  const isFirstAnswer = answers[currentQ] === null;
+  answers[currentQ] = idx;
+  if (isFirstAnswer) {
+    // Only track once per question — so we measure drop-off, not changes of mind
+    track("assessment_question_answered", {
+      question_number: currentQ + 1,
+      choice_index: idx
+    });
+  }
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if (answers[currentQ] === null) return;
+  if (currentQ === QUESTIONS.length - 1) {
+    computeAndShowResults();
+  } else {
+    currentQ++;
+    renderQuestion();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ === 0) return;
+  currentQ--;
+  renderQuestion();
+}
+
+// ============================================================
+// SCORING
+// ============================================================
+function computeResults() {
+  let adoption = 0, adoptionMax = 0;
+  let data = 0, dataMax = 0;
+  let team = 0, teamMax = 0;
+  let fitFlags = { strong: 0, ok: 0, weak: 0 };
+  let bottleneck = null;
+  let priority = null;
+  // Hourly value defaults to an industry-average loaded-cost figure for a
+  // 5-25 person SMB ($55/hr). We no longer ask the user for this — asking
+  // signals "what's your budget" and triggers defensive answers.
+  let roi_hourly = 55;
+  let roi_team = 12;            // default mid
+
+  answers.forEach((ansIdx, qIdx) => {
+    const opt = QUESTIONS[qIdx].options[ansIdx];
+    if (opt.adoption != null) { adoption += opt.adoption; adoptionMax += 10; }
+    if (opt.data     != null) { data     += opt.data;     dataMax     += 10; }
+    if (opt.team     != null) { team     += opt.team;     teamMax     += 10; }
+    if (opt.fit)        fitFlags[opt.fit]++;
+    if (opt.bottleneck) bottleneck = opt.bottleneck;
+    if (opt.priority)   priority   = opt.priority;
+    if (opt.roi_team)   roi_team   = opt.roi_team;
+  });
+
+  const adoptionPct = adoptionMax ? Math.round((adoption / adoptionMax) * 100) : 0;
+  const dataPct     = dataMax     ? Math.round((data / dataMax) * 100)         : 0;
+  const teamPct     = teamMax     ? Math.round((team / teamMax) * 100)         : 0;
+
+  // Overall: weighted average of three dimensions
+  const overall = Math.round((adoptionPct * 0.3) + (dataPct * 0.35) + (teamPct * 0.35));
+
+  // Fit categorization
+  const fit = (fitFlags.weak > 0)
+    ? "partial"
+    : (fitFlags.strong >= 2 ? "strong" : "ok");
+
+  // ROI estimate: 5 hours/week * 50 weeks * team * hourly value
+  // Then discount by 50% because not all hours convert cleanly to dollars,
+  // and AI rarely captures 100% of the potential in year one.
+  const annualROI = Math.round(5 * 50 * roi_team * roi_hourly * 0.5);
+
+  return { adoptionPct, dataPct, teamPct, overall, fit, bottleneck, priority, roi_hourly, roi_team, annualROI };
+}
+
+// ============================================================
+// SCORING COPY
+// ============================================================
+function bandFor(score) {
+  if (score >= 80) return {
+    label: "Highly ready",
+    blurb: "You're already moving. The question isn't whether to use AI — it's how to make sure you're moving in the right direction."
+  };
+  if (score >= 60) return {
+    label: "Ready to accelerate",
+    blurb: "You have momentum and a few important gaps. Closing those gaps is where engagements like Ánimo's tend to create the most leverage."
+  };
+  if (score >= 40) return {
+    label: "Foundational gaps",
+    blurb: "Lots of opportunity. Most of our best engagements start here — the upside is usually bigger from this position than from further along."
+  };
+  if (score >= 20) return {
+    label: "Pre-ready",
+    blurb: "You're earlier in the journey, which is fine. The honest first step is usually data and process work before any AI gets bolted on."
+  };
+  return {
+    label: "Likely not ready yet",
+    blurb: "An honest read: AI consulting might not be the best first investment. Foundations first, AI second."
+  };
+}
+
+function blurbAdoption(score) {
+  if (score >= 75) return "Solid practice in place.";
+  if (score >= 50) return "Some real usage. Lots of room to grow.";
+  if (score >= 25) return "Early days. That's where the upside lives.";
+  return "Blank slate. Easier than you'd think to change.";
+}
+function blurbData(score) {
+  if (score >= 75) return "Your data is doing work for you.";
+  if (score >= 50) return "Decent foundation. Connectivity is the gap.";
+  if (score >= 25) return "Data exists but it's fragmented.";
+  return "Step one for any AI work: get the data sortable.";
+}
+function blurbTeam(score) {
+  if (score >= 75) return "Your team will run with this.";
+  if (score >= 50) return "Mixed signals. Champion is the missing piece.";
+  if (score >= 25) return "Cultural lift required — doable, not trivial.";
+  return "Buy-in is the project before the AI is.";
+}
+
+function fitBadge(fit) {
+  if (fit === "strong") return `<span class="fit-badge">✦ Great Ánimo fit</span>`;
+  if (fit === "ok")     return `<span class="fit-badge">✦ Likely a fit</span>`;
+  return `<span class="fit-badge partial">▲ Possible fit — let's talk</span>`;
+}
+
+function verdictFor(r) {
+  const bottleneckCopy = {
+    "lookup": "Most of your missed leverage is in lookup-heavy workflows — that's a place AI tends to win quickly.",
+    "drafting": "Drafting is the easiest AI win to put in place — and the one your team will feel first.",
+    "data-entry": "Data-entry friction is where AI + connectors save the most hours, and where the wrong setup creates the most risk.",
+    "none": "If you genuinely have no bottlenecks, this might be more of a strategic positioning conversation than a tactical one."
+  };
+  const priorityCopy = {
+    "customer-speed":  "Your stated priority — faster customer responses — is also our most common starting use case.",
+    "admin-relief":    "Your stated priority — taking admin work off the plate — is the use case that compounds fastest once it's in place.",
+    "data-insights":   "Your stated priority — pulling insights from data you already have — is where the data-readiness score matters most.",
+    "drafting":        "Your stated priority — drafting and communication support — is the fastest win to deploy and the one your team will feel first."
+  };
+  const parts = [];
+  if (r.bottleneck && bottleneckCopy[r.bottleneck]) parts.push(bottleneckCopy[r.bottleneck]);
+  if (r.priority && priorityCopy[r.priority])       parts.push(priorityCopy[r.priority]);
+  return parts.join(" ");
+}
+
+function fitNote(r) {
+  if (r.fit === "partial") {
+    return "A couple of your answers landed outside our usual sweet spot (Louisville-area, 5–25 people). Still worth a quick conversation — we'll be straight with you about whether we're the right fit.";
+  }
+  return "Your answers landed inside the kind of business we're built to help. The discovery call is the next honest step.";
+}
+
+// ============================================================
+// RENDER RESULTS
+// ============================================================
+function computeAndShowResults() {
+  const r = computeResults();
+  lastResults = r;
+  track("assessment_completed", {
+    overall_score: r.overall,
+    adoption_score: r.adoptionPct,
+    data_score: r.dataPct,
+    team_score: r.teamPct,
+    fit_category: r.fit,
+    bottleneck: r.bottleneck,
+    priority: r.priority,
+    annual_roi_estimate: r.annualROI
+  });
+  showPanel("panel-results");
+
+  // Headline
+  document.getElementById("r-headline").innerHTML = r.overall >= 60
+    ? `You've got <em>real momentum.</em>`
+    : `Big <em>upside ahead.</em>`;
+
+  // Fit
+  document.getElementById("r-fit").innerHTML = fitBadge(r.fit);
+
+  // Verdict paragraph
+  document.getElementById("r-verdict").innerHTML = `${fitNote(r)} ${verdictFor(r)}`;
+
+  // Big ring
+  const circumference = 2 * Math.PI * 44;
+  const dash = (r.overall / 100) * circumference;
+  setTimeout(() => {
+    document.getElementById("ring-fill").style.strokeDasharray = `${dash} ${circumference}`;
+  }, 100);
+  animateNumber("score-text", 0, r.overall, 1100);
+  const band = bandFor(r.overall);
+  document.getElementById("r-band-label").textContent = band.label;
+  document.getElementById("r-band-blurb").textContent = band.blurb;
+
+  // Subscores
+  animateNumber("sub-adoption", 0, r.adoptionPct, 900);
+  animateNumber("sub-data",     0, r.dataPct,     900);
+  animateNumber("sub-team",     0, r.teamPct,     900);
+  document.getElementById("sub-adoption-blurb").textContent = blurbAdoption(r.adoptionPct);
+  document.getElementById("sub-data-blurb").textContent     = blurbData(r.dataPct);
+  document.getElementById("sub-team-blurb").textContent     = blurbTeam(r.teamPct);
+
+  // ROI
+  document.getElementById("roi-figure").textContent = `${formatMoney(r.annualROI)}/yr`;
+  document.getElementById("roi-note").innerHTML =
+    `Rough back-of-the-napkin: 5 hours/week × ${r.roi_team} people × ~$${r.roi_hourly}/hr loaded SMB labor cost (industry average) × 50 weeks, discounted 50% to be conservative. ` +
+    `Your real number depends on which workflows we automate first — we'd nail that down on the discovery call.`;
+
+  // CTA copy variant
+  if (r.fit === "partial") {
+    document.getElementById("cta-headline").innerHTML = `Worth a <em>30-minute call?</em>`;
+    document.getElementById("cta-blurb").textContent = "Even when the fit isn't obvious on paper, a quick conversation usually clarifies whether we're the right partner — or who would be.";
+  }
+}
+
+function animateNumber(id, from, to, duration) {
+  const el = document.getElementById(id);
+  const start = performance.now();
+  function tick(now) {
+    const elapsed = now - start;
+    const t = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(from + (to - from) * eased);
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function formatMoney(n) {
+  if (n >= 1000000) return `$${(n / 1000000).toFixed(1)}M`;
+  if (n >= 1000)    return `$${(n / 1000).toFixed(0)}K`;
+  return `$${n}`;
+}
+
+// ============================================================
+// EMAIL SUBMIT + EVENT TRACKING
+// ============================================================
+function buildResultsBody(email) {
+  const r = lastResults || {};
+  return [
+    "Ánimo · AI Readiness Assessment Result",
+    "----------------------------------------",
+    `Email: ${email}`,
+    "",
+    `Overall score: ${r.overall}/100  (${bandFor(r.overall).label})`,
+    `  AI Adoption:    ${r.adoptionPct}/100`,
+    `  Data Readiness: ${r.dataPct}/100`,
+    `  Team Readiness: ${r.teamPct}/100`,
+    "",
+    `Fit category: ${r.fit}`,
+    `Top bottleneck: ${r.bottleneck}`,
+    `Rough annual productivity estimate: ${formatMoney(r.annualROI)}/yr`,
+    `Inputs: ${r.roi_team} team members × ~$${r.roi_hourly}/hr value`,
+    "",
+    "Book a discovery call: https://calendar.app.google/axoDDDcpxvVbbHH99"
+  ].join("\n");
+}
+
+function submitEmail(evt) {
+  evt.preventDefault();
+  const input = document.getElementById("email-input");
+  const submitBtn = document.getElementById("email-submit");
+  const successEl = document.getElementById("email-success");
+  const formEl = document.getElementById("email-form");
+  const email = (input.value || "").trim();
+
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    input.classList.add("error");
+    input.focus();
+    return false;
+  }
+  input.classList.remove("error");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+
+  const body = buildResultsBody(email);
+  const payload = {
+    email,
+    overall_score: lastResults.overall,
+    adoption_score: lastResults.adoptionPct,
+    data_score: lastResults.dataPct,
+    team_score: lastResults.teamPct,
+    fit_category: lastResults.fit,
+    bottleneck: lastResults.bottleneck,
+    annual_roi_estimate: lastResults.annualROI,
+    formatted_report: body
+  };
+
+  track("assessment_emailed", {
+    overall_score: lastResults.overall,
+    fit_category: lastResults.fit
+  });
+
+  // If a form endpoint is configured (Formspree, FormSubmit, etc.), POST there.
+  // Otherwise, fall back to opening a pre-filled mailto: link so Jon still gets the report.
+  if (window.ANIMO_CONFIG.FORM_ENDPOINT) {
+    fetch(window.ANIMO_CONFIG.FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(() => showEmailSuccess())
+    .catch(() => fallbackMailto(email, body, true));
+  } else {
+    fallbackMailto(email, body, false);
+    showEmailSuccess();
+  }
+  return false;
+}
+
+function fallbackMailto(email, body, afterError) {
+  const subject = encodeURIComponent("Ánimo AI Readiness Assessment — " + email);
+  const url = "mailto:letsconnect@animoplatform.net?subject=" + subject + "&body=" + encodeURIComponent(body);
+  // Open in a new window so the success state isn't replaced
+  window.open(url, "_blank");
+}
+
+function showEmailSuccess() {
+  document.getElementById("email-form").style.display = "none";
+  document.getElementById("email-success").classList.add("show");
+}
+
+function trackBookCall() {
+  track("assessment_booked_call", {
+    overall_score: lastResults ? lastResults.overall : null,
+    fit_category: lastResults ? lastResults.fit : null
+  });
+}
+
+function trackEmailDirect() {
+  track("assessment_emailed_direct", {
+    overall_score: lastResults ? lastResults.overall : null
+  });
+}
+</script>
+
+</body>
+</html>

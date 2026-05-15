@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# Large video assets — deployed via Netlify CLI, not git
+assets/video/*.mp4
