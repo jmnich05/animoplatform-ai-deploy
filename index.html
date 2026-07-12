@@ -44,7 +44,7 @@
   "founder": {"@type": "Person", "name": "Jonathan Nichols"},
   "areaServed": [{"@type": "City", "name": "Louisville"}, {"@type": "State", "name": "Kentucky"}],
   "description": "AI consulting and coaching for Louisville professionals and small businesses, including AI training, data consolidation, MCP connectors, agent workflows, dashboards, governance, evals, and ROI measurement.",
-  "knowsAbout": ["AI coaching", "AI consulting", "AI agents", "Model Context Protocol", "data governance", "AI evaluations", "workflow automation"]
+  "knowsAbout": ["AI coaching", "AI consulting", "AI agents", "Anthropic Claude", "OpenAI ChatGPT", "Google Gemini", "Microsoft Copilot", "Model Context Protocol", "data governance", "AI evaluations", "workflow automation"]
 }
 </script>
 
@@ -562,27 +562,34 @@ section.block {
   align-items: center;
 }
 @media (max-width: 820px) { .approach-grid { grid-template-columns: 1fr; gap: 40px; } }
-.vendor-stack {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
+.vendor-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .vendor-pill {
   background: var(--animo-cream);
   border: 1px solid var(--line);
-  padding: 14px 8px;
-  text-align: center;
+  padding: 20px 18px;
+  color: var(--animo-deep-sage);
+}
+.vendor-pill strong {
+  display: block;
   font-family: var(--font-eyebrow);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.vendor-pill span { display: block; margin-top: 7px; font-size: 0.82rem; font-style: italic; line-height: 1.35; }
+.vendor-pill.featured { background: var(--animo-deep-sage); color: var(--animo-cream); border-color: var(--animo-deep-sage); }
+.vendor-pill.featured strong { color: var(--animo-marigold); }
+.portable-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; justify-content: center; }
+.portable-stack span {
+  border: 1px solid var(--line);
+  padding: 7px 10px;
+  font-family: var(--font-eyebrow);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--animo-deep-sage);
 }
-.vendor-pill.featured {
-  background: var(--animo-deep-sage);
-  color: var(--animo-marigold);
-  border-color: var(--animo-deep-sage);
-}
+@media (max-width: 560px) { .vendor-stack { grid-template-columns: 1fr; } }
 .vendor-caption {
   margin-top: 18px;
   font-size: 0.88rem;
@@ -983,7 +990,7 @@ footer ul a:hover { color: var(--animo-marigold); }
         <h3>Your personal AI operating system.</h3>
         <p>Learn how to use AI on the work already in front of you. We map the recurring responsibilities, decisions, and information flows where AI can save time or improve your thinking—then build a practical system you can operate.</p>
         <ul>
-          <li>Hands-on ChatGPT, Claude, and AI workflow coaching</li>
+          <li>Hands-on Claude, ChatGPT, Gemini, and Copilot workflow coaching</li>
           <li>Prompting, context design, verification, and judgment</li>
           <li>A prioritized map of up to eight useful agents</li>
           <li>Your first high-value workflows or agents implemented</li>
@@ -1026,24 +1033,21 @@ footer ul a:hover { color: var(--animo-marigold); }
     <div class="approach">
       <div class="approach-grid">
         <div>
-          <span class="eyebrow">Vendor-portable by design</span>
+          <span class="eyebrow">Your ecosystem first</span>
           <hr class="rule"/>
-          <h2>Anthropic-first. <em class="accent-coral">Never Anthropic-locked.</em></h2>
-          <p style="font-size:1.05rem; margin-top: 22px;">We prefer Claude — it's the best model for the kinds of structured, agentic work most businesses need. But we build every architecture as a headless intelligence layer: skills as markdown, prompts as plain text, MCP for data, agnostic auth. If you ever need to move to Gemini or OpenAI, the artifacts come with you.</p>
-          <p style="margin-top: 18px; color: var(--animo-deep-sage); font-style: italic;">Your investment is in <em>your</em> intelligence — not someone else's API.</p>
+          <h2>Build where your team works. <em class="accent-coral">Use frontier intelligence where it matters.</em></h2>
+          <p style="font-size:1.05rem; margin-top: 22px;">We build inside the ecosystem your team already trusts: Anthropic Claude, OpenAI and ChatGPT, Google Gemini, or Microsoft Copilot. Identity, data governance, existing licenses, and employee comfort all matter more than forcing a new logo into the stack.</p>
+          <p style="font-size:1.05rem; margin-top: 18px;">When model intelligence and agent-building capability are decisive, our preferred frontier model families are <strong>Anthropic Claude and OpenAI</strong>. We believe they currently deliver the strongest overall value for complex reasoning, building, and agentic work.</p>
+          <p style="margin-top: 18px; color: var(--animo-deep-sage); font-style: italic;">A clear model preference. No platform lock-in. Your investment stays in <em>your</em> context, workflows, and data.</p>
         </div>
         <div>
           <div class="vendor-stack">
-            <div class="vendor-pill featured">Claude</div>
-            <div class="vendor-pill">Gemini</div>
-            <div class="vendor-pill">OpenAI</div>
-            <div class="vendor-pill">MCP</div>
-            <div class="vendor-pill">Skills.md</div>
-            <div class="vendor-pill">Agents</div>
-            <div class="vendor-pill">SSO</div>
-            <div class="vendor-pill">RAG</div>
-            <div class="vendor-pill">Evals</div>
+            <div class="vendor-pill featured"><strong>Anthropic Claude</strong><span>Preferred frontier model family</span></div>
+            <div class="vendor-pill featured"><strong>OpenAI · ChatGPT</strong><span>Preferred frontier model family</span></div>
+            <div class="vendor-pill"><strong>Google Gemini</strong><span>Built for Google Workspace environments</span></div>
+            <div class="vendor-pill"><strong>Microsoft Copilot</strong><span>Built for Microsoft 365 environments</span></div>
           </div>
+          <div class="portable-stack"><span>MCP</span><span>Agents</span><span>Skills</span><span>RAG</span><span>SSO</span><span>Evals</span></div>
           <p class="vendor-caption">Your stack, portable.</p>
         </div>
       </div>
