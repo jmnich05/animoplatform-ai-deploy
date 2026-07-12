@@ -3,27 +3,42 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ánimo · AI Deployment — From AI-novice to AI-native.</title>
-<meta name="description" content="Ánimo is an enterprise AI deployment firm for companies of 5–50 employees. We design, deploy, and measure a portable intelligence layer your team actually owns — then help you track the ROI on the back end. No internal dev team required." />
+<title>AI Consulting &amp; Coaching in Louisville, KY | Ánimo</title>
+<meta name="description" content="Ánimo helps Louisville professionals and small businesses use AI better, connect company data, and build dependable agent workflows with clear guardrails and measurable ROI." />
 
 <!-- Canonical -->
-<link rel="canonical" href="https://ai.animoplatform.net/" />
+<link rel="canonical" href="https://animoplatform.net/" />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph -->
 <meta property="og:type"        content="website" />
-<meta property="og:url"         content="https://ai.animoplatform.net/" />
+<meta property="og:url"         content="https://animoplatform.net/" />
 <meta property="og:site_name"   content="Ánimo AI Consulting" />
-<meta property="og:title"       content="Ánimo · AI Consulting — Build YOUR intelligence layer." />
-<meta property="og:description" content="Fractional AI integration for 5–50 employee companies. We design, deploy, and document a portable intelligence layer your team can actually own — no dev team required." />
-<meta property="og:image"       content="https://ai.animoplatform.net/assets/animo-horizontal.svg" />
+<meta property="og:title"       content="AI Consulting &amp; Coaching in Louisville, KY | Ánimo" />
+<meta property="og:description" content="Practical AI coaching for people. Connected data and dependable agent systems for small businesses." />
+<meta property="og:image"       content="https://animoplatform.net/assets/animo-horizontal.svg" />
 <meta property="og:image:alt"   content="ánimo AI Consulting — Build · Deploy · Sustain" />
 
 <!-- Twitter / X card -->
 <meta name="twitter:card"        content="summary_large_image" />
-<meta name="twitter:title"       content="Ánimo · AI Consulting — Build YOUR intelligence layer." />
-<meta name="twitter:description" content="Fractional AI integration for 5–50 employee companies. Portable, documented, yours." />
-<meta name="twitter:image"       content="https://ai.animoplatform.net/assets/animo-horizontal.svg" />
+<meta name="twitter:title"       content="AI Consulting &amp; Coaching in Louisville, KY | Ánimo" />
+<meta name="twitter:description" content="Practical AI coaching for people. Connected data and dependable agent systems for small businesses." />
+<meta name="twitter:image"       content="https://animoplatform.net/assets/animo-horizontal.svg" />
+<link rel="icon" type="image/svg+xml" href="/assets/animo-app-icon.svg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Ánimo, LLC",
+  "url": "https://animoplatform.net/",
+  "logo": "https://animoplatform.net/assets/animo-horizontal.svg",
+  "email": "letsconnect@animoplatform.net",
+  "founder": {"@type": "Person", "name": "Jonathan Nichols"},
+  "areaServed": [{"@type": "City", "name": "Louisville"}, {"@type": "State", "name": "Kentucky"}],
+  "description": "AI consulting and coaching for Louisville professionals and small businesses, including AI training, data consolidation, MCP connectors, agent workflows, dashboards, governance, evals, and ROI measurement.",
+  "knowsAbout": ["AI coaching", "AI consulting", "AI agents", "Model Context Protocol", "data governance", "AI evaluations", "workflow automation"]
+}
+</script>
 
 <style>
 /* ============================================================
@@ -64,6 +79,7 @@ body {
   line-height: 1.6;
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -113,8 +129,8 @@ p { color: var(--animo-charcoal); }
 
 /* ===== SURVEY BANNER ===== */
 .survey-banner {
-  background: var(--animo-deep-sage);
-  color: var(--animo-cream);
+  background: var(--animo-marigold);
+  color: var(--animo-charcoal);
   text-align: center;
   padding: 11px 24px;
   font-family: var(--font-eyebrow);
@@ -125,13 +141,13 @@ p { color: var(--animo-charcoal); }
   z-index: 60;
 }
 .survey-banner a {
-  color: var(--animo-marigold);
+  color: var(--animo-charcoal);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s;
 }
-.survey-banner a:hover { color: var(--animo-cream); }
-.survey-banner .sep { opacity: 0.45; margin: 0 12px; }
+.survey-banner a:hover { color: var(--animo-deep-sage); }
+.survey-banner .sep { opacity: 0.35; margin: 0 12px; }
 
 /* ===== NAV ===== */
 .nav {
@@ -209,6 +225,14 @@ p { color: var(--animo-charcoal); }
 
 @media (max-width: 760px) {
   .nav-links a:not(.nav-cta) { display: none; }
+  .nav-inner { padding: 14px 16px; gap: 12px; }
+  .nav-links { gap: 0; flex: 0 0 auto; }
+  .nav-cta { padding: 11px 14px; letter-spacing: 0.14em !important; }
+  .brand { gap: 10px; min-width: 0; }
+  .brand-mark, .brand-mark img { width: 32px; height: 32px; }
+  .brand-text { font-size: 1.3rem; }
+  .survey-banner { padding: 9px 12px; letter-spacing: 0.12em; }
+  .survey-banner .sep, .survey-banner span:last-child { display: none; }
 }
 
 /* ===== HERO ===== */
@@ -286,11 +310,20 @@ p { color: var(--animo-charcoal); }
   gap: 56px;
   align-items: center;
 }
+.hero-grid > * { min-width: 0; }
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 44px;
   }
+}
+@media (max-width: 520px) {
+  .container { padding: 0 22px; }
+  .hero { padding: 72px 0 84px; }
+  .hero h1 { font-size: clamp(2.55rem, 13vw, 3.6rem); }
+  .hero-actions { align-items: stretch; flex-direction: column; }
+  .hero-actions .btn { text-align: center; width: 100%; }
+  .founder-pull-quote { padding: 22px; }
 }
 
 /* Founder video block */
@@ -766,7 +799,7 @@ footer ul a:hover { color: var(--animo-marigold); }
 <div class="survey-banner" id="survey-banner">
   <em style="font-style: italic; font-family: Georgia, serif; font-size: 0.82rem; letter-spacing: normal; text-transform: none;">New:</em>
   <span class="sep">·</span>
-  <a href="tools/ai-readiness.html">Take the free AI Readiness Assessment →</a>
+  <a href='/tools/ai-readiness'>Take the free AI Readiness Assessment →</a>
   <span class="sep">·</span>
   <span style="font-size: 0.65rem; opacity: 0.55; letter-spacing: 0.18em;">3 min · no email required</span>
 </div>
@@ -783,11 +816,11 @@ footer ul a:hover { color: var(--animo-marigold); }
       </span>
       <span>
         <span class="brand-text"><em>ánimo</em></span>
-        <span class="brand-sub">AI Deployment</span>
+        <span class="brand-sub">AI Consulting</span>
       </span>
     </a>
     <div class="nav-links">
-      <a href="#services">Services</a>
+      <a href="#services">Who we help</a>
       <a href="#approach">Approach</a>
       <a href="#process">Process</a>
       <a href="#discovery">Discovery call</a>
@@ -803,31 +836,28 @@ footer ul a:hover { color: var(--animo-marigold); }
 
       <!-- Left: copy -->
       <div>
-        <span class="eyebrow">Build · Deploy · Sustain</span>
-        <h1>From <em class="accent">AI-novice</em> to <em class="accent">AI-native</em> — a complete intelligence layer your team actually owns.</h1>
+        <span class="eyebrow">Louisville, Kentucky · In person or remote</span>
+        <h1>Use AI better. <em class="accent">Build systems</em> that make your work better.</h1>
         <div class="hero-actions">
-          <a href="https://calendar.app.google/CNBMa5QPoXz4HTHMA" target="_blank" rel="noopener" class="btn btn-primary">Book a discovery call →</a>
-          <a href="#services" class="btn btn-ghost">See how it works</a>
+          <a href="#individuals" class="btn btn-primary">I want to learn AI →</a>
+          <a href="#businesses" class="btn btn-ghost">I need AI systems</a>
         </div>
-        <p class="hero-lede">Ánimo is an enterprise AI deployment firm for companies of 5–50 employees. We design, deploy, and document a portable intelligence layer — then instrument it so you can measure what it's actually worth. No internal dev team required.</p>
+        <p class="hero-lede">Ánimo helps Louisville professionals and small teams learn practical AI, connect scattered company data, and build dependable agent workflows—with clear guardrails and measurable returns.</p>
         <blockquote class="founder-pull-quote">
-          <p>"The power of modern AI intelligence is complementing the incredible brains that Anthropic and Open AI have created, and layering the context and scaffolding around your company, your values, your data, and making sure employees can access all the information they need in one platform. Winning AI is simply intelligence times company context engineering"</p>
+          <p>"The model is only the beginning. The real advantage comes from combining strong AI with your judgment, your data, your values, and the context of how your work actually gets done."</p>
           <cite>— Jonathan Nichols, Founder and CEO</cite>
         </blockquote>
       </div>
 
-      <!-- Right: founder video -->
+      <!-- Right: founder context -->
       <div class="hero-video-col">
-        <div class="hero-video-wrap">
-          <video
-            src="assets/video/animo_pitch_final.mp4#t=2"
-            controls
-            playsinline
-            preload="metadata"
-            aria-label="Jonathan Nichols, CEO &amp; Founder of Ánimo — introduction"
-          ></video>
+        <div class="problem-card" style="text-align: left; padding: 38px;">
+          <span class="eyebrow on-dark">Operator-built</span>
+          <h2 style="font-size: 2rem; margin: 18px 0;">AI consulting from someone doing the work.</h2>
+          <p>Ánimo is led by Jon Nichols, a Louisville operator who builds and runs AI systems inside real businesses. The work is grounded in operations, data, adoption, and measurable outcomes—not abstract transformation plans.</p>
+          <p style="margin-top: 18px; color: var(--animo-marigold); font-style: italic;">In person in Louisville · Remote by arrangement</p>
         </div>
-        <p class="hero-video-caption">Why I started Ánimo — Jon Nichols, Founder and CEO</p>
+        <p class="hero-video-caption">Jon Nichols · Founder and operator</p>
       </div>
 
     </div>
@@ -839,16 +869,16 @@ footer ul a:hover { color: var(--animo-marigold); }
   <div class="container">
     <div class="stats-grid">
       <div class="stat">
-        <div class="num">5–50</div>
-        <div class="label">Employees · our sweet spot</div>
+        <div class="num">1:1</div>
+        <div class="label">Practical AI coaching</div>
       </div>
       <div class="stat">
-        <div class="num">60</div>
-        <div class="label">Days to deployment</div>
+        <div class="num">5–25</div>
+        <div class="label">Employees · business sweet spot</div>
       </div>
       <div class="stat">
-        <div class="num">12<span style="font-size:1.4rem;"> mo</span></div>
-        <div class="label">Support included</div>
+        <div class="num">8</div>
+        <div class="label">Agent opportunities mapped</div>
       </div>
       <div class="stat">
         <div class="num">100%</div>
@@ -864,8 +894,8 @@ footer ul a:hover { color: var(--animo-marigold); }
     <div class="problem-card">
       <span class="eyebrow on-dark">The gap we fill</span>
       <hr class="rule on-dark"/>
-      <h2>You know AI is going to change your business. You don't have a dev team to make it happen.</h2>
-      <p>Most consultancies sell tools you can't maintain, or build solutions locked to a single vendor. Ánimo is an enterprise AI deployment firm — focused only on the intelligence layer — that designs your stack to be portable, documented, and operable by your real team. Whether you start on Anthropic, Gemini, or OpenAI, your architecture moves with you. And when it's live, we instrument it: usage metrics, quality evals, and a back-end ROI report so you know what the investment actually returned. <em>Specific beats generic, every time.</em></p>
+      <h2>AI gets useful when it understands the work—not just the prompt.</h2>
+      <p>For individuals, that means learning the tools well enough to build repeatable workflows around your real responsibilities. For companies, it means connecting scattered data, establishing governance, and giving agents reliable context and boundaries. Ánimo works at both levels: helping people become capable AI operators and helping small businesses build systems their teams can actually trust. <em>Specific beats generic, every time.</em></p>
     </div>
   </div>
 </section>
@@ -874,9 +904,9 @@ footer ul a:hover { color: var(--animo-marigold); }
 <section style="background: var(--animo-deep-sage); padding: 56px 0; overflow: hidden; position: relative;">
   <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(122,140,93,0.35), transparent 65%);"></div>
   <div class="container" style="position: relative; z-index: 1; text-align: center;">
-    <span class="eyebrow" style="color: var(--animo-marigold);">The transformation</span>
-    <h2 style="color: var(--animo-cream); margin: 16px auto 20px; max-width: 800px;">From <em style="color: var(--animo-marigold);">AI-novice</em> to <em style="color: var(--animo-marigold);">AI-native</em> — without needing a dev team to get there.</h2>
-    <p style="color: rgba(245,235,216,0.82); max-width: 620px; margin: 0 auto; font-size: 1.05rem;">Most small businesses are sitting on workflows that AI could transform. What's missing isn't the technology — it's someone to deploy it right, document it completely, and measure whether it's actually working.</p>
+    <span class="eyebrow" style="color: var(--animo-marigold);">Two ways to work together</span>
+    <h2 style="color: var(--animo-cream); margin: 16px auto 20px; max-width: 800px;">Build your own AI capability—or build the <em style="color: var(--animo-marigold);">AI operating layer</em> for your company.</h2>
+    <p style="color: rgba(245,235,216,0.82); max-width: 700px; margin: 0 auto; font-size: 1.05rem;">Founder-led consulting in Louisville, Kentucky, with remote engagements available. No generic transformation theater. We leave you with working systems, documented decisions, and the ability to operate what we build.</p>
   </div>
 </section>
 
@@ -888,68 +918,45 @@ footer ul a:hover { color: var(--animo-marigold); }
       <hr class="rule"/>
     </div>
 
-    <!-- Phase One header -->
-    <div style="margin-bottom: 4px;">
-      <span class="eyebrow" style="color: var(--animo-coral);">Phase One · Foundation</span>
-      <p style="font-size: 0.95rem; color: var(--animo-charcoal); font-style: italic; margin-top: 8px; max-width: 680px;">The right starting point for most companies. You get a working, documented, vendor-portable AI layer — built for your team, not for a demo.</p>
-    </div>
-
     <div class="services-grid" style="border-top: 2px solid var(--animo-deep-sage); margin-bottom: 56px;">
-      <div class="service-card">
-        <div class="service-num">01 · Discover</div>
-        <h3>Onboarding & discovery.</h3>
-        <p>Workflow audit, data inventory, security posture, and a prioritized use-case backlog. We find where AI creates real value before writing a line of code.</p>
+      <div class="service-card" id="individuals">
+        <div class="service-num">For individuals &amp; leaders</div>
+        <h3>Your personal AI operating system.</h3>
+        <p>Learn how to use AI on the work already in front of you. We map the recurring responsibilities, decisions, and information flows where AI can save time or improve your thinking—then build a practical system you can operate.</p>
+        <ul>
+          <li>Hands-on ChatGPT, Claude, and AI workflow coaching</li>
+          <li>Prompting, context design, verification, and judgment</li>
+          <li>A prioritized map of up to eight useful agents</li>
+          <li>Your first high-value workflows or agents implemented</li>
+          <li>A written operating guide you can keep improving</li>
+        </ul>
+        <p style="margin-top: 20px;"><a href="/ai-coaching/" style="color: var(--animo-deep-coral); text-decoration: underline;">Explore individual AI coaching →</a></p>
       </div>
 
-      <div class="service-card">
-        <div class="service-num">02 · Customize</div>
-        <h3>Brand kit & voice profile.</h3>
-        <p>Your AI sounds like your company. We encode your voice, org context, and communication patterns into a portable system prompt and skill library.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">03 · Build</div>
-        <h3>Architecture & deployment.</h3>
-        <p>The intelligence layer itself: skills, MCP data connectors, identity controls, and multi-device rollout. Vendor-portable from day one.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">04 · Sustain</div>
-        <h3>Ongoing health & ROI tracking.</h3>
-        <p>Eval harness, data freshness monitoring, quarterly intelligence reviews, and a back-end ROI report — so you can see exactly what your investment returned. 12-month support included.</p>
+      <div class="service-card" id="businesses">
+        <div class="service-num">For small businesses</div>
+        <h3>A connected, governed AI operating layer.</h3>
+        <p>We consolidate the context scattered across your tools and make it usable by both people and agents. Then we build dependable workflows, dashboards, and agent systems around the opportunities that can create measurable value.</p>
+        <ul>
+          <li>Workflow, data-stack, security, and governance audit</li>
+          <li>MCP servers, connectors, and agent-readable knowledge</li>
+          <li>Dashboards and decision-ready business intelligence</li>
+          <li>Role-specific agents and multi-agent workflows</li>
+          <li>Evals, guardrails, observability, and ROI reporting</li>
+        </ul>
+        <p style="margin-top: 20px;"><a href="/small-business-ai-consulting/" style="color: var(--animo-deep-coral); text-decoration: underline;">Explore small-business AI consulting →</a></p>
       </div>
     </div>
 
-    <!-- Phase Two header -->
     <div style="margin-bottom: 4px;">
-      <span class="eyebrow" style="color: var(--animo-coral);">Phase Two · Agent Stack</span>
-      <p style="font-size: 0.95rem; color: var(--animo-charcoal); font-style: italic; margin-top: 8px; max-width: 680px;">For companies ready to go further: a fully customized agent workforce wired into your workflows — the same kind of system we run internally.</p>
+      <span class="eyebrow" style="color: var(--animo-coral);">How business systems get built</span>
+      <p style="font-size: 0.95rem; color: var(--animo-charcoal); font-style: italic; margin-top: 8px; max-width: 760px;">Start with the data and the work. Add agents only where they have dependable context, clear authority, and a measurable job to do.</p>
     </div>
-
     <div class="services-grid" style="border-top: 2px solid var(--animo-deep-sage);">
-      <div class="service-card">
-        <div class="service-num">Agent Workforce</div>
-        <h3>5+ agents, working in sync.</h3>
-        <p>We design and deploy a team of specialized AI agents — each scoped to a specific function — working synchronously across your tasks and data. Sales, ops, research, communications: the work runs in parallel, not in a queue.</p>
-        <ul>
-          <li>Custom agents per business function</li>
-          <li>Synchronous multi-agent orchestration</li>
-          <li>Connected to your real data via MCP</li>
-          <li>Portable architecture — yours to keep</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">Agent Console</div>
-        <h3>A head of staff for your agent workforce.</h3>
-        <p>Every agent workforce needs a coordinator. We build a complete agent console — including a head-of-staff layer that routes tasks, manages context, and keeps the team working together. You get a single point of control over the whole system.</p>
-        <ul>
-          <li>Head-of-staff / chief-of-staff agent</li>
-          <li>Task routing and context handoff</li>
-          <li>Agent-level logging and oversight</li>
-          <li>ROI dashboard per agent function</li>
-        </ul>
-      </div>
+      <div class="service-card"><div class="service-num">01 · Consolidate</div><h3>Make the data usable.</h3><p>Inventory systems, define ownership and permissions, resolve conflicting definitions, and create an agent-readable knowledge layer across the company.</p></div>
+      <div class="service-card"><div class="service-num">02 · Connect</div><h3>Give AI governed access.</h3><p>Build MCP servers and connectors with scoped permissions, documented sources, identity controls, and sensible boundaries around sensitive information.</p></div>
+      <div class="service-card"><div class="service-num">03 · Operate</div><h3>Build workflows that work.</h3><p>Deploy dashboards, automations, skills, and agents around specific jobs—not demos—and train the team responsible for operating them.</p></div>
+      <div class="service-card"><div class="service-num">04 · Prove</div><h3>Measure quality and return.</h3><p>Instrument usage, time saved, output quality, data freshness, failure modes, and financial return. Evals keep the system inside your guardrails as models and data change.</p></div>
     </div>
   </div>
 </section>
@@ -989,10 +996,10 @@ footer ul a:hover { color: var(--animo-marigold); }
 <section class="block" id="process">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">The first 60 days</span>
+      <span class="eyebrow">A practical engagement</span>
       <hr class="rule"/>
       <h2>A predictable cadence — <em class="accent-sage">not a black box.</em></h2>
-      <p>Transparent onboarding &amp; deployment hub, that acts as the project management tool for first 60 days, and then gives the tools your employees need to integrate and understand the process.</p>
+      <p>Individual coaching moves in shorter working sessions. Company engagements typically use this 60-day path, with transparent documentation and team training throughout.</p>
     </div>
 
     <div class="timeline">
@@ -1027,16 +1034,16 @@ footer ul a:hover { color: var(--animo-marigold); }
       <span class="eyebrow">The discovery call</span>
       <hr class="rule"/>
       <h2>30 minutes. <em class="accent-coral">Conversation first.</em></h2>
-      <p>The first call starts with you, not us. We want to understand your culture, your data, and the work that's quietly eating your team's hours. Once we have that picture, we'll follow up with a tailored proposal — and a pitch that's actually about your business.</p>
+      <p>The first call starts with the work you want to improve. We’ll determine whether you need individual coaching, a company data-and-workflow engagement, or simply a better next step.</p>
     </div>
 
     <div class="services-grid" style="border-top: 2px solid var(--animo-deep-sage);">
       <div class="service-card">
         <div class="service-num">What we'll cover</div>
-        <h3>Where AI fits your business.</h3>
+        <h3>Where AI fits your work.</h3>
         <ul>
           <li>The 1–3 workflows where AI creates the most leverage</li>
-          <li>Your current tooling, data, and team capacity</li>
+          <li>Your current tooling, data, habits, and team capacity</li>
           <li>What "done" looks like and how we'd measure it</li>
           <li>Realistic timeline and what we'd build first</li>
         </ul>
@@ -1063,14 +1070,14 @@ footer ul a:hover { color: var(--animo-marigold); }
       <span class="eyebrow on-dark">Start a conversation</span>
       <hr class="rule on-dark" style="margin: 16px auto 24px;"/>
       <h2>Let's build <em class="accent-marigold">YOUR intelligence</em> together.</h2>
-      <p>30-minute discovery call. We start by listening — your culture, your data, the things eating your team's time. The pitch comes after we understand what you actually need.</p>
+      <p>Book a 30-minute call for individual coaching or a small-business engagement. We start with the work, the data, and the friction—not a canned AI pitch.</p>
 
       <!-- Pre-booking survey nudge — optional, not a gate -->
       <div class="survey-nudge" id="survey-nudge">
         <div class="nudge-eyebrow">Before you book</div>
         <p>Want to see how AI-ready your business is? The assessment takes 3 minutes and gives you a rough score — useful context for the call.</p>
         <div class="nudge-actions">
-          <a href="tools/ai-readiness.html" class="btn btn-primary" style="font-size: 0.78rem; padding: 14px 24px;">Take the free assessment →</a>
+          <a class='btn btn-primary' href='/tools/ai-readiness' style='font-size: 0.78rem; padding: 14px 24px;'>Take the free assessment →</a>
           <button class="nudge-skip" onclick="document.getElementById('survey-nudge').style.display='none';">I'll skip this for now</button>
         </div>
       </div>
@@ -1079,7 +1086,7 @@ footer ul a:hover { color: var(--animo-marigold); }
            SCHEDULER — Google Appointment Scheduler on jon@pappyco.com
            Direct link: https://calendar.app.google/CNBMa5QPoXz4HTHMA
            ============================================================ -->
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 8px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 48px;">
         <a href="https://calendar.app.google/CNBMa5QPoXz4HTHMA" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 0.9rem; padding: 18px 32px;">
           Book a 30-minute discovery call →
         </a>
@@ -1105,17 +1112,17 @@ footer ul a:hover { color: var(--animo-marigold); }
           </span>
           <span>
             <span class="brand-text" style="color: var(--animo-on-dark);"><em>ánimo</em></span>
-            <span class="brand-sub" style="color: var(--animo-marigold);">AI Deployment</span>
+            <span class="brand-sub" style="color: var(--animo-marigold);">AI Consulting</span>
           </span>
         </div>
-        <p>Enterprise AI deployment for companies of 5–50 employees. We design, deploy, and measure your intelligence layer — and help you own it long after we're done. A practice of Ánimo, LLC.</p>
+        <p>Practical AI coaching for people. Connected data and dependable agent systems for small businesses. Based in Louisville, Kentucky. A practice of Ánimo, LLC.</p>
         <p style="margin-top: 10px; font-size: 0.85rem; color: var(--animo-marigold); font-style: italic;">Founded by Jonathan Nichols, CEO.</p>
       </div>
       <div>
         <h5>Services</h5>
         <ul>
-          <li><a href="#services">Phase One · Foundation</a></li>
-          <li><a href="#services">Phase Two · Agent Stack</a></li>
+          <li><a href="/ai-coaching/">AI coaching</a></li>
+          <li><a href="/small-business-ai-consulting/">Small-business consulting</a></li>
           <li><a href="#approach">Approach</a></li>
           <li><a href="#process">Process</a></li>
         </ul>
@@ -1131,7 +1138,7 @@ footer ul a:hover { color: var(--animo-marigold); }
       <div>
         <h5>Free tools</h5>
         <ul>
-          <li><a href="tools/ai-readiness.html">AI Readiness Assessment</a></li>
+          <li><a href='/tools/ai-readiness'>AI Readiness Assessment</a></li>
         </ul>
       </div>
       <div>
