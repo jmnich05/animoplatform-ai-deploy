@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ánimo · AI Readiness Assessment</title>
-<meta name="description" content="Free 3-minute assessment for Louisville-area companies. Score your AI readiness and see the productivity ROI you may be missing." />
+<title>Free AI Readiness Assessment | Ánimo Louisville</title>
+<meta name="description" content="Take Ánimo's free 3-minute AI readiness assessment for small businesses. Score your data, workflows, governance, adoption, and measurement readiness." />
+<link rel="canonical" href="https://animoplatform.net/tools/ai-readiness" />
+<meta property="og:title" content="Free AI Readiness Assessment | Ánimo" />
+<meta property="og:description" content="Score your small business across data, workflows, governance, adoption, and measurement in three minutes." />
+<meta property="og:url" content="https://animoplatform.net/tools/ai-readiness" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://animoplatform.net/assets/animo-horizontal.svg" />
 <link rel="icon" type="image/png" href="../assets/animo-app-icon.png" />
 <link rel="apple-touch-icon" href="../assets/animo-app-icon.png" />
 
@@ -365,7 +371,7 @@ a { color: inherit; }
   color: var(--animo-coral);
   margin-bottom: 18px;
 }
-.results h1 {
+.results h2 {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: normal;
@@ -374,7 +380,7 @@ a { color: inherit; }
   color: var(--animo-charcoal);
   margin-bottom: 16px;
 }
-.results h1 em { color: var(--animo-deep-sage); }
+.results h2 em { color: var(--animo-deep-sage); }
 .results .verdict {
   font-size: 1.05rem;
   color: var(--animo-charcoal);
@@ -751,7 +757,7 @@ a { color: inherit; }
   <!-- RESULTS PANEL -->
   <div id="panel-results" class="panel results">
     <span class="eyebrow">Your Ánimo Readiness Profile</span>
-    <h1 id="r-headline">A rough read on <em>where you stand.</em></h1>
+    <h2 id="r-headline">A rough read on <em>where you stand.</em></h2>
     <div id="r-fit"></div>
     <p class="verdict" id="r-verdict"></p>
 
@@ -816,7 +822,7 @@ a { color: inherit; }
       <h2 id="cta-headline">Talk it through with <em>Jonathan.</em></h2>
       <p id="cta-blurb">30-minute discovery call. No deck, no pitch — just a conversation about where AI fits your specific business.</p>
       <div class="actions">
-        <a href="https://calendar.app.google/axoDDDcpxvVbbHH99" target="_blank" rel="noopener"
+        <a href="https://calendar.app.google/CNBMa5QPoXz4HTHMA" target="_blank" rel="noopener"
            class="btn btn-marigold" onclick="trackBookCall()">Book a 30-min discovery call →</a>
         <a href="mailto:letsconnect@animoplatform.net?subject=AI%20Readiness%20Assessment%20follow-up"
            class="btn btn-ghost" style="color: var(--animo-cream); border-color: rgba(245,235,216,0.6);"
@@ -1276,7 +1282,7 @@ function buildResultsBody(email) {
     `Rough annual productivity estimate: ${formatMoney(r.annualROI)}/yr`,
     `Inputs: ${r.roi_team} team members × ~$${r.roi_hourly}/hr value`,
     "",
-    "Book a discovery call: https://calendar.app.google/axoDDDcpxvVbbHH99"
+    "Book a discovery call: https://calendar.app.google/CNBMa5QPoXz4HTHMA"
   ].join("\n");
 }
 

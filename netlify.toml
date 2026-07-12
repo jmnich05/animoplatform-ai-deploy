@@ -1,0 +1,22 @@
+[[redirects]]
+  from = "/ai-readiness.html"
+  to = "/tools/ai-readiness"
+  status = 301
+
+[[redirects]]
+  from = "https://www.animoplatform.net/*"
+  to = "https://animoplatform.net/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
