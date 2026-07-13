@@ -569,6 +569,15 @@ section.block {
   padding: 20px 18px;
   color: var(--animo-deep-sage);
 }
+.vendor-heading { display: flex; align-items: center; gap: 11px; }
+.vendor-logo {
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  background: currentColor;
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
+}
 .vendor-pill strong {
   display: block;
   font-family: var(--font-eyebrow);
@@ -1042,10 +1051,10 @@ footer ul a:hover { color: var(--animo-marigold); }
         </div>
         <div>
           <div class="vendor-stack">
-            <div class="vendor-pill featured"><strong>Anthropic Claude</strong><span>Preferred frontier model family</span></div>
-            <div class="vendor-pill featured"><strong>OpenAI · ChatGPT</strong><span>Preferred frontier model family</span></div>
-            <div class="vendor-pill"><strong>Google Gemini</strong><span>Built for Google Workspace environments</span></div>
-            <div class="vendor-pill"><strong>Microsoft Copilot</strong><span>Built for Microsoft 365 environments</span></div>
+            <div class="vendor-pill featured"><div class="vendor-heading"><i class="vendor-logo" style="--logo: url('assets/platforms/anthropic.svg')" aria-hidden="true"></i><strong>Anthropic Claude</strong></div><span>Preferred frontier model family</span></div>
+            <div class="vendor-pill featured"><div class="vendor-heading"><i class="vendor-logo" style="--logo: url('assets/platforms/openai.svg')" aria-hidden="true"></i><strong>OpenAI · ChatGPT</strong></div><span>Preferred frontier model family</span></div>
+            <div class="vendor-pill"><div class="vendor-heading"><i class="vendor-logo" style="--logo: url('assets/platforms/google-gemini.svg')" aria-hidden="true"></i><strong>Google Gemini</strong></div><span>Built for Google Workspace environments</span></div>
+            <div class="vendor-pill"><div class="vendor-heading"><i class="vendor-logo" style="--logo: url('assets/platforms/microsoft.svg')" aria-hidden="true"></i><strong>Microsoft Copilot</strong></div><span>Built for Microsoft 365 environments</span></div>
           </div>
           <div class="portable-stack"><span>MCP</span><span>Agents</span><span>Skills</span><span>RAG</span><span>SSO</span><span>Evals</span></div>
           <p class="vendor-caption">Your stack, portable.</p>
