@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Phosphor";
+  src: url("./Phosphor.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.ph {
+  font-family: "Phosphor" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ph.ph-arrow-right:before {
+  content: "\e06c";
+}
+.ph.ph-arrows-out-cardinal:before {
+  content: "\e0a4";
+}
+.ph.ph-browser:before {
+  content: "\e0f4";
+}
+.ph.ph-calendar-dots:before {
+  content: "\e7b4";
+}
+.ph.ph-calendar-heart:before {
+  content: "\e8b0";
+}
+.ph.ph-calendar-plus:before {
+  content: "\e714";
+}
+.ph.ph-caret-right:before {
+  content: "\e13a";
+}
+.ph.ph-chart-bar:before {
+  content: "\e150";
+}
+.ph.ph-chart-line-up:before {
+  content: "\e156";
+}
+.ph.ph-chat-circle-dots:before {
+  content: "\e16c";
+}
+.ph.ph-check:before {
+  content: "\e182";
+}
+.ph.ph-coffee:before {
+  content: "\e1c2";
+}
+.ph.ph-compass:before {
+  content: "\e1c8";
+}
+.ph.ph-cooking-pot:before {
+  content: "\e764";
+}
+.ph.ph-envelope-open:before {
+  content: "\e216";
+}
+.ph.ph-envelope-simple:before {
+  content: "\e218";
+}
+.ph.ph-flow-arrow:before {
+  content: "\e6ec";
+}
+.ph.ph-handshake:before {
+  content: "\e582";
+}
+.ph.ph-headset:before {
+  content: "\e584";
+}
+.ph.ph-list:before {
+  content: "\e2f0";
+}
+.ph.ph-magnifying-glass:before {
+  content: "\e30c";
+}
+.ph.ph-map-pin:before {
+  content: "\e316";
+}
+.ph.ph-megaphone:before {
+  content: "\e324";
+}
+.ph.ph-note-pencil:before {
+  content: "\e34c";
+}
+.ph.ph-shopping-cart:before {
+  content: "\e41e";
+}
+.ph.ph-storefront:before {
+  content: "\e470";
+}
+.ph.ph-sun-horizon:before {
+  content: "\e5b6";
+}

@@ -8,7 +8,19 @@ Source for [animoplatform.net](https://animoplatform.net), deployed by Netlify f
 netlify dev
 ```
 
-The site is intentionally static: standalone HTML, inlined brand styles, and assets under `assets/`.
+The site is intentionally static: standalone HTML pages, a shared design system under `assets/`, and no build step.
+
+## Current site architecture
+
+- `/` — homepage and two-path overview
+- `/web-commerce/` — website, e-commerce, and digital marketing services
+- `/personal-ai/` — practical AI optimization for individuals
+- `/work/` — selected client work
+- `/about/` — founder and company story
+- `/contact/` — booking and direct-email paths
+- `/tools/ai-readiness` — existing readiness assessment
+
+The interaction stack uses Motion 13.1.1 for restrained scroll-linked effects and Phosphor Icons 2.1.2 for interface icons. The site remains usable without either CDN dependency.
 
 ## Deployment contract
 
