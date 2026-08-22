@@ -4,6 +4,18 @@
   status = 301
 
 [[redirects]]
+  from = "/ai-coaching/*"
+  to = "/personal-ai/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/small-business-ai-consulting/*"
+  to = "/web-commerce/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://www.animoplatform.net/*"
   to = "https://animoplatform.net/:splat"
   status = 301

@@ -8,7 +8,21 @@ Source for [animoplatform.net](https://animoplatform.net), deployed by Netlify f
 netlify dev
 ```
 
-The site is intentionally static: standalone HTML, inlined brand styles, and assets under `assets/`.
+The site is intentionally static: standalone HTML pages, a shared design system under `assets/`, and no build step.
+
+## Current site architecture
+
+- `/` — homepage and two-path overview
+- `/web-commerce/` — website, e-commerce, and digital marketing services
+- `/personal-ai/` — practical AI optimization for individuals
+- `/work/` — selected client work
+- `/about/` — founder and company story
+- `/contact/` — booking and direct-email paths
+- `/tools/ai-readiness` — practical, interactive everyday AI demos (legacy URL retained for continuity)
+
+The official Ánimo tagline is: “what would make your work or life feel lighter?”
+
+The interaction stack uses Motion 13.1.1 for restrained scroll-linked effects, native Pointer Events for the bounded hero explorer, and Phosphor Icons 2.1.2 for interface icons. The site remains usable without either CDN dependency.
 
 ## Deployment contract
 
@@ -21,4 +35,6 @@ The site is intentionally static: standalone HTML, inlined brand styles, and ass
 
 ## Measurement setup
 
-The readiness assessment supports GA4 through `window.ANIMO_CONFIG.GA4_MEASUREMENT_ID` in `tools/ai-readiness.html`. Add the production measurement ID only after the GA4 property and consent requirements are confirmed.
+GA4 is installed site-wide with measurement ID `G-H20MPFJEKF`. CTA clicks and demo interactions send lightweight custom events when `gtag` is available.
+
+The public booking path is `https://calendly.com/letsconnect-animoplatform/30min`.
