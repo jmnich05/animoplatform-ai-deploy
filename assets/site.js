@@ -70,18 +70,21 @@ function sizeHeroArt() {
   const zoom = heroExpanded ? 1.48 : 1.34;
   const renderWidth = naturalWidth * coverScale * zoom;
   const renderHeight = naturalHeight * coverScale * zoom;
+  const edgeBuffer = Math.max(24, Math.min(box.width, box.height) * 0.045);
 
-  heroMaxX = Math.max(0, (renderWidth - box.width) / 2);
-  heroMaxY = Math.max(0, (renderHeight - box.height) / 2);
-  growthArt.style.setProperty("--hero-render-width", `${renderWidth}px`);
-  growthArt.style.setProperty("--hero-render-height", `${renderHeight}px`);
+  // Keep a deliberate overscan buffer so fast wheel and pointer input can
+  // never land on the literal edge of the artwork.
+  heroMaxX = Math.max(0, (renderWidth - box.width) / 2 - edgeBuffer);
+  heroMaxY = Math.max(0, (renderHeight - box.height) / 2 - edgeBuffer);
+  growthStage.style.setProperty("--hero-render-width", `${renderWidth}px`);
+  growthStage.style.setProperty("--hero-render-height", `${renderHeight}px`);
   queueHeroPosition();
 }
 
 function paintHeroPosition() {
-  if (!growthArt) return;
-  growthArt.style.setProperty("--hero-x", `${-heroPanX * heroMaxX}px`);
-  growthArt.style.setProperty("--hero-y", `${-heroPanY * heroMaxY}px`);
+  if (!growthStage) return;
+  growthStage.style.setProperty("--hero-x", `${-heroPanX * heroMaxX}px`);
+  growthStage.style.setProperty("--hero-y", `${-heroPanY * heroMaxY}px`);
   frame = 0;
 }
 
@@ -99,7 +102,7 @@ function setHeroExpanded(expanded) {
     heroPanX = 0;
     heroPanY = 0;
   }
-  requestAnimationFrame(sizeHeroArt);
+  requestAnimationFrame(() => requestAnimationFrame(sizeHeroArt));
   if (expanded) growthStage.focus({ preventScroll: true });
 }
 
@@ -115,6 +118,11 @@ if (growthStage && growthArt) {
   if (growthArt.complete) sizeHeroArt();
   else growthArt.addEventListener("load", sizeHeroArt, { once: true });
   window.addEventListener("resize", sizeHeroArt);
+  if ("ResizeObserver" in window) {
+    const growthObserver = new ResizeObserver(sizeHeroArt);
+    growthObserver.observe(growthStage);
+  }
+  growthStage.addEventListener("animationend", sizeHeroArt);
 
   growthStage.addEventListener("pointermove", (event) => {
     if (event.pointerType === "touch") {
@@ -201,13 +209,21 @@ if (growthStage && growthArt) {
 
 if (!reducedMotion) {
   import("https://cdn.jsdelivr.net/npm/motion@13.1.1/+esm")
-    .then(({ animate, inView }) => {
+    .then(({ animate, inView, scroll }) => {
       root.classList.add("motion-ready");
 
       inView("[data-reveal]", (element) => {
         element.classList.add("is-visible");
         animate(element, { opacity: [0, 1], y: [24, 0] }, { duration: 0.62, easing: [0.22, 1, 0.36, 1] });
       }, { margin: "0px 0px -10% 0px", amount: 0.18 });
+
+      if (growthStage) {
+        scroll((progress) => {
+          if (heroExpanded) return;
+          const drift = (progress - 0.5) * 28;
+          growthStage.style.setProperty("--hero-drift-y", `${drift}px`);
+        }, { target: growthStage, offset: ["start end", "end start"] });
+      }
 
     })
     .catch(() => {

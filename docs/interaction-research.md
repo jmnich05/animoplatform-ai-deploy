@@ -18,7 +18,7 @@ Use Motion for lightweight scroll-linked storytelling and in-view transitions, c
 - Keep normal browser scrolling and real HTML page navigation.
 - Make the growth hero respond to horizontal and vertical pointer input.
 - Add arrow-key input for the same two-axis interaction.
-- Tie image scale and the progress rule to page scroll.
+- Tie a small vertical image drift to page scroll while keeping a permanent overscan buffer at every pan boundary.
 - Respect `prefers-reduced-motion`; content and navigation remain fully usable without animation.
 - Use Phosphor Icons `2.1.2` for interface icons rather than handcrafted symbols.
 

@@ -193,7 +193,11 @@ button { color: inherit; }
   padding: 0;
   overflow: hidden;
   border: 3px solid var(--paper);
-  background: var(--ink);
+  background-color: var(--ink);
+  background-image: url("/assets/hero/animo-growth-system-1280.jpg");
+  background-repeat: no-repeat;
+  background-position: calc(50% + var(--hero-x, 0px)) calc(50% + var(--hero-y, 0px) + var(--hero-drift-y, 0px));
+  background-size: var(--hero-render-width, 150%) var(--hero-render-height, 135%);
   box-shadow: 14px 14px 0 var(--marigold);
   cursor: grab;
   appearance: none;
@@ -255,7 +259,7 @@ body.hero-exploring::before {
   left: 50%;
   top: 50%;
   object-fit: fill;
-  transform: translate3d(calc(-50% + var(--hero-x, 0px)), calc(-50% + var(--hero-y, 0px)), 0);
+  transform: translate3d(calc(-50% + var(--hero-x, 0px)), calc(-50% + var(--hero-y, 0px) + var(--hero-drift-y, 0px)), 0);
   will-change: transform;
   pointer-events: none;
   user-select: none;
