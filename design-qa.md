@@ -33,7 +33,7 @@ final result: passed
 - Pointer exploration: passed; pointer position reaches the available horizontal and vertical pan bounds.
 - Keyboard: passed; Enter/Space opens, Arrow keys pan, and Escape closes.
 - Touch behavior: mobile layout and expanded touch surface passed visually; pointer capture and drag handling are implemented for touch input.
-- Close behavior: close button, outside click, pointer departure, and Escape are implemented. The visible close button passed at desktop and mobile sizes.
+- Close behavior: close button, outside click, and Escape are implemented. The visible close button passed at desktop and mobile sizes.
 - Reduced motion: transitions collapse to near-zero duration while the user-controlled exploration remains available.
 - Browser console: no errors or warnings during desktop, mobile, wheel, keyboard, and close checks.
 - JavaScript syntax and diff whitespace checks: passed.

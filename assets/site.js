@@ -53,7 +53,6 @@ let heroDragging = false;
 let heroPointerId = null;
 let heroPointerX = 0;
 let heroPointerY = 0;
-let heroCloseTimer = 0;
 let frame = 0;
 
 function clamp(value, min, max) {
@@ -96,7 +95,6 @@ function setHeroExpanded(expanded) {
   growthStage.classList.toggle("is-expanded", expanded);
   growthStage.setAttribute("aria-expanded", String(expanded));
   document.body.classList.toggle("hero-exploring", expanded);
-  window.clearTimeout(heroCloseTimer);
   if (!expanded) {
     heroPanX = 0;
     heroPanY = 0;
@@ -118,7 +116,6 @@ if (growthStage && growthArt) {
   else growthArt.addEventListener("load", sizeHeroArt, { once: true });
   window.addEventListener("resize", sizeHeroArt);
 
-  growthStage.addEventListener("pointerenter", () => window.clearTimeout(heroCloseTimer));
   growthStage.addEventListener("pointermove", (event) => {
     if (event.pointerType === "touch") {
       if (!heroDragging || event.pointerId !== heroPointerId) return;
@@ -162,11 +159,6 @@ if (growthStage && growthArt) {
     heroPanY = clamp(heroPanY + verticalDelta / Math.max(180, heroMaxY * 1.5), -1, 1);
     queueHeroPosition();
   }, { passive: false });
-
-  growthStage.addEventListener("pointerleave", () => {
-    if (!heroExpanded) return;
-    heroCloseTimer = window.setTimeout(() => setHeroExpanded(false), 220);
-  });
 
   growthStage.addEventListener("click", () => {
     if (!heroExpanded) setHeroExpanded(true);
