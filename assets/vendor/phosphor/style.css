@@ -100,3 +100,6 @@
 .ph.ph-sun-horizon:before {
   content: "\e5b6";
 }
+.ph.ph-x:before {
+  content: "\e4f6";
+}
