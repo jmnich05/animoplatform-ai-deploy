@@ -1,6 +1,24 @@
-# Ánimo redesign — design QA
+# Ánimo redesign and mobile hero message — design QA
 
 final result: passed
+
+## Mobile hero message update — 08-22-2026
+
+- Source visual truth: `/private/tmp/animo-mobile-hero-qa/live-before-390x844.png` — production homepage at a 390 × 844 CSS viewport (375 × 812 captured content pixels at density 1). The 17vw Arial Black headline, .88 line height and negative tracking collapsed the former message into a dense white block.
+- Rendered implementation:
+  - `/private/tmp/animo-mobile-hero-qa/after-390x844.png` — revised primary mobile state at 390 × 844 CSS (375 × 812 captured content pixels at density 1).
+  - `/private/tmp/animo-mobile-hero-qa/after-320x812.png` — narrow mobile state at 320 × 812 CSS (305 × 774 captured content pixels at density 1).
+  - `/private/tmp/animo-mobile-hero-qa/after-720x900.png` — mobile-breakpoint state at 720 × 900 CSS (705 × 881 captured content pixels at density 1).
+  - `/private/tmp/animo-mobile-hero-qa/after-1280x800.png` — desktop state at 1280 × 800 CSS (1265 × 791 captured content pixels at density 1).
+- Combined comparison evidence: `/private/tmp/animo-mobile-hero-qa/combined-390x844.png` (885 × 944 pixels). The production and revised 390px states were reviewed together in one browser-rendered comparison board.
+- Full view: navigation, service rail, hero copy, both CTAs, founder note and the beginning of the illustration retain the established hierarchy, hard borders, offset shadows and existing brand colors.
+- Focused region: the new single semantic H1 separates the setup, official question and payoff. At 390px the question wraps into four open lines and “Give your day back.” stays on one distinct marigold line; at 320px the payoff wraps cleanly without overlap or clipping.
+- Typography: existing condensed, Arial Black and Georgia roles remain intact. The question uses .98 line height and -.04em mobile tracking rather than the former .88/-0.075em treatment.
+- Spacing: 10px separates setup from question, 14px separates question from payoff, and 30px separates the H1 from the lede on mobile. No text boxes overlap at 320, 390, 720 or 1280 CSS pixels.
+- Color and accessibility: cream copy, marigold payoff and deep-sage background preserve the existing high-contrast palette. All three phrases remain real text inside one H1 in logical reading order; no CSS-generated content or hard line breaks were introduced.
+- Interaction regression: mobile navigation opened and closed with synchronized `aria-expanded`; the illustration expanded and closed with Escape; both hero CTAs retain their destination links.
+- Browser console: zero warnings or errors after responsive, navigation and illustration checks.
+- Comparison history: initial P1 mobile typography collision was corrected with dedicated semantic spans and responsive type rules. The combined post-fix comparison found no remaining P0, P1 or P2 issues.
 
 ## Comparison target
 
