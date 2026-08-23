@@ -177,11 +177,28 @@ button { color: inherit; }
   max-width: 720px;
   margin: 20px 0 0;
   color: var(--paper);
-  font: 900 clamp(3.25rem, 6.9vw, 6.8rem)/.88 var(--sans);
-  letter-spacing: -.075em;
+}
+.hero-headline__setup,
+.hero-headline__question,
+.hero-headline__payoff { display: block; }
+.hero-headline__setup {
+  font: 900 clamp(1.15rem, 1.7vw, 1.7rem)/1.08 var(--condensed);
+  letter-spacing: .045em;
+}
+.hero-headline__question {
+  max-width: 12ch;
+  margin-top: 14px;
+  font: 900 clamp(3rem, 4.6vw, 4.9rem)/.95 var(--sans);
+  letter-spacing: -.05em;
   text-wrap: balance;
 }
-.hero h1 em { display: block; color: var(--marigold); font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: -.055em; }
+.hero-headline__payoff {
+  margin-top: 16px;
+  color: var(--marigold);
+  font: italic 400 clamp(2.55rem, 4.15vw, 4.6rem)/.98 var(--serif);
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
 .hero-copy > p:not(.eyebrow) { max-width: 630px; margin: 26px 0 0; color: var(--paper); font-size: 1.16rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
 .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 28px; color: rgba(245,235,216,.78); font: italic .95rem/1.4 var(--serif); }
@@ -468,8 +485,21 @@ body.hero-exploring::before {
   .nav-wrap { min-height: 74px; }
   .brand img { width: 128px; }
   .hero { padding: 54px 0 66px; }
-  .hero h1 { font-size: clamp(3rem, 17vw, 5.1rem); }
-  .hero-copy > p:not(.eyebrow) { font-size: 1.02rem; }
+  .hero-headline__setup { font-size: 1.2rem; line-height: 1.1; }
+  .hero-headline__question {
+    max-width: 11.5ch;
+    margin-top: 10px;
+    font-size: clamp(2.45rem, 10.8vw, 2.9rem);
+    line-height: .98;
+    letter-spacing: -.04em;
+    text-wrap: pretty;
+  }
+  .hero-headline__payoff {
+    margin-top: 14px;
+    font-size: clamp(2.35rem, 9.8vw, 3.15rem);
+    line-height: 1;
+  }
+  .hero-copy > p:not(.eyebrow) { margin-top: 30px; font-size: 1.02rem; }
   .hero-actions { display: grid; }
   .hero-growth { min-height: 430px; box-shadow: 8px 8px 0 var(--marigold); }
   .hero-growth.is-expanded { inset: 16px; min-height: 0; box-shadow: 8px 8px 0 var(--marigold); }
