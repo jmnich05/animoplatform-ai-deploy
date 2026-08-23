@@ -17,6 +17,7 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 - `/small-business-ai-consulting/` — practical AI consulting for Louisville small businesses
 - `/personal-ai/` — practical AI optimization for individuals
 - `/work/` — selected client work
+- `/insights/` — practical AI proof library and implementation guides
 - `/about/` — founder and company story
 - `/contact/` — booking and direct-email paths
 - `/tools/ai-readiness` — practical, interactive everyday AI demos (legacy URL retained for continuity)
@@ -36,6 +37,6 @@ The interaction stack uses Motion 13.1.1 for restrained scroll-linked effects, n
 
 ## Measurement setup
 
-GA4 is installed site-wide with measurement ID `G-H20MPFJEKF`. CTA clicks and demo interactions send lightweight custom events when `gtag` is available.
+GA4 is installed directly site-wide with measurement ID `G-H20MPFJEKF`; Google Tag Manager is not installed. CTA clicks and demo interactions send lightweight events when `gtag` is available.
 
-The public booking path is `https://calendly.com/letsconnect-animoplatform/30min`.
+The public booking path is an inline Calendly embed on `/contact/`, backed by `https://calendly.com/letsconnect-animoplatform/30min`. A validated `calendly.event_scheduled` message sends the GA4 recommended event `generate_lead` once per page load. Only generic fields are recorded; Calendly invitee details and payloads are never forwarded to GA4.

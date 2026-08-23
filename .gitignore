@@ -3,3 +3,7 @@
 
 # Large video assets — deployed via Netlify CLI, not git
 assets/video/*.mp4
+
+# Local browser QA artifacts
+.playwright-cli/
+output/

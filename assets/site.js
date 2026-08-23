@@ -42,6 +42,27 @@ document.querySelectorAll("[data-track]").forEach((link) => {
   });
 });
 
+// Calendly's embedded scheduler reports a completed booking to the parent page.
+// Translate only that outcome into GA4; never forward Calendly's invitee payload.
+let calendlyLeadSent = false;
+window.addEventListener("message", (event) => {
+  if (
+    event.origin !== "https://calendly.com" ||
+    typeof event.data !== "object" ||
+    event.data?.event !== "calendly.event_scheduled" ||
+    calendlyLeadSent
+  ) return;
+
+  calendlyLeadSent = true;
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "generate_lead", {
+      lead_source: "website_calendly",
+      booking_type: "initial_consultation",
+      page_path: window.location.pathname,
+    });
+  }
+});
+
 const growthStage = document.querySelector("[data-growth-stage]");
 const growthArt = document.querySelector("[data-growth-art]");
 const growthClose = document.querySelector("[data-growth-close]");
