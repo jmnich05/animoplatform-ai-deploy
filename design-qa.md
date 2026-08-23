@@ -1,7 +1,5 @@
 # Ánimo redesign and mobile hero message — design QA
 
-final result: passed
-
 ## Mobile hero message update — 08-22-2026
 
 - Source visual truth: `/private/tmp/animo-mobile-hero-qa/live-before-390x844.png` — production homepage at a 390 × 844 CSS viewport (375 × 812 captured content pixels at density 1). The 17vw Arial Black headline, .88 line height and negative tracking collapsed the former message into a dense white block.
@@ -78,3 +76,19 @@ final result: passed
 - [x] Apply the official tagline and refresh the homepage proof strip.
 - [x] Replace the readiness assessment with four working visual demos.
 - [x] Verify desktop, mobile, interactions, console and source/implementation comparison.
+
+## Living illustration iteration — 08-22-2026
+
+- Reference capture: `/private/tmp/animo-living-qa-before-1280x800.png` from the current production homepage.
+- Implementation capture: `/private/tmp/animo-living-qa-after-final-1280x800.png` from the local living-illustration build.
+- Combined comparison surface: `http://127.0.0.1:4180/compare.html`; both states were judged together at the same 1280 x 800 viewport and homepage position.
+- The living layer preserves the approved copy, typography, split-hero composition, illustration crop, hard border, and offset shadow. It adds depth response without redesigning the page or replacing the source artwork.
+- The generated grayscale depth map is 1672 x 941, weighs 98,246 bytes, and was produced locally with Tiefling using Depth Anything V2 Small. The source artwork was not uploaded.
+- The responsive source image is decoded and its resolved `currentSrc` is loaded through Three.js, avoiding a black texture while retaining browser caching and the existing `srcset` behavior.
+- The Three.js renderer reached the `ready` state with a clean browser console. Its render buffer is capped at 1.8 million pixels and redraws only while visible or easing toward a changed view.
+- Desktop was checked at 1280 x 800. Pointer response, expanded mode, all four pan extremes, arrow keys, Escape, and focus return passed without exposing an uncovered image edge.
+- Mobile was checked at 390 x 844. The canvas resized to the 345 x 430 inline hero and the 358 x 812 expanded explorer without exposing a blank edge; the approved mobile headline remains legible and unchanged.
+- Reduced-motion pauses the depth renderer and exposes the existing image explorer. WebGL2, import, texture, or context failure removes the canvas-ready state and retains the synchronized image/background fallback.
+- Static validation passed: `node --check assets/site.js`, `node --check assets/depth-pan-renderer.js`, and `git diff --check`.
+
+final result: passed
