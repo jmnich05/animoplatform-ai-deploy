@@ -2,6 +2,12 @@ const root = document.documentElement;
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 let reducedMotion = reducedMotionQuery.matches;
 
+// Add Google Ads as a destination on the existing Google tag. This preserves
+// the ad-click context between the landing page and the booking page.
+if (typeof window.gtag === "function") {
+  window.gtag("config", "AW-18406215463");
+}
+
 document.querySelectorAll("[data-year]").forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
@@ -59,6 +65,9 @@ window.addEventListener("message", (event) => {
       lead_source: "website_calendly",
       booking_type: "initial_consultation",
       page_path: window.location.pathname,
+    });
+    window.gtag("event", "conversion", {
+      send_to: "AW-18406215463/XfdbCKXAseYcEKee4shE",
     });
   }
 });
