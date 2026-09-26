@@ -24,7 +24,7 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 
 The official Ánimo tagline is: “what would make your work or life feel lighter?”
 
-The homepage features a silent, viewport-aware video loop with a poster fallback for reduced motion and data saving. Campaign films use native playback controls and load on demand. See `docs/website-films.md` for placement, source assets and playback behavior. Motion 13.1.1 handles restrained scroll effects; the original illustration explorer remains on About. Phosphor Icons 2.1.2 provides interface icons.
+The homepage features a silent, viewport-aware video loop with a poster fallback for reduced motion and data saving. Campaign films use native playback controls and load on demand. See `docs/website-films.md` for placement, source assets and playback behavior. Motion 13.1.1 handles restrained scroll effects; the sprout illustration on About is a static, fully visible image. Phosphor Icons 2.1.2 provides interface icons.
 
 ## Deployment contract
 
