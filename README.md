@@ -24,7 +24,7 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 
 The official Ánimo tagline is: “what would make your work or life feel lighter?”
 
-The interaction stack uses Motion 13.1.1 for restrained scroll-linked effects, native Pointer Events for the bounded hero explorer, a pinned Three.js 0.185.1 depth layer for the homepage living illustration, and Phosphor Icons 2.1.2 for interface icons. The original image explorer remains the fallback when WebGL is unavailable or reduced motion is enabled. See `docs/hero-living-illustration.md` for the asset pipeline and licenses.
+The homepage features a silent, viewport-aware video loop with a poster fallback for reduced motion and data saving. Campaign films use native playback controls and load on demand. See `docs/website-films.md` for placement, source assets and playback behavior. Motion 13.1.1 handles restrained scroll effects; the original illustration explorer remains on About. Phosphor Icons 2.1.2 provides interface icons.
 
 ## Deployment contract
 
