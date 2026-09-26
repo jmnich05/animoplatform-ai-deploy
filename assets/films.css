@@ -1,0 +1,49 @@
+/* Campaign films, September 2026. Keep each composition's original framing. */
+.film, .hero-film { margin: 0; min-width: 0; }
+.film__screen, .hero-film__screen { position: relative; overflow: hidden; border: 2px solid var(--ink); background: var(--ink); }
+.film video, .hero-film video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: contain; }
+.film--wide video { aspect-ratio: 16 / 9; }
+.film figcaption, .hero-film figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 18px; padding-top: 15px; font: 700 .7rem/1.6 var(--mono); }
+.film figcaption a, .hero-film figcaption a { text-decoration: underline; text-underline-offset: 4px; }
+.hero-film { width: 100%; max-width: 560px; justify-self: end; }
+.hero-film__screen { box-shadow: 12px 12px 0 var(--marigold); }
+.hero-film__label { position: absolute; top: 22px; left: 22px; max-width: calc(100% - 44px); padding: 9px 13px; background: var(--paper); color: var(--ink); font: italic 1.05rem/1.3 var(--serif); }
+.hero-film__toggle { position: absolute; bottom: 18px; right: 18px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--paper); border-radius: 0; background: var(--ink); color: var(--paper); cursor: pointer; font: 700 .7rem/1.4 var(--mono); }
+.hero-film figcaption { padding-top: 27px; }
+.offer-grid--films { grid-template-columns: 1fr; gap: 40px; }
+.offer-grid--films .offer-card { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr); gap: 48px; align-items: center; padding: 40px; }
+.offer-grid--films .offer-card__copy { min-width: 0; }
+.offer-grid--films .offer-card h3 { margin-top: 28px; }
+.offer-grid--films .film { width: 100%; max-width: 380px; justify-self: end; }
+.offer-grid--films .offer-card--light { box-shadow: 12px 12px 0 var(--marigold); }
+.offer-card:not(.offer-card--light) .button--text { color: var(--coral); }
+.page-hero-grid--film { align-items: center; }
+.service-film { width: 100%; max-width: 520px; justify-self: end; }
+.service-film .film:not(.film--wide) { max-width: 380px; margin-inline: auto; }
+.service-film .page-kicker { margin-top: 28px; padding: 24px; box-shadow: none; }
+.service-film .page-kicker strong { font-size: 1.25rem; }
+.launch-story { scroll-margin-top: 100px; }
+.launch-story .film { max-width: 460px; width: 100%; justify-self: end; }
+.film-transcript { margin-top: 30px; border-top: 1px solid var(--line); padding-top: 20px; }
+.film-transcript summary { cursor: pointer; font: 700 .8rem/1.6 var(--mono); }
+.film-transcript p { font-size: 1rem; }
+@media (max-width: 1120px) {
+  .hero-film { max-width: 520px; justify-self: center; }
+  .service-film { max-width: 640px; justify-self: start; }
+  .service-film .film:not(.film--wide) { max-width: 380px; margin-inline: 0; }
+  .launch-story .film { justify-self: start; }
+}
+@media (max-width: 720px) {
+  .hero { padding-bottom: 56px; }
+  .hero-grid { gap: 36px; }
+  .hero-film { max-width: 400px; }
+  .hero-film__screen { box-shadow: 7px 7px 0 var(--marigold); }
+  .hero-film__label { top: 14px; left: 14px; font-size: .95rem; }
+  .offer-grid--films .offer-card { grid-template-columns: 1fr; gap: 30px; padding: 24px; }
+  .offer-grid--films .film { max-width: 360px; justify-self: center; }
+  .offer-grid--films .offer-card h3 { font-size: 2.45rem; }
+  .film figcaption, .hero-film figcaption { font-size: .65rem; }
+}
+/* Keep the existing client reference cards inside narrow viewports. */
+.feature-split > * { min-width: 0; }
+.case-logo img { width: 100%; max-width: 330px; height: auto; }
