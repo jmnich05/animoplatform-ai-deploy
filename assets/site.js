@@ -45,11 +45,14 @@ document.querySelectorAll("[data-track]").forEach((link) => {
         page_path: window.location.pathname,
       });
     }
+    if (typeof window.fbq === "function") {
+      window.fbq("trackCustom", "CTAClick", { cta_name: link.dataset.track });
+    }
   });
 });
 
 // Calendly's embedded scheduler reports a completed booking to the parent page.
-// Translate only that outcome into GA4; never forward Calendly's invitee payload.
+// Translate only that outcome into GA4, Google Ads and Meta; never forward Calendly's invitee payload.
 let calendlyLeadSent = false;
 window.addEventListener("message", (event) => {
   if (
@@ -69,6 +72,10 @@ window.addEventListener("message", (event) => {
     window.gtag("event", "conversion", {
       send_to: "AW-18406215463/XfdbCKXAseYcEKee4shE",
     });
+  }
+  // Meta receives the same outcome: that a consultation was booked, nothing about who booked it.
+  if (typeof window.fbq === "function") {
+    window.fbq("track", "Lead", { content_name: "initial_consultation" });
   }
 });
 

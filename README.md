@@ -40,3 +40,5 @@ The homepage features a silent, viewport-aware video loop with a poster fallback
 GA4 is installed directly site-wide with measurement ID `G-H20MPFJEKF`; Google Tag Manager is not installed. CTA clicks and demo interactions send lightweight events when `gtag` is available.
 
 The public booking path is an inline Calendly embed on `/contact/`, backed by `https://calendly.com/letsconnect-animoplatform/30min`. A validated `calendly.event_scheduled` message sends the GA4 recommended event `generate_lead` once per page load. Only generic fields are recorded; Calendly invitee details and payloads are never forwarded to GA4.
+
+The Meta Pixel is loaded site-wide from `assets/meta-pixel.js` (the pixel ID lives only there; the file does nothing until a numeric ID is set). It sends `PageView` on every page, `Lead` on the same validated Calendly booking, and a custom `CTAClick` with the `data-track` name. Automatic event detection is turned off, and no invitee or visitor details are sent. Bump the `?v=` query on `meta-pixel.js` and `site.js` references when either file changes (`/assets/*` is cached as immutable).
