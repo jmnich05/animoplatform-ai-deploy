@@ -16,7 +16,7 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 - `/web-commerce/` — website, e-commerce, and digital marketing services
 - `/small-business-ai-consulting/` — practical AI consulting for Louisville small businesses
 - `/personal-ai/` — practical AI optimization for individuals
-- `/work/` — selected client work
+- `/work/` — current and former clients
 - `/insights/` — practical AI proof library and implementation guides
 - `/about/` — founder and company story
 - `/contact/` — booking and direct-email paths
