@@ -1,11 +1,31 @@
+# Retired 2026-10-28 when Ánimo narrowed to e-commerce brands and therapy practices.
 [[redirects]]
-  from = "/ai-readiness.html"
-  to = "/tools/ai-readiness"
+  from = "/personal-ai/*"
+  to = "/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/ai-coaching/*"
-  to = "/personal-ai/:splat"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/small-business-ai-consulting/*"
+  to = "/web-commerce/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ai-readiness.html"
+  to = "/"
   status = 301
   force = true
 
