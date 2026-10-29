@@ -192,6 +192,13 @@ button { color: inherit; }
   letter-spacing: -.05em;
   text-wrap: balance;
 }
+.hero-headline__statement {
+  display: block;
+  margin-top: 18px;
+  font: 900 clamp(3.4rem, 6vw, 5.9rem)/.9 var(--sans);
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
 .hero-headline__payoff {
   margin-top: 16px;
   color: var(--marigold);
@@ -598,6 +605,12 @@ body.hero-exploring::before {
     line-height: .98;
     letter-spacing: -.04em;
     text-wrap: pretty;
+  }
+  .hero-headline__statement {
+    margin-top: 12px;
+    font-size: clamp(3rem, 14vw, 3.9rem);
+    line-height: .92;
+    letter-spacing: -.045em;
   }
   .hero-headline__payoff {
     margin-top: 14px;
