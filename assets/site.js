@@ -12,29 +12,47 @@ document.querySelectorAll("[data-year]").forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
 
+const siteHeader = document.querySelector("[data-site-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
+const navToggleLabel = navToggle?.querySelector("[data-nav-toggle-label]");
 const mobileNav = document.querySelector("[data-mobile-nav]");
 
-function closeMenu() {
+// The header is sticky on every page and tightens once the page scrolls.
+function syncHeader() {
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8);
+}
+syncHeader();
+window.addEventListener("scroll", syncHeader, { passive: true });
+
+function setMenu(open) {
   if (!navToggle || !mobileNav) return;
-  navToggle.setAttribute("aria-expanded", "false");
-  mobileNav.classList.remove("is-open");
-  document.body.classList.remove("menu-open");
-  navToggle.querySelector("i")?.classList.replace("ph-x", "ph-list");
+  // The menu sheet starts below the header, whatever height it has right now.
+  if (open && siteHeader) root.style.setProperty("--header-h", `${Math.round(siteHeader.getBoundingClientRect().height)}px`);
+  navToggle.setAttribute("aria-expanded", String(open));
+  mobileNav.classList.toggle("is-open", open);
+  document.body.classList.toggle("menu-open", open);
+  const icon = navToggle.querySelector("i");
+  if (icon) icon.className = open ? "ph ph-x" : "ph ph-list";
+  if (navToggleLabel) navToggleLabel.textContent = open ? "Close" : "Menu";
+}
+
+function closeMenu() {
+  setMenu(false);
 }
 
 navToggle?.addEventListener("click", () => {
-  const willOpen = navToggle.getAttribute("aria-expanded") !== "true";
-  navToggle.setAttribute("aria-expanded", String(willOpen));
-  mobileNav?.classList.toggle("is-open", willOpen);
-  document.body.classList.toggle("menu-open", willOpen);
-  const icon = navToggle.querySelector("i");
-  if (icon) icon.className = willOpen ? "ph ph-x" : "ph ph-list";
+  setMenu(navToggle.getAttribute("aria-expanded") !== "true");
 });
 
 mobileNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeMenu();
+  if (event.key !== "Escape" || navToggle?.getAttribute("aria-expanded") !== "true") return;
+  closeMenu();
+  navToggle.focus();
+});
+// Widening past the phone and tablet layout hides the toggle, so never leave the sheet open behind it.
+window.matchMedia("(min-width: 1121px)").addEventListener("change", (event) => {
+  if (event.matches) closeMenu();
 });
 
 document.querySelectorAll("[data-track]").forEach((link) => {
