@@ -1,4 +1,5 @@
-/* Campaign films, September 2026. Keep each composition's original framing. */
+/* Campaign films, September 2026; hero film October 2026. Keep each composition's original framing.
+   The hero toggle sits bottom-left because Sprig stands bottom-right in most of the hero film. */
 .film, .hero-film { margin: 0; min-width: 0; }
 .film__screen, .hero-film__screen { position: relative; overflow: hidden; border: 2px solid var(--ink); background: var(--ink); }
 .film video, .hero-film video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: contain; }
@@ -7,8 +8,7 @@
 .film figcaption a, .hero-film figcaption a { text-decoration: underline; text-underline-offset: 4px; }
 .hero-film { width: 100%; max-width: 560px; justify-self: end; }
 .hero-film__screen { box-shadow: 12px 12px 0 var(--marigold); }
-.hero-film__label { position: absolute; top: 22px; left: 22px; max-width: calc(100% - 44px); padding: 9px 13px; background: var(--paper); color: var(--ink); font: italic 1.05rem/1.3 var(--serif); }
-.hero-film__toggle { position: absolute; bottom: 18px; right: 18px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--paper); border-radius: 0; background: var(--ink); color: var(--paper); cursor: pointer; font: 700 .7rem/1.4 var(--mono); }
+.hero-film__toggle { position: absolute; bottom: 18px; left: 18px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--paper); border-radius: 0; background: var(--ink); color: var(--paper); cursor: pointer; font: 700 .7rem/1.4 var(--mono); }
 .hero-film figcaption { padding-top: 27px; }
 .offer-grid--films { grid-template-columns: 1fr; gap: 40px; }
 .offer-grid--films .offer-card { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr); gap: 48px; align-items: center; padding: 40px; }
@@ -41,7 +41,6 @@
   .hero-grid { gap: 36px; }
   .hero-film { max-width: 400px; }
   .hero-film__screen { box-shadow: 7px 7px 0 var(--marigold); }
-  .hero-film__label { top: 14px; left: 14px; font-size: .95rem; }
   .offer-grid--films .offer-card { grid-template-columns: 1fr; gap: 30px; padding: 24px; }
   .offer-grid--films .film { max-width: 360px; justify-self: center; }
   .offer-grid--films .offer-card__list { max-width: none; justify-self: stretch; }
