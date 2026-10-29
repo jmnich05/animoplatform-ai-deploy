@@ -17,6 +17,9 @@
 .offer-grid--films .film { width: 100%; max-width: 380px; justify-self: end; }
 .offer-grid--films .offer-card--light { box-shadow: 12px 12px 0 var(--marigold); }
 .offer-card:not(.offer-card--light) .button--text { color: var(--coral); }
+/* A card without a film puts its list in the film's column. */
+.offer-grid--films .offer-card__list { width: 100%; max-width: 420px; justify-self: end; margin: 0; padding-top: 24px; border-top: 4px solid currentColor; }
+.offer-card--no-film .lede-actions { margin-top: 34px; }
 .page-hero-grid--film { align-items: center; }
 .service-film { width: 100%; max-width: 520px; justify-self: end; }
 .service-film .film:not(.film--wide) { max-width: 380px; margin-inline: auto; }
@@ -41,6 +44,8 @@
   .hero-film__label { top: 14px; left: 14px; font-size: .95rem; }
   .offer-grid--films .offer-card { grid-template-columns: 1fr; gap: 30px; padding: 24px; }
   .offer-grid--films .film { max-width: 360px; justify-self: center; }
+  .offer-grid--films .offer-card__list { max-width: none; justify-self: stretch; }
+  .offer-card--no-film .lede-actions { margin-top: 26px; }
   .offer-grid--films .offer-card h3 { font-size: 2.45rem; }
   .film figcaption, .hero-film figcaption { font-size: .65rem; }
 }
