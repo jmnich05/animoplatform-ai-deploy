@@ -338,6 +338,9 @@ body.hero-exploring::before {
 .platform-group h3 { margin: 0; color: var(--deep-sage); font: 900 .62rem/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .platform-group ul { display: grid; gap: 7px; margin: 14px 0 0; padding: 0; list-style: none; }
 .platform-group li { color: var(--ink); font: 900 1.02rem/1.2 Arial, sans-serif; letter-spacing: -.015em; }
+/* Official logos where the brand's rules allow it; every other platform is set as text. See docs/platform-logos.md. */
+.platform-group .platform-logo-item { padding: 3px 0; }
+.platform-group .platform-logo-item img { width: auto; height: 22px; }
 
 /* Agency comparison */
 .compare-table { width: 100%; border-collapse: collapse; border: 3px solid var(--ink); background: var(--paper); box-shadow: 10px 10px 0 var(--sage); }
