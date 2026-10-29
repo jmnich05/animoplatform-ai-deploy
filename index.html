@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
   <link rel="stylesheet" href="/assets/vendor/phosphor/style.css">
-  <link rel="stylesheet" href="/assets/site.css?v=20261029-agency-hero">
+  <link rel="stylesheet" href="/assets/site.css?v=20261029-sticky-nav">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,38 +63,8 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <aside class="signal-rail" aria-label="Who Ánimo works with">
-    <div class="container signal-grid">
-      <a class="signal-card" href="/web-commerce/">
-        <span class="signal-label">For e-commerce brands</span>
-        <strong>Stores that get found and sell more</strong>
-        <span class="signal-link">Explore <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
-      </a>
-      <a class="signal-card" href="/#therapy-practices">
-        <span class="signal-label">For therapy practices</span>
-        <strong>The right clients, booked privately</strong>
-        <span class="signal-link">Explore <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
-      </a>
-    </div>
-  </aside>
-
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="/" aria-label="Ánimo home"><img src="/assets/animo-horizontal.svg" alt="Ánimo" width="780" height="220"></a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="/" aria-current="page">Home</a>
-        <a href="/web-commerce/">E-commerce</a>
-        <a href="/#therapy-practices">Therapy practices</a>
-        <a href="/work/">Work</a>
-        <a href="/about/">About</a>
-        <a class="button button--sage" href="/contact/">Start a conversation</a>
-      </nav>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle><i class="ph ph-list" aria-hidden="true"></i></button>
-    </div>
-  </header>
-  <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav>
-    <a href="/">Home</a><a href="/web-commerce/">E-commerce</a><a href="/#therapy-practices">Therapy practices</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/contact/">Start a conversation</a>
-  </nav>
+  <header class="site-header" data-site-header><div class="container nav-wrap"><a class="brand" href="/" aria-label="Ánimo home"><img src="/assets/animo-horizontal.svg" alt="Ánimo" width="780" height="220"></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="/web-commerce/">E-commerce</a><a href="/therapy-practices/">Therapy practices</a><a href="/work/">Work</a><a href="/about/">About</a></nav><div class="nav-actions"><a class="button button--sage nav-cta" href="/contact/" data-track="nav_contact"><span class="nav-cta__long">Start a conversation</span><span class="nav-cta__short">Let’s talk</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle><i class="ph ph-list" aria-hidden="true"></i><span data-nav-toggle-label>Menu</span></button></div></div></header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" data-mobile-nav><ul class="mobile-nav__links"><li><a href="/web-commerce/"><strong>E-commerce</strong><span>Stores that get found and sell more</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li><li><a href="/therapy-practices/"><strong>Therapy practices</strong><span>The right clients, booked privately</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li><li><a href="/work/"><strong>Work</strong><span>Current and former clients</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li><li><a href="/about/"><strong>About</strong><span>Meet Jonathan, who does the work</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li></ul><div class="mobile-nav__foot"><a class="button mobile-nav__cta" href="/contact/" data-track="mobile_nav_contact">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a><a class="mobile-nav__email" href="mailto:letsconnect@animoplatform.net"><i class="ph ph-envelope-simple" aria-hidden="true"></i> letsconnect@animoplatform.net</a></div></nav>
 
   <main id="main">
     <section class="hero">
@@ -108,7 +78,7 @@
           <p>Ánimo builds, ranks and runs the websites, search and ads that fill carts and calendars.</p>
           <div class="hero-actions">
             <a class="button" href="/web-commerce/" data-track="hero_store">Grow my store <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-            <a class="button button--dark" href="#therapy-practices" data-track="hero_practice">Grow my practice <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            <a class="button button--dark" href="/therapy-practices/" data-track="hero_practice">Grow my practice <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
           </div>
           <p class="hero-note"><i class="ph ph-handshake" aria-hidden="true"></i> You work with the person doing the work. No account managers, no hand-offs.</p>
         </div>
@@ -132,62 +102,53 @@
       </div>
     </section>
 
-    <section class="platform-strip" aria-labelledby="platforms-title">
-      <div class="container platform-strip__inner">
-        <div class="platform-strip__head">
-          <h2 class="eyebrow eyebrow--sage" id="platforms-title">Platforms we work in every day</h2>
-          <p>We build in the tools you already pay for.</p>
-        </div>
-        <div class="platform-groups">
-          <div class="platform-group"><h3>Stores and sites</h3><ul><li>Shopify</li><li>WooCommerce</li><li>WordPress</li><li>Squarespace</li></ul></div>
-          <div class="platform-group"><h3>Email and SMS</h3><ul><li>Klaviyo</li><li>Attentive</li></ul></div>
-          <div class="platform-group"><h3>Ads and measurement</h3><ul><li>Google Ads</li><li>Meta</li><li>Google Analytics</li><li>Google Search Console</li></ul></div>
-          <div class="platform-group"><h3>Therapy practice systems</h3><ul><li>SimplePractice</li><li>TherapyNotes</li></ul></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--paper">
+    <section class="section section--paper" aria-labelledby="paths-title">
       <div class="container">
         <header class="section-head" data-reveal>
           <div class="section-head__copy">
             <p class="eyebrow eyebrow--sage">Who we work with</p>
-            <h2 class="section-title">Two kinds of clients. <em>Both run on trust.</em></h2>
-            <p class="section-lede">E-commerce brands and therapy practices both ask a stranger to trust them online. Ánimo builds the site, search and ads that earn that trust, then shows you what they brought in.</p>
+            <h2 class="section-title" id="paths-title">Two kinds of clients, both built on trust.</h2>
           </div>
         </header>
-        <div class="offer-grid offer-grid--films">
-          <article class="offer-card" id="for-stores" data-reveal><div class="offer-card__copy">
-            <div class="offer-card__top"><span class="tag"><i class="ph ph-storefront" aria-hidden="true"></i> E-commerce brands</span><span class="card-number">01 · SELL</span></div>
+        <div class="path-grid">
+          <a class="path-card" id="for-stores" href="/web-commerce/" data-track="home_store_card" data-reveal>
+            <span class="tag"><i class="ph ph-storefront" aria-hidden="true"></i> E-commerce brands</span>
             <h3>Stores that get found and sell more.</h3>
-            <p>Built and tuned by someone with 10+ years running e-commerce in-house. Faster paths to purchase, sharper product pages, and email and SMS that bring customers back.</p>
-            <ul>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Shopify and Shopify Plus, WooCommerce and Squarespace builds</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Product pages, search and checkout that convert</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Google Shopping, Google Ads and Meta Ads</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Klaviyo email and Attentive SMS flows</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Product data that AI shopping assistants can read</span></li>
-            </ul>
-            <a class="button" href="/web-commerce/" data-track="home_store_card">Grow my store <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-          </div><figure class="film ">
-  <div class="film__screen"><video controls playsinline preload="none" poster="/assets/films/20260926/business-poster.jpg" width="720" height="900" aria-label="Ánimo for business" data-film="business"><source src="/assets/films/20260926/business.mp4" type="video/mp4"><a href="/assets/films/20260926/business.mp4">Watch Ánimo for business</a></video></div>
-  <figcaption><span>Ánimo for business · 30 seconds</span><a href="/assets/films/20260926/business.mp4">Open film <span aria-hidden="true">↗</span></a></figcaption>
-</figure></article>
-          <article class="offer-card offer-card--light offer-card--no-film" id="for-practices" data-reveal><div class="offer-card__copy">
-            <div class="offer-card__top"><span class="tag"><i class="ph ph-calendar-heart" aria-hidden="true"></i> Therapy practices</span><span class="card-number">02 · BOOK</span></div>
-            <h3>Help the right clients find you, and book.</h3>
-            <p>Clinician finders, local and AI search, and ads that follow Google and Meta health rules. Booking stays in SimplePractice or TherapyNotes, and client health information stays out of marketing tools.</p>
-            <div class="lede-actions"><a class="button button--sage" href="/contact/" data-track="home_practice_card">Talk about my practice <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
-          </div>
-            <ul class="offer-card__list">
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Clinician profiles you can filter by specialty, insurance and location</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Local search and Google Business Profiles for each office</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Booking links straight into SimplePractice or TherapyNotes</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>HIPAA-aware setup: no ad pixels on intake or booking pages</span></li>
-              <li><i class="ph ph-check" aria-hidden="true"></i><span>Google and Meta ads that stay inside health-ad rules</span></li>
-            </ul>
-          </article>
+            <p>Shopify, WooCommerce and Squarespace builds, SEO and AI search, Google and Meta ads, and Klaviyo email and Attentive SMS that bring customers back.</p>
+            <span class="path-card__link">Grow my store <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="path-card path-card--practice" id="therapy-practices" href="/therapy-practices/" data-track="home_practice_card" data-reveal>
+            <span class="tag"><i class="ph ph-calendar-heart" aria-hidden="true"></i> Therapy practices</span>
+            <h3>The right clients find you, and book.</h3>
+            <p>Clinician finders, local and AI search, and ads that follow Google and Meta health rules. Booking stays in SimplePractice or TherapyNotes.</p>
+            <span class="path-card__link">Grow my practice <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+          </a>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <div class="section-head__copy">
+            <p class="eyebrow">Why Ánimo</p>
+            <h2 class="section-title">Agency-caliber work with fewer layers between you and it.</h2>
+            <p class="section-lede">The work you’d expect from a Chicago or New York agency, from a studio small enough that you always know who is doing it.</p>
+          </div>
+          <a class="button button--cream" href="/about/">Meet Jonathan <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </header>
+        <table class="compare-table" data-reveal>
+          <caption class="visually-hidden">How working with Ánimo compares with a traditional agency</caption>
+          <thead>
+            <tr><td></td><th scope="col">A traditional agency</th><th scope="col">Ánimo</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Who does the work</th><td data-label="A traditional agency">An account manager passes requests to specialists</td><td data-label="Ánimo">The senior person on the call does the work, with a direct line to Jon</td></tr>
+            <tr><th scope="row">Speed</th><td data-label="A traditional agency">Ticket queues and weeks per change</td><td data-label="Ánimo">An AI-assisted build stack ships changes in days, not weeks</td></tr>
+            <tr><th scope="row">Price</th><td data-label="A traditional agency">Retainers sized to cover staff and office</td><td data-label="Ánimo">Priced on the outcome, without the overhead</td></tr>
+            <tr><th scope="row">Reporting</th><td data-label="A traditional agency">A monthly PDF</td><td data-label="Ánimo">A live client board with results, notes and ideas</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -196,81 +157,16 @@
         <header class="section-head" data-reveal>
           <div class="section-head__copy">
             <p class="eyebrow eyebrow--marigold">Built for now and next</p>
-            <h2 class="section-title">Win today’s search. <em>Be ready for the assistants coming next.</em></h2>
+            <h2 class="section-title">Win today’s search and get ready for the AI assistants coming next.</h2>
             <p class="section-lede">People still find you through Google, referrals, ads and your website. More of them will soon send an AI assistant to research, buy or book for them. We build one set of pages that works for both.</p>
           </div>
         </header>
         <div class="steps">
           <article class="step" data-reveal><span class="step-number">01 · FIND</span><h3>Found where people look.</h3><p>Google, Maps and AI answers all read the same clean pages, structured data and plain answers.</p></article>
-          <article class="step" data-reveal><span class="step-number">02 · ADVERTISE</span><h3>Ads that land on real answers.</h3><p>Google and Meta campaigns send people to pages that answer the question the ad raised, with tracking you can trust.</p></article>
-          <article class="step" data-reveal><span class="step-number">03 · BUY</span><h3>A catalog assistants can read.</h3><p>As of 2026, Shopify lists eligible products inside AI assistants like ChatGPT and Copilot. We get your product data, prices and policies ready.</p></article>
-          <article class="step" data-reveal><span class="step-number">04 · BOOK</span><h3>Booking that works for people and assistants.</h3><p>Services, locations, clinicians and booking links set out clearly enough for a person or an assistant to act on.</p></article>
+          <article class="step" data-reveal><span class="step-number">02 · ADVERTISE</span><h3>Ads that land on real answers.</h3><p>Google and Meta campaigns send people to pages that answer the question the ad raised.</p></article>
+          <article class="step" data-reveal><span class="step-number">03 · BUY</span><h3>A catalog assistants can read.</h3><p>Product data, prices and policies ready for AI shopping assistants as well as Google.</p></article>
+          <article class="step" data-reveal><span class="step-number">04 · BOOK</span><h3>Booking anyone can act on.</h3><p>Services, locations, clinicians and booking links clear enough for a person or an assistant.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="section section--paper" id="therapy-practices">
-      <div class="container">
-        <header class="section-head" data-reveal>
-          <div class="section-head__copy">
-            <p class="eyebrow eyebrow--sage">For therapy practices</p>
-            <h2 class="section-title">Grow the practice. <em>Keep client privacy out of marketing.</em></h2>
-            <p class="section-lede">HIPAA-aware from the first page. Client health information stays in your EHR, not in website forms, analytics or ad platforms.</p>
-          </div>
-        </header>
-        <div class="detail-grid platform-grid">
-          <article class="detail-card" data-reveal><i class="ph ph-calendar-plus" aria-hidden="true"></i><h3>Booking stays in your system.</h3><p>Request buttons go straight to SimplePractice or TherapyNotes. The website never collects intake details.</p></article>
-          <article class="detail-card" data-reveal><i class="ph ph-x" aria-hidden="true"></i><h3>No ad pixels where privacy matters.</h3><p>Meta and Google tags stay off intake, booking and condition pages, and nobody is retargeted from them.</p></article>
-          <article class="detail-card" data-reveal><i class="ph ph-magnifying-glass" aria-hidden="true"></i><h3>A finder that helps people choose.</h3><p>Clinician profiles by specialty, insurance and location, so the first call starts with the right person.</p></article>
-          <article class="detail-card" data-reveal><i class="ph ph-note-pencil" aria-hidden="true"></i><h3>You approve every clinical word.</h3><p>Specialties, insurance lists, fees and availability come from your practice. We never write them for you.</p></article>
-        </div>
-        <div class="lede-actions" data-reveal><a class="button button--sage" href="/contact/" data-track="home_therapy_cta">Talk about my practice <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <header class="section-head" data-reveal>
-          <div class="section-head__copy">
-            <p class="eyebrow">Real value, not insider language</p>
-            <h2 class="section-title">Start with the friction. <em>Build the useful thing.</em></h2>
-          </div>
-          <a class="button button--cream" href="/contact/">Talk through an idea <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-        </header>
-        <div class="outcome-grid">
-          <article class="outcome-card" data-reveal><i class="ph ph-shopping-cart" aria-hidden="true"></i><h3>Turn more visits into customers.</h3><p>Fix the places where product discovery, trust, checkout or follow-up make people hesitate.</p><span class="micro">E-commerce</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-chart-line-up" aria-hidden="true"></i><h3>Know what is actually driving growth.</h3><p>Connect ad spend, email and SMS to real orders and bookings, so the next decision runs on signal, not platform noise.</p><span class="micro">Measurement</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-magnifying-glass" aria-hidden="true"></i><h3>Show up when people ask AI.</h3><p>Clear answers, structured data and clean pages that ChatGPT, Gemini and Google’s AI results can read and cite.</p><span class="micro">AI search</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-megaphone" aria-hidden="true"></i><h3>Stop paying for clicks that never buy.</h3><p>Google and Meta campaigns built around the products, services and places that actually convert.</p><span class="micro">Google + Meta ads</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-calendar-plus" aria-hidden="true"></i><h3>Make booking the easy part.</h3><p>A clear path from “Is this the right therapist?” to a request in SimplePractice or TherapyNotes.</p><span class="micro">Booking path</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-chart-bar" aria-hidden="true"></i><h3>See everything in one place.</h3><p>Your own client board with results, meeting notes and an idea list. No waiting for a monthly PDF.</p><span class="micro">Client board</span></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--paper">
-      <div class="container">
-        <header class="section-head" data-reveal>
-          <div class="section-head__copy">
-            <p class="eyebrow">Why Ánimo</p>
-            <h2 class="section-title">Same caliber of work. <em>Fewer layers between you and it.</em></h2>
-            <p class="section-lede">The work you’d expect from a Chicago or New York agency, from a studio small enough that you always know who is doing it.</p>
-          </div>
-        </header>
-        <table class="compare-table" data-reveal>
-          <caption class="visually-hidden">How working with Ánimo compares with a traditional agency</caption>
-          <thead>
-            <tr><td></td><th scope="col">A traditional agency</th><th scope="col">Ánimo</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Who does the work</th><td data-label="A traditional agency">An account manager passes requests to specialists</td><td data-label="Ánimo">The senior person on the call does the work</td></tr>
-            <tr><th scope="row">Speed</th><td data-label="A traditional agency">Ticket queues and weeks per change</td><td data-label="Ánimo">An AI-assisted build stack ships changes in days, not weeks</td></tr>
-            <tr><th scope="row">Price</th><td data-label="A traditional agency">Retainers sized to cover staff and office</td><td data-label="Ánimo">Priced on the outcome, without the overhead</td></tr>
-            <tr><th scope="row">Reporting</th><td data-label="A traditional agency">A monthly PDF</td><td data-label="Ánimo">A live client board with results, notes and ideas</td></tr>
-            <tr><th scope="row">Background</th><td data-label="A traditional agency">Agency-side only</td><td data-label="Ánimo">10+ years running e-commerce in-house, so the work is judged by sales and bookings</td></tr>
-            <tr><th scope="row">Access</th><td data-label="A traditional agency">Scheduled check-ins</td><td data-label="Ánimo">A direct line to Jon</td></tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
@@ -279,59 +175,14 @@
         <header class="section-head" data-reveal>
           <div class="section-head__copy">
             <p class="eyebrow eyebrow--marigold">Current and former clients</p>
-            <h2 class="section-title">Digital work should respect the people <em>on both sides of the screen.</em></h2>
-            <p class="section-lede">Ánimo partners with Closer Horizons and Acadia Counseling to make their digital presence clearer, more useful and easier to navigate.</p>
+            <h2 class="section-title">Trusted with the first impression.</h2>
+            <p class="section-lede">Ánimo works with Closer Horizons and Acadia Counseling on clearer sites, easier counselor search and SEO.</p>
           </div>
           <a class="button" href="/work/">See the work <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </header>
-        <div class="feature-split">
-          <article class="case-card" data-reveal>
-            <a class="case-logo" href="https://www.closerhorizons.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Closer Horizons website (opens in a new tab)"><img src="/assets/clients/closer-horizons-logo.png" alt="Closer Horizons" width="882" height="768" loading="lazy"></a>
-            <h3>Closer Horizons</h3>
-            <p>Website experience · consultation path · content systems · measurement planning</p>
-            <div class="case-meta"><span>Client work</span><span>In progress</span><span>Louisville</span></div>
-            <div class="lede-actions"><a class="button button--text" href="https://www.closerhorizons.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Closer Horizons website (opens in a new tab)">Visit website <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></div>
-          </article>
-          <article class="case-card" data-reveal>
-            <a class="case-logo" href="https://acadiacounseling.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Acadia Counseling website (opens in a new tab)"><img src="/assets/clients/acadia-counseling-logo.webp" alt="Acadia Counseling — Healing Happens Here" width="822" height="153" loading="lazy"></a>
-            <h3>Acadia Counseling</h3>
-            <p>Website optimization and digital marketing, including an easy-to-find counselor search and SEO optimization to help people discover the practice and find the right counselor.</p>
-            <div class="case-meta"><span>Ongoing partnership</span><span>Website optimization</span><span>Counselor search</span><span>SEO</span><span>Digital marketing</span></div>
-            <div class="lede-actions"><a class="button button--text" href="https://acadiacounseling.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Acadia Counseling website (opens in a new tab)">Visit website <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><a class="button button--text" href="/work/#acadia-counseling">Explore the partnership <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--dark">
-      <div class="container feature-split">
-        <figure class="portrait-card" data-reveal>
-          <img src="/assets/jonathan-nichols-founder.jpg" alt="Jonathan Nichols, founder of Ánimo" width="932" height="1400">
-          <figcaption class="portrait-card__caption"><strong>Jonathan Nichols</strong><span>Founder, operator and builder</span></figcaption>
-        </figure>
-        <div class="founder-copy" data-reveal>
-          <p class="eyebrow eyebrow--marigold">Who you work with</p>
-          <h2 class="section-title">Built by someone who has to <em>make the work work.</em></h2>
-          <blockquote>“Useful technology should make the business clearer and the day lighter.”</blockquote>
-          <p>Jon has spent 10+ years running e-commerce in-house: the store, the ads, the email and SMS, and the reports the owners actually read. Ánimo brings that operator’s view, plus an AI-assisted workflow, to stores and practices that want agency-grade work without the agency overhead.</p>
-          <div class="lede-actions"><a class="button button--dark" href="/about/">Meet Jonathan <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <header class="section-head" data-reveal>
-          <div class="section-head__copy">
-            <p class="eyebrow eyebrow--sage">How to start</p>
-            <h2 class="section-title">Start small. <em>Keep what you learn.</em></h2>
-            <p class="section-lede">Every client gets a private board with results, meeting notes and an idea list from day one.</p>
-          </div>
-        </header>
-        <div class="outcome-grid">
-          <article class="outcome-card" data-reveal><i class="ph ph-compass" aria-hidden="true"></i><h3>Growth audit</h3><p>A review of your site, search, AI visibility, ads and tracking, with a ranked fix list you keep either way.</p><span class="micro">Fixed fee</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-browser" aria-hidden="true"></i><h3>Build</h3><p>A new or rebuilt site, store or booking path, with tracking set up. Scoped and priced before work starts.</p><span class="micro">Fixed scope</span></article>
-          <article class="outcome-card" data-reveal><i class="ph ph-flow-arrow" aria-hidden="true"></i><h3>Grow</h3><p>Monthly SEO, Google and Meta ads, Klaviyo and Attentive flows, and a board that stays current.</p><span class="micro">Monthly</span></article>
+        <div class="client-strip">
+          <a class="client-tile" href="https://www.closerhorizons.com/" target="_blank" rel="noopener noreferrer" data-reveal><span class="case-logo"><img src="/assets/clients/closer-horizons-logo.png" alt="Closer Horizons" width="882" height="768" loading="lazy"></span><span class="client-tile__copy"><strong>Closer Horizons</strong><span>Website experience and consultation path</span></span><span class="visually-hidden">(opens in a new tab)</span></a>
+          <a class="client-tile" href="https://acadiacounseling.com/" target="_blank" rel="noopener noreferrer" data-reveal><span class="case-logo"><img src="/assets/clients/acadia-counseling-logo.webp" alt="Acadia Counseling — Healing Happens Here" width="822" height="153" loading="lazy"></span><span class="client-tile__copy"><strong>Acadia Counseling</strong><span>Counselor search, SEO and digital marketing</span></span><span class="visually-hidden">(opens in a new tab)</span></a>
         </div>
       </div>
     </section>
@@ -339,7 +190,15 @@
     <section class="section section--paper">
       <div class="container">
         <div class="cta-block" data-reveal>
-          <div><p class="eyebrow">Start with the actual problem</p><h2>what would make your business feel lighter?</h2><p>Bring the messy version. We’ll figure out whether the next step is a new site, a better checkout, a booking path, search, ads or simply a clearer plan.</p></div>
+          <div>
+            <p class="eyebrow">How to start</p>
+            <h2>what would make your business feel lighter?</h2>
+            <ol class="cta-steps">
+              <li><strong>Growth audit</strong><span>A ranked fix list you keep either way.</span></li>
+              <li><strong>Build</strong><span>Scoped and priced before work starts.</span></li>
+              <li><strong>Grow</strong><span>Monthly search, ads, email and SMS.</span></li>
+            </ol>
+          </div>
           <a class="button button--dark" href="/contact/" data-track="home_final_cta">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -348,15 +207,10 @@
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><img src="/assets/animo-horizontal.svg" alt="Ánimo" width="780" height="220"><p>Websites, search and ads for e-commerce brands and therapy practices. Based in Louisville, Kentucky.</p></div>
-        <div class="footer-col"><h2>Services</h2><ul><li><a href="/web-commerce/">E-commerce</a></li><li><a href="/#therapy-practices">Therapy practices</a></li><li><a href="/work/">Current and former clients</a></li><li><a href="/contact/">Start a project</a></li></ul></div>
-        <div class="footer-col"><h2>Company</h2><ul><li><a href="/insights/">Proof library</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:letsconnect@animoplatform.net">Email Jonathan</a></li></ul></div>
-      </div>
-      <div class="footer-bottom"><span>© <span data-year></span> Ánimo, LLC · Louisville, Kentucky</span><span>what would make your business feel lighter?</span></div>
+      <div class="footer-grid"><div class="footer-brand"><img src="/assets/animo-horizontal.svg" alt="Ánimo" width="780" height="220"><p>Websites, search and ads for e-commerce brands and therapy practices. Based in Louisville, Kentucky.</p></div><div class="footer-col"><h2>Services</h2><ul><li><a href="/web-commerce/">E-commerce</a></li><li><a href="/therapy-practices/">Therapy practices</a></li><li><a href="/work/">Current and former clients</a></li><li><a href="/contact/">Start a project</a></li></ul></div><div class="footer-col"><h2>Company</h2><ul><li><a href="/about/">About</a></li><li><a href="/insights/">Insights</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:letsconnect@animoplatform.net">Email Jonathan</a></li></ul></div></div><div class="footer-bottom"><span>© <span data-year></span> Ánimo, LLC · Louisville, Kentucky</span><span>what would make your business feel lighter?</span></div>
     </div>
   </footer>
-  <script type="module" src="/assets/site.js?v=20260926-meta-pixel"></script>
+  <script type="module" src="/assets/site.js?v=20261029-sticky-nav"></script>
   <script type="module" src="/assets/films.js?v=20260926-1"></script>
 </body>
 </html>
