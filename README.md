@@ -21,7 +21,7 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 - `/contact/` — booking and direct-email paths
 - `/closer-horizons-data-deletion/` — data deletion instructions for the Closer Horizons Studio app
 
-Retired on 2026-10-28 (301s in `netlify.toml`): `/personal-ai/`, `/ai-coaching/`, `/small-business-ai-consulting/` and `/tools/ai-readiness`.
+Retired on 2026-10-28 (301s in `netlify.toml`): `/personal-ai/`, `/ai-coaching/`, `/small-business-ai-consulting/` and `/tools/ai-readiness`. Retired on 2026-10-31: `/insights/practical-ai-for-work-and-family-life/` (301 to `/insights/`), plus the unused People film and personal-AI demo scripts. The About-page launch film was replaced with the 30-second “Be the answer” film.
 
 The official Ánimo tagline is: “what would make your business feel lighter?”
 
