@@ -471,7 +471,7 @@ body.hero-exploring::before {
 .calendly-inline-widget { width: 100%; }
 
 /* Proof library */
-.insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.insight-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
 .insight-card { display: flex; min-height: 560px; flex-direction: column; padding: 30px; border: 3px solid var(--ink); background: var(--paper); box-shadow: 10px 10px 0 var(--sage); }
 .insight-card--dark { background: var(--ink); color: var(--paper); box-shadow-color: var(--sage); }
 .insight-card--coral { background: var(--coral); color: var(--ink); box-shadow-color: var(--marigold); }
@@ -582,8 +582,7 @@ body.hero-exploring::before {
   .feature-split, .page-hero-grid, .work-hero { grid-template-columns: 1fr; }
   .booking-grid { grid-template-columns: 1fr; }
   .booking-copy { position: static; }
-  .insight-grid { grid-template-columns: 1fr 1fr; }
-  .insight-card:last-child { grid-column: 1 / -1; min-height: 430px; }
+  .insight-card { min-height: 430px; }
   .article-layout { grid-template-columns: 1fr; gap: 42px; }
   .article-toc { position: static; grid-row: 1; }
   .detail-grid { grid-template-columns: 1fr 1fr; }
@@ -648,7 +647,7 @@ body.hero-exploring::before {
   .booking-grid { gap: 34px; }
   .booking-shell { box-shadow: 7px 7px 0 var(--marigold); }
   .insight-grid, .related-grid { grid-template-columns: 1fr; }
-  .insight-card, .insight-card:last-child { grid-column: auto; min-height: 0; padding: 26px; box-shadow: 7px 7px 0 var(--sage); }
+  .insight-card { min-height: 0; padding: 26px; box-shadow: 7px 7px 0 var(--sage); }
   .insight-card h3 { margin-top: 34px; }
   .proof-checklist { grid-template-columns: 1fr; }
   .proof-checklist div { min-height: 105px; }

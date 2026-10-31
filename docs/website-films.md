@@ -6,7 +6,6 @@ All media is committed with the site under `assets/films/20260926/`, so Git-base
 | --- | --- | --- |
 | Home hero | Launch Spot, `renders/final/animo_spot_v4_4x5_web.mp4`, 21.9–28.3 seconds | Silent 6.4-second river loop, 720 × 900 |
 | Home business service | Paid Ads, `out/animo-business-30s-4x5.mp4` | 30 seconds, 720 × 900 |
-| Home and Personal AI | Paid Ads, `out/animo-people-30s-4x5.mp4` | 30 seconds, 720 × 900 |
 | Web + Commerce | Paid Ads, `out/animo-sizzle-20s-landscape-web.mp4` | 20 seconds, 1280 × 720 |
 | About, `#launch-film` | Launch Spot, `renders/final/animo_spot_v4_4x5_web.mp4` | Full 54.7-second film, 720 × 900 |
 

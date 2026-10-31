@@ -17,6 +17,13 @@
   status = 301
   force = true
 
+# Retired 2026-10-31: the last personal/family AI guide.
+[[redirects]]
+  from = "/insights/practical-ai-for-work-and-family-life/*"
+  to = "/insights/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/tools/*"
   to = "/"
