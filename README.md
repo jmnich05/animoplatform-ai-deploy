@@ -12,9 +12,9 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 
 ## Current site architecture
 
-- `/` — short homepage for e-commerce brands and therapy practices; each vertical has its own page
+- `/` — short homepage for small businesses, built around the four problems Ánimo solves; the hero is the interactive "four shots, four fixes" court
 - `/therapy-practices/` — therapy and mental-health practices (HIPAA-aware wording; client-approved clinical facts only)
-- `/web-commerce/` — websites, SEO, ads, email and SMS for e-commerce brands
+- `/services/` — websites, search and ads for small businesses, organised by the same four fixes (was `/web-commerce/` until 2026-11-20)
 - `/work/` — current and former clients
 - `/insights/` — proof library and implementation guides
 - `/about/` — founder and company story
@@ -25,7 +25,7 @@ Retired on 2026-10-28 (301s in `netlify.toml`): `/personal-ai/`, `/ai-coaching/`
 
 The official Ánimo tagline is: “what would make your business feel lighter?”
 
-The homepage features a silent, viewport-aware video loop with a poster fallback for reduced motion and data saving. Campaign films use native playback controls and load on demand. See `docs/website-films.md` for placement, source assets and playback behavior. Motion 13.1.1 handles restrained scroll effects; the sprout illustration on About is a static, fully visible image. Phosphor Icons 2.1.2 provides interface icons.
+The homepage hero is an interactive court (`assets/hoops.css`, `assets/hoops.js`): the visitor taps the ball four times, every shot goes in, and each make shows one problem Ánimo solves and what it brings; the fourth ends in confetti and a "Let’s make this happen together." banner. It is plain HTML, SVG and a canvas for the confetti, with no library. With reduced motion the ball does not fly and the card simply advances; without JavaScript the card shows its opening text and the four fixes are listed in full in the section below. The 30-second hero film (`assets/films/20261029/hero30.mp4`) is no longer on the homepage because its end card still reads "For e-commerce brands · therapy practices". Campaign films use native playback controls and load on demand. See `docs/website-films.md` for placement, source assets and playback behavior. Motion 13.1.1 handles restrained scroll effects; the sprout illustration on About is a static, fully visible image. Phosphor Icons 2.1.2 provides interface icons.
 
 ## Deployment contract
 
@@ -47,3 +47,7 @@ The Meta Pixel is loaded site-wide from `assets/meta-pixel.js` (the pixel ID liv
 On 2026-10-28 the homepage hero events were renamed: `hero_business` became `hero_store`, `hero_personal` became `hero_practice`, and `hero_launch_film` was removed. The homepage offer cards now send `home_store_card` and `home_practice_card`, and the therapy section sent `home_therapy_cta`. On `/contact/`, `contact_business_calendly` became `contact_store_calendly` and `contact_personal_calendly` became `contact_practice_calendly`.
 
 On 2026-10-29 the homepage was cut to seven sections and the therapy content moved to `/therapy-practices/`, so `home_therapy_cta` is gone. New events: `nav_contact` (header button), `mobile_nav_contact` (phone menu button), `therapy_hero_contact` and `therapy_final_contact`. The header is sticky on every page, and the old two-card announcement rail above it was removed.
+
+On 2026-11-20 Ánimo stopped featuring e-commerce and refocused on small businesses. `/web-commerce/` became `/services/` (301 in `netlify.toml`), the nav and footer link changed from "E-commerce" to "Services", and the homepage was rebuilt around four fixes: traffic that converts, foot traffic, reputation, and readiness for AI search. Event changes: `hero_store` and `hero_practice` are gone, replaced by `hero_contact` and `hero_four_fixes`; `home_store_card` and `home_practice_card` are replaced by `home_services` and `home_practice_link`; `commerce_hero_contact` and `commerce_final_contact` became `services_hero_contact` and `services_final_contact`; `contact_store_calendly` became `contact_business_calendly`. The hero court sends `hero_shot` (with `shot_number` 1–4), `hero_game_complete`, `hero_game_replay`, and the banner button sends `hero_game_cta`. Meta also receives a custom `HeroGameComplete`.
+
+The "1.5 to 3×" figure on the homepage and `/services/` is Jon’s stated expectation for traffic and conversions in a client’s first 12 months, based on client results so far. Keep the "not a guarantee" note beside it, and update or remove the figure if the evidence changes.
