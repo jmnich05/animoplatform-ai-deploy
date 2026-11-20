@@ -13,7 +13,15 @@
 
 [[redirects]]
   from = "/small-business-ai-consulting/*"
-  to = "/web-commerce/"
+  to = "/services/"
+  status = 301
+  force = true
+
+# Retired 2026-11-20 when e-commerce stopped being a featured offering.
+# The page became /services/, written for small businesses.
+[[redirects]]
+  from = "/web-commerce/*"
+  to = "/services/"
   status = 301
   force = true
 

@@ -1,0 +1,134 @@
+/* Homepage hero, November 2026: four shots, four fixes.
+   The visitor taps the ball; each make reveals one problem Ánimo solves.
+   The court is plain HTML and SVG, driven by hoops.js. Without JavaScript the
+   card shows its opening text and the four fixes are listed in full below the hero. */
+.hero--hoops { position: relative; padding: 52px 0 78px; overflow: hidden; }
+.hero-grid--hoops { grid-template-areas: "copy game" "foot game"; grid-template-rows: auto auto; gap: 0 54px; align-items: stretch; }
+.hero--hoops .hero-copy { grid-area: copy; align-self: end; min-width: 0; }
+.hero--hoops .hero-foot { grid-area: foot; align-self: start; min-width: 0; }
+.hero--hoops .hero-headline__statement span { display: block; }
+.hero--hoops .hero-note { margin-bottom: 0; }
+
+.hoops { --floor: 34px; --ball: 58px; grid-area: game; align-self: center; justify-self: end; width: 100%; max-width: 560px; min-width: 0; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); box-shadow: 12px 12px 0 var(--marigold); }
+.hoops__court { --ball-x: 54%; position: relative; height: 300px; overflow: hidden; background-color: var(--ink); background-image: linear-gradient(rgba(245,235,216,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(245,235,216,.055) 1px, transparent 1px); background-size: 28px 28px; }
+.hoops__floor { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: var(--floor); border-top: 3px solid var(--paper); background: var(--sage); }
+.hoops__hoop { position: absolute; right: 0; bottom: var(--floor); width: auto; height: calc(100% - var(--floor)); aspect-ratio: 200 / 260; pointer-events: none; }
+.hoops__hoop--back { z-index: 2; }
+.hoops__hoop--front { z-index: 4; }
+.hoops__netmesh { transform-box: fill-box; transform-origin: 50% 0; }
+.hoops.is-swish .hoops__netmesh { animation: hoops-swish .6s cubic-bezier(.3, 1.5, .4, 1); }
+@keyframes hoops-swish {
+  0% { transform: none; }
+  22% { transform: scale(.82, 1.34); }
+  52% { transform: scale(1.07, .9); }
+  78% { transform: scale(.97, 1.07); }
+  100% { transform: none; }
+}
+
+.hoops__shadow { position: absolute; z-index: 2; left: var(--ball-x); bottom: calc(var(--floor) - 9px); width: calc(var(--ball) * .78); height: 9px; margin-left: calc(var(--ball) * -.39); border-radius: 50%; background: rgba(23,20,17,.42); transition: opacity .2s ease; }
+.hoops__ball { position: absolute; z-index: 3; left: var(--ball-x); bottom: var(--floor); width: var(--ball); height: var(--ball); margin: 0 0 0 calc(var(--ball) / -2); padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; will-change: transform; }
+.hoops__ball::before { content: ""; position: absolute; inset: -10px; border-radius: 50%; }
+.hoops__ball:focus-visible { outline: 3px solid var(--paper); outline-offset: 5px; }
+.hoops__ball-art { display: block; width: 100%; height: 100%; }
+.hoops__ball-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.hoops:not(.is-ready) .hoops__ball { pointer-events: none; }
+.hoops.is-ready:not(.is-flying) .hoops__ball-art { animation: hoops-dribble 1.5s cubic-bezier(.45, 0, .55, 1) infinite; }
+.hoops.is-ready:not(.is-flying) .hoops__shadow { animation: hoops-shadow 1.5s cubic-bezier(.45, 0, .55, 1) infinite; }
+.hoops.is-ready:not(.is-flying) .hoops__ball:hover .hoops__ball-art { animation-duration: .75s; }
+.hoops.is-flying .hoops__shadow, .hoops.is-won .hoops__shadow { opacity: 0; }
+.hoops.is-won .hoops__ball { visibility: hidden; }
+.hoops__ball.is-entering .hoops__ball-art { animation: hoops-enter .55s cubic-bezier(.3, 1.4, .5, 1) both !important; }
+@keyframes hoops-dribble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@keyframes hoops-shadow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(.72); opacity: .55; }
+}
+@keyframes hoops-enter {
+  from { transform: translateY(-70px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.hoops__hint { position: absolute; z-index: 5; left: clamp(64px, var(--ball-x), calc(100% - 64px)); bottom: calc(var(--floor) + var(--ball) + 30px); display: none; padding: 7px 10px; background: var(--marigold); color: var(--ink); font: 900 .64rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; transform: translateX(-50%); pointer-events: none; }
+.hoops__hint::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -6px; border: 6px solid transparent; border-top-color: var(--marigold); border-bottom: 0; }
+.hoops.is-ready:not(.is-flying):not(.is-won) .hoops__hint { display: block; animation: hoops-hint 1.5s ease-in-out infinite; }
+@keyframes hoops-hint {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -5px); }
+}
+
+.hoops__tally { position: absolute; z-index: 5; top: 14px; left: 16px; display: flex; align-items: center; gap: 10px; color: rgba(245,235,216,.82); font: 900 .6rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.hoops__pips { display: flex; gap: 6px; }
+.hoops__pips i { width: 13px; height: 13px; border: 2px solid rgba(245,235,216,.7); border-radius: 50%; transition: background .2s ease, border-color .2s ease, transform .35s cubic-bezier(.3, 1.8, .5, 1); }
+.hoops__pips i.is-made { border-color: var(--marigold); background: var(--marigold); transform: scale(1.18); }
+
+.hoops__swish { position: absolute; z-index: 5; right: 39%; top: 16%; color: var(--marigold); font: 900 clamp(1.5rem, 3vw, 2.1rem)/1 var(--sans); letter-spacing: -.04em; opacity: 0; transform: rotate(-8deg) scale(.6); pointer-events: none; }
+.hoops.is-swish .hoops__swish { animation: hoops-pop .85s ease-out both; }
+@keyframes hoops-pop {
+  0% { opacity: 0; transform: rotate(-8deg) scale(.5); }
+  18% { opacity: 1; transform: rotate(-8deg) scale(1.12); }
+  60% { opacity: 1; transform: rotate(-8deg) scale(1); }
+  100% { opacity: 0; transform: rotate(-8deg) scale(1) translateY(-10px); }
+}
+
+/* The closing banner drops over the court after the fourth make. */
+.hoops__banner { position: absolute; z-index: 6; inset: -24px 0 0; display: grid; align-content: center; justify-items: center; gap: 14px; padding: 44px 24px 20px; background: var(--marigold); color: var(--ink); text-align: center; visibility: hidden; transform: translateY(-104%); }
+.hoops.is-won .hoops__banner { visibility: visible; transform: none; transition: transform .7s cubic-bezier(.2, 1.22, .35, 1); }
+.hoops__banner-kicker { margin: 0; font: 900 .64rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+.hoops__banner-title { max-width: 13ch; margin: 0; font: 900 clamp(1.75rem, 3.3vw, 2.7rem)/.94 var(--sans); letter-spacing: -.05em; text-wrap: balance; }
+.hoops__banner-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 22px; margin-top: 4px; }
+.hoops__banner .button--dark { border-color: var(--ink); box-shadow: 5px 5px 0 var(--paper); }
+.hoops__banner .button--dark:hover { box-shadow: 2px 2px 0 var(--paper); }
+.hoops__again { padding: 6px 0 3px; border: 0; border-bottom: 2px solid currentColor; background: transparent; color: var(--ink); cursor: pointer; font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; }
+
+/* The card under the court. Every slide shares one grid cell, so the card
+   keeps the height of its longest slide and nothing below it jumps. */
+.hoops__card { display: grid; border-top: 2px solid var(--ink); background: var(--paper); color: var(--ink); }
+.hoops__slide { grid-area: 1 / 1; padding: 22px 24px 24px; visibility: hidden; opacity: 0; transform: translateY(10px); }
+.hoops__slide.is-active { visibility: visible; opacity: 1; transform: none; transition: opacity .35s ease, transform .45s cubic-bezier(.22, 1, .36, 1); }
+.hoops__label { margin: 0; color: var(--deep-coral); font: 900 .64rem/1.25 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.hoops__title { margin: 9px 0 0; color: var(--ink); font: 900 clamp(1.45rem, 2.3vw, 1.9rem)/1 var(--sans); letter-spacing: -.045em; }
+.hoops__intro { max-width: 46ch; margin: 14px 0 0; font-size: 1rem; line-height: 1.45; }
+.hoops__intro a { color: var(--deep-sage); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.hoops__themes { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 18px 0 0; }
+.hoops__themes span { padding: 6px 8px; border: 1px solid rgba(47,47,44,.4); color: var(--deep-sage); font: 900 .58rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.hoops__pair { display: grid; gap: 10px; margin: 15px 0 0; }
+.hoops__pair div { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.hoops__pair dt { color: var(--muted); font: 900 .6rem/1.35 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.hoops__pair dd { margin: 0; font-size: .98rem; line-height: 1.4; }
+.hoops__pair div:last-child dt { color: var(--deep-sage); }
+.hoops__pair div:last-child dd { font-weight: 700; }
+.hoops__pair mark { padding: 0 .28em; background: var(--marigold); color: var(--ink); white-space: nowrap; }
+
+.hoops-confetti { position: absolute; z-index: 8; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+@media (max-width: 1120px) {
+  .hero-grid--hoops { grid-template-areas: "copy" "game" "foot"; grid-template-rows: auto; gap: 30px 0; }
+  .hero--hoops .hero-copy, .hero--hoops .hero-foot { align-self: auto; }
+  .hoops { justify-self: center; }
+  .hero--hoops .hero-actions { margin-top: 8px; }
+}
+
+@media (max-width: 720px) {
+  .hero--hoops { padding: 30px 0 58px; }
+  .hero-grid--hoops { gap: 24px 0; }
+  .hero--hoops h1 { margin-top: 14px; }
+  .hero--hoops .hero-headline__setup { font-size: 1.05rem; }
+  .hero--hoops .hero-headline__statement { margin-top: 8px; font-size: clamp(2.05rem, 10vw, 2.6rem); line-height: .94; }
+  .hero--hoops .hero-copy > p:not(.eyebrow) { margin-top: 16px; font-size: 1rem; line-height: 1.45; }
+  .hoops { --floor: 28px; --ball: 50px; box-shadow: 7px 7px 0 var(--marigold); }
+  .hoops__court { height: 232px; }
+  .hoops__tally { top: 11px; left: 12px; }
+  .hoops__slide { padding: 18px 18px 20px; }
+  .hoops__pair div { grid-template-columns: 1fr; gap: 3px; }
+  .hoops__pair dd { font-size: .95rem; }
+  .hoops__banner { gap: 10px; padding: 38px 16px 14px; }
+  .hoops__banner .button { min-height: 44px; padding: 11px 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoops__ball-art, .hoops__shadow, .hoops__hint, .hoops__swish, .hoops__netmesh { animation: none !important; }
+  .hoops.is-swish .hoops__swish { opacity: 0; }
+}
