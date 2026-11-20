@@ -1,0 +1,101 @@
+/* Homepage film hero, November 2026: four slow-motion shots, scrubbed by scroll.
+   Only active when <html> has .court-on (set in the page head). Without it the
+   tap-the-ball court in hoops.css shows instead, and none of this applies. */
+.court-film, .court-ui, .court-start, .court-hint { display: none; }
+
+html.court-on .hero--hoops { height: calc(100lvh * 5.46); padding: 0; overflow: visible; overflow: clip; background: #0a0908; }
+html.court-on .court-stage { --intro: 1; position: sticky; top: 0; height: 100lvh; overflow: hidden; background: #0a0908; isolation: isolate; }
+html.court-on .hoops { display: none; }
+
+/* The picture: a still for the first paint, then the canvas the script draws frames on. */
+/* The picture starts under the page header, so the top of the frame is never hidden behind it. */
+html.court-on .court-film { display: block; position: absolute; z-index: 0; inset: 64px 0 0; background: #0a0908 url("/assets/court/20261120/s1/poster.jpg") 76% 0 / cover no-repeat; }
+.court-film__canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.court-stage.is-live .court-film__canvas { opacity: 1; }
+.court-film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,9,8,.84) 0%, rgba(10,9,8,.6) 28%, rgba(10,9,8,0) 58%), linear-gradient(180deg, rgba(10,9,8,.5) 0, rgba(10,9,8,0) 20%); pointer-events: none; }
+
+/* The headline sits over the left of the picture and lifts away as the first shot starts. */
+html.court-on .hero-grid--hoops { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 0; padding-top: 72px; pointer-events: none; opacity: var(--intro); transform: translateY(calc((1 - var(--intro)) * -34px)); }
+html.court-on .hero-grid--hoops > .hero-copy, html.court-on .hero-grid--hoops > .hero-foot { align-self: flex-start; max-width: 580px; pointer-events: auto; }
+html.court-on .court-stage.is-rolling .hero-grid--hoops { visibility: hidden; }
+html.court-on .court-start { display: inline-flex; cursor: pointer; }
+html.court-on .court-fixes { display: none; }
+html.court-on .court-talk { border-color: var(--paper); background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--coral); }
+html.court-on .court-talk:hover { box-shadow: 2px 2px 0 var(--coral); }
+html.court-on .hero--hoops .hero-note { color: rgba(245,235,216,.82); }
+
+html.court-on .court-ui { display: block; position: absolute; z-index: 3; inset: 0; pointer-events: none; }
+.court-ui__inner { display: flex; flex-direction: column; justify-content: center; height: 100%; padding-top: 72px; }
+
+/* Tap target over the ball in the opening frame. The script places and sizes it. */
+.court-ball { position: absolute; z-index: 4; left: 0; top: 0; width: 120px; height: 120px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; opacity: var(--intro); pointer-events: auto; transform: translate(-50%, -50%); touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.court-stage.is-rolling .court-ball { visibility: hidden; }
+.court-ball:focus-visible { outline: 3px solid var(--paper); outline-offset: 6px; }
+.court-ball__ring { position: absolute; inset: -9%; border: 2px solid var(--marigold); border-radius: 50%; animation: court-ring 1.9s ease-out infinite; }
+.court-ball__label { position: absolute; left: 50%; bottom: calc(100% + 18px); padding: 8px 11px; background: var(--marigold); color: var(--ink); font: 900 .66rem/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; white-space: nowrap; transform: translateX(-50%); animation: court-nudge 1.9s ease-in-out infinite; }
+.court-ball__label::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -6px; border: 6px solid transparent; border-top-color: var(--marigold); border-bottom: 0; }
+@keyframes court-ring {
+  0% { transform: scale(.94); opacity: .95; }
+  70% { transform: scale(1.22); opacity: 0; }
+  100% { transform: scale(1.22); opacity: 0; }
+}
+@keyframes court-nudge {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -5px); }
+}
+
+/* The panel: status row, one card at a time, then the controls. */
+.court-panel { display: grid; gap: 18px; width: 100%; max-width: 500px; opacity: calc(1 - var(--intro)); }
+.court-stage.is-rolling .court-panel { pointer-events: auto; }
+.court-stage:not(.is-rolling) .court-panel { visibility: hidden; }
+.court-hud { display: flex; align-items: center; gap: 12px; color: var(--paper); }
+.court-hud__pips { display: flex; gap: 6px; }
+.court-hud__pips i { width: 13px; height: 13px; border: 2px solid rgba(245,235,216,.7); border-radius: 50%; transition: background .2s ease, border-color .2s ease, transform .35s cubic-bezier(.3, 1.8, .5, 1); }
+.court-hud__pips i.is-made { border-color: var(--marigold); background: var(--marigold); transform: scale(1.18); }
+.court-hud__label { font: 900 .64rem/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+
+.court-cards { display: grid; }
+.court-cards > * { grid-area: 1 / 1; align-self: center; opacity: 0; }
+.court-card { padding: 24px 26px 26px; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); box-shadow: 10px 10px 0 var(--marigold); }
+.court-card__label { margin: 0; color: var(--deep-coral); font: 900 .64rem/1.25 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.court-card__title { margin: 10px 0 0; color: var(--ink); font: 900 clamp(1.6rem, 2.5vw, 2.15rem)/.98 var(--sans); letter-spacing: -.045em; text-wrap: balance; }
+.court-card .hoops__pair { margin-top: 18px; gap: 12px; }
+.court-card .hoops__pair dd { font-size: 1.02rem; }
+
+.court-final { padding: 30px 28px 28px; border: 3px solid var(--ink); background: var(--marigold); color: var(--ink); box-shadow: 10px 10px 0 var(--paper); }
+.court-final__kicker { margin: 0; font: 900 .66rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+.court-final__title { margin: 12px 0 0; font: 900 clamp(2.1rem, 3.6vw, 3.1rem)/.93 var(--sans); letter-spacing: -.05em; text-wrap: balance; }
+.court-final__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 24px; }
+.court-final .button { border-color: var(--ink); background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--paper); }
+.court-final .button:hover { box-shadow: 2px 2px 0 var(--paper); }
+.court-stage:not(.is-final) .court-final { visibility: hidden; }
+.court-again { padding: 6px 0 3px; border: 0; border-bottom: 2px solid currentColor; background: transparent; color: var(--ink); cursor: pointer; font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; }
+
+.court-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; min-height: 44px; }
+.court-stage.is-final .court-skip, .court-stage.is-final .court-hud__label { display: none; }
+.court-next { display: inline-flex; min-height: 44px; align-items: center; gap: 9px; padding: 11px 16px; border: 2px solid var(--ink); background: var(--marigold); color: var(--ink); cursor: pointer; font: 900 .7rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; box-shadow: 4px 4px 0 var(--paper); transition: transform .18s ease, box-shadow .18s ease; }
+.court-next:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--paper); }
+.court-next[hidden] { display: none; }
+.court-skip { padding: 6px 0 3px; border-bottom: 2px solid currentColor; color: var(--paper); font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+
+.court-confetti { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* Portrait screens: the clip fills the screen and the panel docks at the bottom. */
+@media (max-aspect-ratio: 4/5) {
+  html.court-on .court-film { top: 58px; background-image: url("/assets/court/20261120/s1/m/001.webp"); background-position: 50% 50%; }
+  .court-film::after { background: linear-gradient(180deg, rgba(10,9,8,.86) 0, rgba(10,9,8,.62) 20%, rgba(10,9,8,0) 44%), linear-gradient(0deg, rgba(10,9,8,.7) 0, rgba(10,9,8,0) 34%); }
+  html.court-on .hero-grid--hoops { justify-content: space-between; padding-top: 78px; padding-bottom: calc(100lvh - 100svh + 22px); }
+  html.court-on .hero--hoops .hero-copy > p:not(.eyebrow), html.court-on .hero--hoops .hero-note, html.court-on .court-talk { display: none; }
+  html.court-on .hero--hoops .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 0; }
+  html.court-on .court-hint { display: inline; color: var(--paper); font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.8); }
+  .court-hud__label { display: none; }
+  .court-ui__inner { justify-content: flex-end; padding-bottom: calc(100lvh - 100svh + 18px); }
+  .court-panel { max-width: none; gap: 14px; }
+  .court-card { padding: 16px 18px 18px; box-shadow: 6px 6px 0 var(--marigold); }
+  .court-card__title { font-size: 1.5rem; }
+  .court-card .hoops__pair { margin-top: 12px; gap: 9px; }
+  .court-card .hoops__pair dd { font-size: .95rem; }
+  .court-final { padding: 20px 18px; box-shadow: 6px 6px 0 var(--paper); }
+  .court-final__title { font-size: 2rem; }
+  .court-final__actions { margin-top: 16px; }
+}
