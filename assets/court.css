@@ -14,11 +14,13 @@ html.court-on .court-film { display: block; position: absolute; z-index: 0; inse
 .court-scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; }
 .court-stage.is-live .court-scene { opacity: 1; }
 .court-clip { position: absolute; top: 0; left: 47.187%; width: 41.667%; height: 100%; object-fit: cover; background: #0a0908; }
-.court-still { opacity: 0; transition: opacity .35s ease; }
+.court-still { z-index: 1; opacity: 0; transition: opacity .35s ease; }
 .court-still.is-on { opacity: 1; }
 .court-still.is-instant { transition: none; }
 .court-still[data-court-still="confetti"] { transition-duration: .9s; }
-.court-plate { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* The plate gets its own layer above the clip. Without it, some browsers composite the video on
+   top of its siblings and the clip shows as a hard-edged rectangle. */
+.court-plate { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; transform: translateZ(0); }
 .court-stage.is-tall .court-clip { left: 0; width: 100%; }
 .court-stage.is-tall .court-plate { display: none; }
 .court-film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,9,8,.84) 0%, rgba(10,9,8,.6) 28%, rgba(10,9,8,0) 58%), linear-gradient(180deg, rgba(10,9,8,.5) 0, rgba(10,9,8,0) 20%); pointer-events: none; }

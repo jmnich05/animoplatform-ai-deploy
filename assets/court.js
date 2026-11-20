@@ -21,7 +21,8 @@ const CONFETTI = ["#f5a623", "#e8826b", "#fbf5e9", "#c85a3d", "#b9c79b", "#f5ebd
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const nextPaint = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+// Two frames from now, or shortly after if the browser is not painting (a tab in the background).
+const nextPaint = () => new Promise((resolve) => { requestAnimationFrame(() => requestAnimationFrame(resolve)); setTimeout(resolve, 120); });
 
 function loadImage(src) {
   return new Promise((resolve, reject) => {
@@ -118,21 +119,26 @@ export async function start() {
     return new Promise((resolve) => {
       let scored = false;
       let done = false;
+      const check = () => {
+        if (!scored && video.currentTime >= MADE * video.duration) { scored = true; onMade(); }
+      };
       const finish = () => {
         if (done) return;
         done = true;
         video.removeEventListener("ended", finish);
+        video.removeEventListener("timeupdate", check);
         if (!scored) { scored = true; onMade(); }
         resolve();
       };
       const watch = () => {
         if (done) return;
-        if (!scored && video.currentTime >= MADE * video.duration) { scored = true; onMade(); }
+        check();
         if (video.ended) return finish();
         requestAnimationFrame(watch);
       };
       video.playbackRate = rate;
       video.addEventListener("ended", finish);
+      video.addEventListener("timeupdate", check);   // still on time when the tab is not painting frames
       setTimeout(finish, (video.duration / rate) * 1000 + 1500);   // never leave the button locked
       video.play().then(() => requestAnimationFrame(watch)).catch(finish);
     });
@@ -165,12 +171,16 @@ export async function start() {
     showCard(-1);
     if (hudLabel) hudLabel.textContent = `Shot ${n} of ${SHOTS}`;
 
+    // Whenever the picture is at rest a still covers the clip: the opening frame before a shot, the
+    // last frame after it. The video is only uncovered while it is moving, so a browser that draws
+    // video slightly differently from images never shows a mismatch on a resting frame.
     const canPlay = await Promise.race([videoReady, wait(6000).then(() => false)]);
     if (canPlay) {
       if (n > 1) {
         // A fresh ball: fade the opening frame in over the last one, then rewind underneath it.
         show("start", true);
-        await wait(380);
+        await wait(300);
+        show("end", false, true);
         await new Promise((resolve) => {
           video.addEventListener("seeked", resolve, { once: true });
           setTimeout(resolve, 800);
@@ -178,16 +188,19 @@ export async function start() {
         });
         await nextPaint();
       }
-      show("end", false, true);
+      // The clip is slow motion. Played at these rates the ball reaches the net about 2.2 seconds
+      // after the first press, and about 2.3 after the later ones (a fresh ball fades in first).
+      const flight = playClip(n === 1 ? 2 : 2.3, () => score(n));
       show("start", false, true);
-      await playClip(n === 1 ? 1.3 : 1.5, () => score(n));
+      await flight;
+      show("end", true, true);
     } else {
       // No video: the same shot told with two stills.
-      show("end", false);
-      show("start", true);
-      await wait(n > 1 ? 450 : 150);
-      show("end", true);
-      await wait(120);
+      if (n > 1) {
+        show("start", true);
+        await wait(450);
+      }
+      show("end", true, true);
       show("start", false);
       await wait(350);
       score(n);
