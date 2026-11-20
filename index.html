@@ -59,17 +59,16 @@
   }
   </script>
   <link rel="stylesheet" href="/assets/hoops.css?v=20261120-hoops">
-  <link rel="stylesheet" href="/assets/court.css?v=20261120-loop">
+  <link rel="stylesheet" href="/assets/court.css?v=20261120-button">
   <script>
-    // The film hero needs motion, data and a few modern CSS features. Decide before first paint, so
-    // nobody sees one hero swap for the other. Everyone else keeps the tap-the-ball court.
-    // Add ?hero=tap to the address to see the tap court on any device.
+    // The film hero plays video, so it is only for visitors who allow motion and have not asked to
+    // save data. Decide before first paint, so nobody sees one hero swap for the other. Everyone
+    // else keeps the tap-the-ball court. Add ?hero=tap to the address to see that court on any device.
     (function () {
       try {
         var c = navigator.connection;
         var ok = window.matchMedia && !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
-          !(c && c.saveData) && window.CSS && CSS.supports("height", "100lvh") && CSS.supports("position", "sticky") &&
-          !/[?&]hero=tap\b/.test(location.search);
+          !(c && c.saveData) && !/[?&]hero=tap\b/.test(location.search);
         if (!ok) return;
         document.documentElement.classList.add("court-on");
         var tall = window.matchMedia("(max-aspect-ratio: 4/5)").matches;
@@ -77,7 +76,7 @@
         link.rel = "preload";
         link.as = "image";
         link.fetchPriority = "high";
-        link.href = "/assets/court/20261120/s1/" + (tall ? "m/001.webp" : "poster.jpg");
+        link.href = "/assets/court/20261120/s1/" + (tall ? "start.webp" : "poster.jpg");
         document.head.appendChild(link);
       } catch (e) {}
     })();
@@ -93,7 +92,13 @@
     <section class="hero hero--hoops" data-court>
       <div class="court-stage" data-court-stage>
       <div class="court-film" aria-hidden="true" data-court-film>
-        <canvas class="court-film__canvas" data-court-canvas></canvas>
+        <div class="court-scene" data-court-scene>
+          <video class="court-clip" muted playsinline preload="none" poster="/assets/court/20261120/s1/start.webp" width="832" height="1114" data-court-video></video>
+          <img class="court-clip court-still" src="/assets/court/20261120/s1/end.webp" alt="" width="800" height="1071" loading="lazy" decoding="async" data-court-still="end">
+          <img class="court-clip court-still" src="/assets/court/20261120/s1/start.webp" alt="" width="800" height="1071" decoding="async" data-court-still="start">
+          <img class="court-clip court-still" src="/assets/court/20261120/s1/confetti.webp" alt="" width="800" height="1071" loading="lazy" decoding="async" data-court-still="confetti">
+          <img class="court-plate" src="/assets/court/20261120/s1/plate.webp" alt="" width="1920" height="1072" decoding="async" data-court-plate>
+        </div>
       </div>
       <div class="container hero-grid hero-grid--hoops">
         <div class="hero-copy">
@@ -191,7 +196,6 @@
         <div class="hero-foot">
           <div class="hero-actions">
             <button class="button court-start" type="button" data-court-start>Take the shot <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
-            <span class="court-hint" data-court-hint>or scroll <span aria-hidden="true">↓</span></span>
             <a class="button court-talk" href="/contact/" data-track="hero_contact">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
             <a class="button button--dark court-fixes" href="#four-fixes" data-track="hero_four_fixes">See the four fixes <span aria-hidden="true">↓</span></a>
           </div>
@@ -200,7 +204,7 @@
       </div>
 
       <div class="court-ui" data-court-ui>
-        <button class="court-ball" type="button" data-court-ball><span class="court-ball__ring" aria-hidden="true"></span><span class="court-ball__label" data-court-ball-label>Scroll to shoot</span></button>
+        <button class="court-ball" type="button" data-court-ball><span class="court-ball__ring" aria-hidden="true"></span><span class="court-ball__label" data-court-ball-label>Tap the ball</span></button>
         <div class="container court-ui__inner">
           <div class="court-panel" data-court-panel>
           <div class="court-cards">
@@ -239,10 +243,10 @@
             </div>
           </div>
           <div class="court-actions">
-            <span class="court-hud" aria-hidden="true"><span class="court-hud__pips"><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i></span></span>
-            <button class="court-next" type="button" data-court-next><span class="court-next__arrow" aria-hidden="true"></span><span data-court-next-label>Scroll for the next shot</span></button>
-            <a class="court-skip" href="#four-fixes" data-track="hero_film_skip">Skip <span aria-hidden="true">↓</span></a>
+            <button class="court-next" type="button" data-court-next><span data-court-next-label>Next shot</span> <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+            <span class="court-hud"><span class="court-hud__pips" aria-hidden="true"><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i></span><span class="court-hud__label" data-court-hud-label>Shot 1 of 4</span></span>
           </div>
+          <p class="visually-hidden" aria-live="polite" data-court-live></p>
           </div>
         </div>
       </div>
@@ -377,7 +381,7 @@
     const root = document.documentElement;
     const tapCourt = () => import("/assets/hoops.js?v=20261120-hoops");
     if (root.classList.contains("court-on")) {
-      import("/assets/court.js?v=20261120-loop")
+      import("/assets/court.js?v=20261120-button")
         .then((film) => film.start())
         .catch(() => { root.classList.remove("court-on"); tapCourt(); });
     } else {
