@@ -19,6 +19,7 @@ html.court-on .hero-grid--hoops { position: absolute; z-index: 2; inset: 0; disp
 html.court-on .hero-grid--hoops > .hero-copy, html.court-on .hero-grid--hoops > .hero-foot { align-self: flex-start; max-width: 580px; pointer-events: auto; }
 html.court-on .court-stage.is-rolling .hero-grid--hoops { visibility: hidden; }
 html.court-on .court-start { display: inline-flex; cursor: pointer; }
+html.court-on .court-hint { display: inline-flex; align-items: center; align-self: center; color: var(--paper); font: 900 .68rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.8); }
 html.court-on .court-fixes { display: none; }
 html.court-on .court-talk { border-color: var(--paper); background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--coral); }
 html.court-on .court-talk:hover { box-shadow: 2px 2px 0 var(--coral); }
@@ -44,38 +45,58 @@ html.court-on .court-ui { display: block; position: absolute; z-index: 3; inset:
   50% { transform: translate(-50%, -5px); }
 }
 
-/* The panel: status row, one card at a time, then the controls. */
-.court-panel { display: grid; gap: 18px; width: 100%; max-width: 500px; opacity: calc(1 - var(--intro)); }
+/* The panel: one card at a time, then the controls. */
+.court-panel { display: grid; gap: 22px; width: 100%; max-width: 580px; opacity: calc(1 - var(--intro)); }
 .court-stage.is-rolling .court-panel { pointer-events: auto; }
 .court-stage:not(.is-rolling) .court-panel { visibility: hidden; }
-.court-hud { display: flex; align-items: center; gap: 12px; color: var(--paper); }
-.court-hud__pips { display: flex; gap: 6px; }
-.court-hud__pips i { width: 13px; height: 13px; border: 2px solid rgba(245,235,216,.7); border-radius: 50%; transition: background .2s ease, border-color .2s ease, transform .35s cubic-bezier(.3, 1.8, .5, 1); }
-.court-hud__pips i.is-made { border-color: var(--marigold); background: var(--marigold); transform: scale(1.18); }
-.court-hud__label { font: 900 .64rem/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
 
+/* Each card is a solid block of one brand colour with a headline at display size. */
 .court-cards { display: grid; }
-.court-cards > * { grid-area: 1 / 1; align-self: center; opacity: 0; }
-.court-card { padding: 24px 26px 26px; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); box-shadow: 10px 10px 0 var(--marigold); }
-.court-card__label { margin: 0; color: var(--deep-coral); font: 900 .64rem/1.25 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-.court-card__title { margin: 10px 0 0; color: var(--ink); font: 900 clamp(1.6rem, 2.5vw, 2.15rem)/.98 var(--sans); letter-spacing: -.045em; text-wrap: balance; }
-.court-card .hoops__pair { margin-top: 18px; gap: 12px; }
-.court-card .hoops__pair dd { font-size: 1.02rem; }
+.court-cards > * { --rise: 0px; grid-area: 1 / 1; align-self: center; opacity: 0; transform: translateY(var(--rise)); }
+.court-card, .court-final { padding: 30px 32px 32px; border: 3px solid var(--ink); }
+.court-card__kicker, .court-final__kicker { margin: 0; font: 900 .68rem/1.25 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+.court-card__title, .court-final__title { margin: 14px 0 0; font: 900 clamp(2.5rem, 4.5vw, 4.1rem)/.9 var(--sans); letter-spacing: -.055em; text-wrap: balance; }
+.court-card__bring { max-width: 36ch; margin: 18px 0 0; font-size: 1.16rem; font-weight: 700; line-height: 1.36; }
+.court-card__stat { display: flex; align-items: center; gap: 14px; margin: 18px 0 0; }
+.court-card__stat strong { flex: none; font: 900 clamp(2.4rem, 4vw, 3.4rem)/1 var(--sans); letter-spacing: -.05em; white-space: nowrap; }
+.court-card__stat span { max-width: 18ch; font: 900 .7rem/1.35 var(--condensed); letter-spacing: .13em; text-transform: uppercase; }
+.court-card__solve { margin: 20px 0 0; padding-top: 16px; border-top: 2px solid currentColor; font-size: 1rem; line-height: 1.4; }
+.court-card__solve span { margin-right: 8px; font: 900 .62rem/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
 
-.court-final { padding: 30px 28px 28px; border: 3px solid var(--ink); background: var(--marigold); color: var(--ink); box-shadow: 10px 10px 0 var(--paper); }
-.court-final__kicker { margin: 0; font: 900 .66rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
-.court-final__title { margin: 12px 0 0; font: 900 clamp(2.1rem, 3.6vw, 3.1rem)/.93 var(--sans); letter-spacing: -.05em; text-wrap: balance; }
-.court-final__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 24px; }
+.court-card--coral { background: var(--coral); color: var(--ink); box-shadow: 10px 10px 0 var(--paper); }
+.court-card--forest { background: var(--deep-sage); color: var(--paper); box-shadow: 10px 10px 0 var(--marigold); }
+.court-card--forest .court-card__kicker { color: var(--marigold); }
+.court-card--sage { background: var(--sage); color: var(--ink); box-shadow: 10px 10px 0 var(--paper); }
+.court-card--ink { border-color: var(--paper); background: var(--ink); color: var(--paper); box-shadow: 10px 10px 0 var(--coral); }
+.court-card--ink .court-card__title, .court-card--ink .court-card__kicker { color: var(--marigold); }
+
+.court-final { background: var(--marigold); color: var(--ink); box-shadow: 10px 10px 0 var(--paper); }
+.court-final__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 26px; }
 .court-final .button { border-color: var(--ink); background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--paper); }
 .court-final .button:hover { box-shadow: 2px 2px 0 var(--paper); }
 .court-stage:not(.is-final) .court-final { visibility: hidden; }
 .court-again { padding: 6px 0 3px; border: 0; border-bottom: 2px solid currentColor; background: transparent; color: var(--ink); cursor: pointer; font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; }
 
-.court-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; min-height: 44px; }
-.court-stage.is-final .court-skip, .court-stage.is-final .court-hud__label { display: none; }
-.court-next { display: inline-flex; min-height: 44px; align-items: center; gap: 9px; padding: 11px 16px; border: 2px solid var(--ink); background: var(--marigold); color: var(--ink); cursor: pointer; font: 900 .7rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; box-shadow: 4px 4px 0 var(--paper); transition: transform .18s ease, box-shadow .18s ease; }
+/* Under the card: shots made, what scrolling does next (also a button), and the way out. */
+.court-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; min-height: 48px; }
+.court-stage.is-final .court-actions { visibility: hidden; }
+.court-hud__pips { display: flex; gap: 6px; }
+.court-hud__pips i { width: 14px; height: 14px; border: 2px solid rgba(245,235,216,.75); border-radius: 50%; transition: background .2s ease, border-color .2s ease, transform .35s cubic-bezier(.3, 1.8, .5, 1); }
+.court-hud__pips i.is-made { border-color: var(--marigold); background: var(--marigold); transform: scale(1.18); }
+.court-next { display: inline-flex; min-height: 48px; align-items: center; gap: 12px; padding: 12px 18px 12px 14px; border: 2px solid var(--ink); background: var(--marigold); color: var(--ink); cursor: pointer; font: 900 .74rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; box-shadow: 4px 4px 0 var(--paper); transition: transform .18s ease, box-shadow .18s ease; }
 .court-next:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--paper); }
 .court-next[hidden] { display: none; }
+/* A chevron that keeps nudging the way the page moves: down for a wheel, up for a thumb. */
+.court-next__arrow { width: 11px; height: 11px; margin: -5px 2px 0; border-right: 3px solid currentColor; border-bottom: 3px solid currentColor; transform: rotate(45deg); animation: court-cue-down 1.2s ease-in-out infinite; }
+.court-stage.is-touch .court-next__arrow { margin-top: 5px; transform: rotate(-135deg); animation-name: court-cue-up; }
+@keyframes court-cue-down {
+  0%, 100% { transform: translateY(-2px) rotate(45deg); }
+  50% { transform: translateY(4px) rotate(45deg); }
+}
+@keyframes court-cue-up {
+  0%, 100% { transform: translateY(2px) rotate(-135deg); }
+  50% { transform: translateY(-4px) rotate(-135deg); }
+}
 .court-skip { padding: 6px 0 3px; border-bottom: 2px solid currentColor; color: var(--paper); font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
 
 .court-confetti { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -87,15 +108,20 @@ html.court-on .court-ui { display: block; position: absolute; z-index: 3; inset:
   html.court-on .hero-grid--hoops { justify-content: space-between; padding-top: 78px; padding-bottom: calc(100lvh - 100svh + 22px); }
   html.court-on .hero--hoops .hero-copy > p:not(.eyebrow), html.court-on .hero--hoops .hero-note, html.court-on .court-talk { display: none; }
   html.court-on .hero--hoops .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 0; }
-  html.court-on .court-hint { display: inline; color: var(--paper); font: 900 .66rem/1 var(--condensed); letter-spacing: .14em; text-transform: uppercase; text-shadow: 0 1px 10px rgba(0,0,0,.8); }
-  .court-hud__label { display: none; }
   .court-ui__inner { justify-content: flex-end; padding-bottom: calc(100lvh - 100svh + 18px); }
-  .court-panel { max-width: none; gap: 14px; }
-  .court-card { padding: 16px 18px 18px; box-shadow: 6px 6px 0 var(--marigold); }
-  .court-card__title { font-size: 1.5rem; }
-  .court-card .hoops__pair { margin-top: 12px; gap: 9px; }
-  .court-card .hoops__pair dd { font-size: .95rem; }
-  .court-final { padding: 20px 18px; box-shadow: 6px 6px 0 var(--paper); }
-  .court-final__title { font-size: 2rem; }
-  .court-final__actions { margin-top: 16px; }
+  .court-panel { max-width: none; gap: 16px; }
+  .court-card, .court-final { padding: 18px 20px 20px; }
+  .court-card--coral, .court-card--sage, .court-final { box-shadow: 6px 6px 0 var(--paper); }
+  .court-card--forest { box-shadow: 6px 6px 0 var(--marigold); }
+  .court-card--ink { box-shadow: 6px 6px 0 var(--coral); }
+  .court-card__title, .court-final__title { margin-top: 10px; font-size: clamp(2rem, 9.4vw, 2.5rem); }
+  .court-card__bring { margin-top: 12px; font-size: 1rem; line-height: 1.34; }
+  .court-card__stat { margin-top: 12px; }
+  .court-card__stat strong { font-size: 2.2rem; }
+  .court-card__solve { margin-top: 12px; padding-top: 11px; font-size: .92rem; }
+  .court-final__actions { margin-top: 18px; }
+  .court-actions { gap: 10px 12px; }
+  .court-hud__pips { gap: 5px; }
+  .court-hud__pips i { width: 12px; height: 12px; }
+  .court-next { gap: 9px; padding: 11px 12px 11px 10px; font-size: .66rem; letter-spacing: .1em; }
 }

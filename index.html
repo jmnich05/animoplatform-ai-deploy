@@ -59,7 +59,7 @@
   }
   </script>
   <link rel="stylesheet" href="/assets/hoops.css?v=20261120-hoops">
-  <link rel="stylesheet" href="/assets/court.css?v=20261120-film">
+  <link rel="stylesheet" href="/assets/court.css?v=20261120-loop">
   <script>
     // The film hero needs motion, data and a few modern CSS features. Decide before first paint, so
     // nobody sees one hero swap for the other. Everyone else keeps the tap-the-ball court.
@@ -191,7 +191,7 @@
         <div class="hero-foot">
           <div class="hero-actions">
             <button class="button court-start" type="button" data-court-start>Take the shot <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
-            <span class="court-hint">or just scroll <span aria-hidden="true">↓</span></span>
+            <span class="court-hint" data-court-hint>or scroll <span aria-hidden="true">↓</span></span>
             <a class="button court-talk" href="/contact/" data-track="hero_contact">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
             <a class="button button--dark court-fixes" href="#four-fixes" data-track="hero_four_fixes">See the four fixes <span aria-hidden="true">↓</span></a>
           </div>
@@ -200,41 +200,34 @@
       </div>
 
       <div class="court-ui" data-court-ui>
-        <button class="court-ball" type="button" data-court-ball><span class="court-ball__ring" aria-hidden="true"></span><span class="court-ball__label" data-court-ball-label>Tap the ball</span></button>
+        <button class="court-ball" type="button" data-court-ball><span class="court-ball__ring" aria-hidden="true"></span><span class="court-ball__label" data-court-ball-label>Scroll to shoot</span></button>
         <div class="container court-ui__inner">
           <div class="court-panel" data-court-panel>
           <div class="court-cards">
-            <article class="court-card" data-court-card>
-              <p class="court-card__label">Traffic that converts</p>
+            <article class="court-card court-card--coral" data-court-card>
+              <p class="court-card__kicker">1 of 4 · Traffic that converts</p>
               <h2 class="court-card__title">More eyes, more bookings.</h2>
-              <dl class="hoops__pair">
-                <div><dt>We solve</dt><dd>Too few people find you online, and too few of them book, call or buy.</dd></div>
-                <div><dt>We bring</dt><dd>More of the right traffic, turned into bookings, consultations and sales. Expect <mark>1.5 to 3×</mark> in the first 12 months.</dd></div>
-              </dl>
+              <p class="court-card__bring">More of the right traffic, turned into bookings, consultations and sales.</p>
+              <p class="court-card__stat"><strong>1.5–3×</strong><span>to expect in your first 12 months</span></p>
+              <p class="court-card__solve"><span>We solve</span> Too few people find you online, and too few of them book, call or buy.</p>
             </article>
-            <article class="court-card" data-court-card>
-              <p class="court-card__label">Foot traffic</p>
+            <article class="court-card court-card--forest" data-court-card>
+              <p class="court-card__kicker">2 of 4 · Foot traffic</p>
               <h2 class="court-card__title">More people through your door.</h2>
-              <dl class="hoops__pair">
-                <div><dt>We solve</dt><dd>Website visits that never turn into visits to your location.</dd></div>
-                <div><dt>We bring</dt><dd>Search, Maps and ads that send people to you in person and grow revenue, not just sessions.</dd></div>
-              </dl>
+              <p class="court-card__bring">Search, Maps and ads that send people to you in person and grow revenue, not just sessions.</p>
+              <p class="court-card__solve"><span>We solve</span> Website visits that never turn into visits to your location.</p>
             </article>
-            <article class="court-card" data-court-card>
-              <p class="court-card__label">Reputation</p>
+            <article class="court-card court-card--sage" data-court-card>
+              <p class="court-card__kicker">3 of 4 · Reputation</p>
               <h2 class="court-card__title">A name people trust.</h2>
-              <dl class="hoops__pair">
-                <div><dt>We solve</dt><dd>A brand that looks thin or out of date when someone looks you up.</dd></div>
-                <div><dt>We bring</dt><dd>A stronger presence and reputation on Google, in reviews and in AI search tools.</dd></div>
-              </dl>
+              <p class="court-card__bring">A stronger presence and reputation on Google, in reviews and in AI search tools.</p>
+              <p class="court-card__solve"><span>We solve</span> A brand that looks thin or out of date when someone looks you up.</p>
             </article>
-            <article class="court-card" data-court-card>
-              <p class="court-card__label">What’s next</p>
+            <article class="court-card court-card--ink" data-court-card>
+              <p class="court-card__kicker">4 of 4 · What’s next</p>
               <h2 class="court-card__title">Ready for what’s next.</h2>
-              <dl class="hoops__pair">
-                <div><dt>We solve</dt><dd>A site built for the way people searched five years ago.</dd></div>
-                <div><dt>We bring</dt><dd>A business tuned for search today and ready for the next 1 to 3 years, when AI agents do the searching.</dd></div>
-              </dl>
+              <p class="court-card__bring">A business tuned for search today and ready for the next 1 to 3 years, when AI agents do the searching.</p>
+              <p class="court-card__solve"><span>We solve</span> A site built for the way people searched five years ago.</p>
             </article>
             <div class="court-final" data-court-final>
               <p class="court-final__kicker">4 for 4</p>
@@ -246,9 +239,9 @@
             </div>
           </div>
           <div class="court-actions">
-            <span class="court-hud"><span class="court-hud__pips" aria-hidden="true"><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i></span><span class="court-hud__label" data-court-hud-label>Shot 1 of 4</span></span>
-            <button class="court-next" type="button" data-court-next><span data-court-next-label>Next shot</span> <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
-            <a class="court-skip" href="#four-fixes" data-track="hero_film_skip">Skip the shots <span aria-hidden="true">↓</span></a>
+            <span class="court-hud" aria-hidden="true"><span class="court-hud__pips"><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i></span></span>
+            <button class="court-next" type="button" data-court-next><span class="court-next__arrow" aria-hidden="true"></span><span data-court-next-label>Scroll for the next shot</span></button>
+            <a class="court-skip" href="#four-fixes" data-track="hero_film_skip">Skip <span aria-hidden="true">↓</span></a>
           </div>
           </div>
         </div>
@@ -384,7 +377,7 @@
     const root = document.documentElement;
     const tapCourt = () => import("/assets/hoops.js?v=20261120-hoops");
     if (root.classList.contains("court-on")) {
-      import("/assets/court.js?v=20261120-film")
+      import("/assets/court.js?v=20261120-loop")
         .then((film) => film.start())
         .catch(() => { root.classList.remove("court-on"); tapCourt(); });
     } else {
