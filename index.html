@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Ánimo">
   <meta property="og:title" content="More traffic, more bookings, more revenue for small businesses | Ánimo">
   <meta property="og:description" content="Websites, SEO, AI search and ads that bring small businesses more customers, online and through the door.">
-  <meta property="og:image" content="https://animoplatform.net/assets/hero/animo-growth-system.jpg">
+  <meta property="og:image" content="https://animoplatform.net/assets/court/20261120/s1/poster.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/assets/animo-app-icon.svg">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -59,6 +59,29 @@
   }
   </script>
   <link rel="stylesheet" href="/assets/hoops.css?v=20261120-hoops">
+  <link rel="stylesheet" href="/assets/court.css?v=20261120-film">
+  <script>
+    // The film hero needs motion, data and a few modern CSS features. Decide before first paint, so
+    // nobody sees one hero swap for the other. Everyone else keeps the tap-the-ball court.
+    // Add ?hero=tap to the address to see the tap court on any device.
+    (function () {
+      try {
+        var c = navigator.connection;
+        var ok = window.matchMedia && !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+          !(c && c.saveData) && window.CSS && CSS.supports("height", "100lvh") && CSS.supports("position", "sticky") &&
+          !/[?&]hero=tap\b/.test(location.search);
+        if (!ok) return;
+        document.documentElement.classList.add("court-on");
+        var tall = window.matchMedia("(max-aspect-ratio: 4/5)").matches;
+        var link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.fetchPriority = "high";
+        link.href = "/assets/court/20261120/s1/" + (tall ? "m/001.webp" : "poster.jpg");
+        document.head.appendChild(link);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -67,7 +90,11 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" data-mobile-nav><ul class="mobile-nav__links"><li><a href="/services/"><strong>Services</strong><span>Websites, search and ads that bring customers in</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li><li><a href="/therapy-practices/"><strong>Therapy practices</strong><span>The right clients, booked privately</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li><li><a href="/work/"><strong>Work</strong><span>Current and former clients</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li><li><a href="/about/"><strong>About</strong><span>Meet Jonathan, who does the work</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li></ul><div class="mobile-nav__foot"><a class="button mobile-nav__cta" href="/contact/" data-track="mobile_nav_contact">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a><a class="mobile-nav__email" href="mailto:letsconnect@animoplatform.net"><i class="ph ph-envelope-simple" aria-hidden="true"></i> letsconnect@animoplatform.net</a></div></nav>
 
   <main id="main">
-    <section class="hero hero--hoops">
+    <section class="hero hero--hoops" data-court>
+      <div class="court-stage" data-court-stage>
+      <div class="court-film" aria-hidden="true" data-court-film>
+        <canvas class="court-film__canvas" data-court-canvas></canvas>
+      </div>
       <div class="container hero-grid hero-grid--hoops">
         <div class="hero-copy">
           <p class="eyebrow">Growth studio · Louisville, Kentucky</p>
@@ -163,11 +190,69 @@
 
         <div class="hero-foot">
           <div class="hero-actions">
-            <a class="button" href="/contact/" data-track="hero_contact">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-            <a class="button button--dark" href="#four-fixes" data-track="hero_four_fixes">See the four fixes <span aria-hidden="true">↓</span></a>
+            <button class="button court-start" type="button" data-court-start>Take the shot <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+            <span class="court-hint">or just scroll <span aria-hidden="true">↓</span></span>
+            <a class="button court-talk" href="/contact/" data-track="hero_contact">Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            <a class="button button--dark court-fixes" href="#four-fixes" data-track="hero_four_fixes">See the four fixes <span aria-hidden="true">↓</span></a>
           </div>
           <p class="hero-note"><i class="ph ph-handshake" aria-hidden="true"></i> You work with the person doing the work. No account managers, no hand-offs.</p>
         </div>
+      </div>
+
+      <div class="court-ui" data-court-ui>
+        <button class="court-ball" type="button" data-court-ball><span class="court-ball__ring" aria-hidden="true"></span><span class="court-ball__label" data-court-ball-label>Tap the ball</span></button>
+        <div class="container court-ui__inner">
+          <div class="court-panel" data-court-panel>
+          <div class="court-cards">
+            <article class="court-card" data-court-card>
+              <p class="court-card__label">Traffic that converts</p>
+              <h2 class="court-card__title">More eyes, more bookings.</h2>
+              <dl class="hoops__pair">
+                <div><dt>We solve</dt><dd>Too few people find you online, and too few of them book, call or buy.</dd></div>
+                <div><dt>We bring</dt><dd>More of the right traffic, turned into bookings, consultations and sales. Expect <mark>1.5 to 3×</mark> in the first 12 months.</dd></div>
+              </dl>
+            </article>
+            <article class="court-card" data-court-card>
+              <p class="court-card__label">Foot traffic</p>
+              <h2 class="court-card__title">More people through your door.</h2>
+              <dl class="hoops__pair">
+                <div><dt>We solve</dt><dd>Website visits that never turn into visits to your location.</dd></div>
+                <div><dt>We bring</dt><dd>Search, Maps and ads that send people to you in person and grow revenue, not just sessions.</dd></div>
+              </dl>
+            </article>
+            <article class="court-card" data-court-card>
+              <p class="court-card__label">Reputation</p>
+              <h2 class="court-card__title">A name people trust.</h2>
+              <dl class="hoops__pair">
+                <div><dt>We solve</dt><dd>A brand that looks thin or out of date when someone looks you up.</dd></div>
+                <div><dt>We bring</dt><dd>A stronger presence and reputation on Google, in reviews and in AI search tools.</dd></div>
+              </dl>
+            </article>
+            <article class="court-card" data-court-card>
+              <p class="court-card__label">What’s next</p>
+              <h2 class="court-card__title">Ready for what’s next.</h2>
+              <dl class="hoops__pair">
+                <div><dt>We solve</dt><dd>A site built for the way people searched five years ago.</dd></div>
+                <div><dt>We bring</dt><dd>A business tuned for search today and ready for the next 1 to 3 years, when AI agents do the searching.</dd></div>
+              </dl>
+            </article>
+            <div class="court-final" data-court-final>
+              <p class="court-final__kicker">4 for 4</p>
+              <p class="court-final__title">Let’s make this happen together.</p>
+              <div class="court-final__actions">
+                <a class="button" href="/contact/" data-track="hero_film_cta" data-court-cta>Start a conversation <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+                <button class="court-again" type="button" data-court-again>Watch again</button>
+              </div>
+            </div>
+          </div>
+          <div class="court-actions">
+            <span class="court-hud"><span class="court-hud__pips" aria-hidden="true"><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i><i data-court-pip></i></span><span class="court-hud__label" data-court-hud-label>Shot 1 of 4</span></span>
+            <button class="court-next" type="button" data-court-next><span data-court-next-label>Next shot</span> <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+            <a class="court-skip" href="#four-fixes" data-track="hero_film_skip">Skip the shots <span aria-hidden="true">↓</span></a>
+          </div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -295,6 +380,16 @@
     </div>
   </footer>
   <script type="module" src="/assets/site.js?v=20261029-sticky-nav"></script>
-  <script type="module" src="/assets/hoops.js?v=20261120-hoops"></script>
+  <script type="module">
+    const root = document.documentElement;
+    const tapCourt = () => import("/assets/hoops.js?v=20261120-hoops");
+    if (root.classList.contains("court-on")) {
+      import("/assets/court.js?v=20261120-film")
+        .then((film) => film.start())
+        .catch(() => { root.classList.remove("court-on"); tapCourt(); });
+    } else {
+      tapCourt();
+    }
+  </script>
 </body>
 </html>
