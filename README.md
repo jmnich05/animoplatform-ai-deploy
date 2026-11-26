@@ -13,6 +13,7 @@ The site is intentionally static: standalone HTML pages, a shared design system 
 ## Current site architecture
 
 - `/` — short homepage for small businesses, built around the four problems Ánimo solves; the hero is the interactive "four shots, four fixes" court
+- `/small-businesses/` — the work shown step by step on Tanager Auto Works, an auto shop made up for the page (keywords, SEO pages, booking flow, ads); see the note below
 - `/therapy-practices/` — therapy and mental-health practices (HIPAA-aware wording; client-approved clinical facts only)
 - `/services/` — websites, search and ads for small businesses, organised by the same four fixes (was `/web-commerce/` until 2026-11-20)
 - `/work/` — current and former clients
@@ -61,3 +62,5 @@ On 2026-11-20 Ánimo stopped featuring e-commerce and refocused on small busines
 The "1.5 to 3×" figure on the homepage and `/services/` is Jon’s stated expectation for traffic and conversions in a client’s first 12 months, based on client results so far. Keep the "not a guarantee" note beside it, and update or remove the figure if the evidence changes.
 
 The film hero (2026-11-20) sends `hero_film_play` (with `source`: `ball`, `button` or `next`, and `shot_number`), `hero_film_shot` (with `shot_number` 1–4), `hero_film_complete`, `hero_film_replay`, and its closing button sends `hero_film_cta`. Meta receives a custom `HeroFilmComplete`. The tap court keeps its own `hero_shot` and `hero_game_*` events.
+
+`/small-businesses/` (2026-11-26) exists so the site does not read as therapy-only. Tanager Auto Works is fictional: the page says so beside the shop's card, on each mock-up and under the year-one numbers, and those notes should stay. Its web address is on the reserved `.example` domain and its phone number is in the 555 range kept for fiction. The mock-ups (`assets/smallbiz.css`) are drawn in Ánimo's own style and carry no platform logos, because most platforms restrict logo use on a services page. The numbers are illustrations of the same "1.5 to 3×" expectation used elsewhere, not results. The paragraph on ads inside AI answers describes late 2026 (Google's AI results and Microsoft Copilot through the usual ad accounts; ChatGPT ads priced for larger advertisers) and will date quickly: check it when the page is next edited. The booking demo (`assets/smallbiz.js`) sends `smallbiz_demo` with `demo_step` 1–3; the page's links send `smallbiz_hero_contact`, `smallbiz_final_contact` and `smallbiz_therapy_link`, and the links into it send `home_smallbiz_link` and `services_smallbiz_link`.

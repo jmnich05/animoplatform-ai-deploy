@@ -13,7 +13,7 @@
   --muted: #746c61;
   --container: 1240px;
   --serif: Georgia, "Times New Roman", serif;
-  --sans: "Arial Black", Impact, Haettenschweiler, sans-serif;
+  --sans: "Arial Black", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --condensed: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
@@ -404,6 +404,7 @@ body.hero-exploring::before {
 .fix-note { max-width: 780px; margin: 38px 0 0; color: var(--muted); font-size: .92rem; font-style: italic; }
 .fit-strip { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px 32px; margin-top: 44px; padding: 26px 30px; border: 2px solid var(--ink); background: var(--cream); }
 .fit-strip__copy { margin: 0; color: var(--ink); font-size: 1.12rem; line-height: 1.4; }
+.fit-strip__copy a { color: var(--deep-sage); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .client-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .client-tile { display: grid; grid-template-rows: auto 1fr; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); box-shadow: 10px 10px 0 var(--coral); transition: transform .18s ease, box-shadow .18s ease; }
 .client-tile:hover { transform: translate(-3px, -3px); box-shadow: 13px 13px 0 var(--coral); }
@@ -725,4 +726,12 @@ body.hero-exploring::before {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
   .hero-growth__canvas { display: none !important; }
+}
+
+/* Phones and tablets have no Arial Black, so headings are drawn in the device's own heavy face
+   (San Francisco, Roboto). At the tight tracking set for Arial Black its words run together,
+   so give the spaces a little back. */
+@media (hover: none) and (pointer: coarse) {
+  h1, h2, h3, h4, .court-card__title, .court-final__title { word-spacing: .09em; }
+  .hero-headline__setup { word-spacing: normal; }
 }

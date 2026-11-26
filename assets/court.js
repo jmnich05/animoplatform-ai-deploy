@@ -15,6 +15,7 @@ const PLATE = { w: 1920, h: 1072 };
 const RECT = [0.47187, 0, 0.41667, 1];   // where the clip sits in the plate: x, y, w, h as fractions
 const CLIP = { w: 832, h: 1114 };
 const BALL = [0.505, 0.622, 0.2];        // the ball in the opening frame: x, y, diameter (of the clip)
+const BOARD = 0.165;                     // the top of the backboard, as a fraction of the clip's height
 const MADE = 0.86;                       // how far through the clip the ball clears the net
 const SHOTS = 4;
 const CONFETTI = ["#f5a623", "#e8826b", "#fbf5e9", "#c85a3d", "#b9c79b", "#f5ebd8"];
@@ -52,6 +53,9 @@ export async function start() {
   const startButton = stage.querySelector("[data-court-start]");
   const againButton = stage.querySelector("[data-court-again]");
   const cta = stage.querySelector("[data-court-cta]");
+  const grid = stage.querySelector(".hero-grid--hoops");
+  const copy = grid?.querySelector(".hero-copy");
+  const foot = grid?.querySelector(".hero-foot");
 
   let made = 0;
   let busy = false;
@@ -65,31 +69,66 @@ export async function start() {
 
   // ---------- Layout ----------
   // Size the scene like a cover-fitted picture and put the tap target over the ball.
+  //
+  // Portrait screens have a second, resting framing. Before the first shot the headline sits on a
+  // dark band at the top, and the picture is drawn smaller and lower so the backboard starts under
+  // the words. The scene keeps its full-screen size and is moved there with a transform, which the
+  // stylesheet drops once a shot is rolling: the picture pushes in to fill the screen.
+  const tallQuery = window.matchMedia("(max-aspect-ratio: 4/5)");
+  // Measures the screen with the browser's bars showing. Unlike innerHeight it does not change as
+  // the address bar slides away, so the picture never shifts while the visitor scrolls.
+  const screenProbe = document.createElement("div");
+  screenProbe.style.cssText = "position:fixed;top:0;left:0;width:0;height:100svh;visibility:hidden;pointer-events:none";
+  stage.append(screenProbe);
   function layout() {
     const w = film.clientWidth;
     const h = film.clientHeight;
     if (!w || !h) return;
-    const tall = w / h <= 0.8;
+    const tall = tallQuery.matches;
     stage.classList.toggle("is-tall", tall);
-    let box;
+    let ball;   // centre x, centre y and width of the picture the ball sits in
     if (tall) {
-      scene.style.cssText = "";
       const s = Math.max(w / CLIP.w, h / CLIP.h);
-      box = [(w - CLIP.w * s) / 2, (h - CLIP.h * s) / 2, CLIP.w * s, CLIP.h * s];
+      const full = [(w - CLIP.w * s) / 2, (h - CLIP.h * s) / 2, CLIP.w * s, CLIP.h * s];
+      scene.style.left = `${full[0].toFixed(1)}px`;
+      scene.style.top = `${full[1].toFixed(1)}px`;
+      scene.style.width = `${full[2].toFixed(1)}px`;
+      scene.style.height = `${full[3].toFixed(1)}px`;
+
+      const band = copy ? grid.offsetTop + copy.offsetTop + copy.offsetHeight : 0;   // bottom of the headline
+      const footTop = foot ? grid.offsetTop + foot.offsetTop : h;                    // top of "Take the shot"
+      let pw = w;                               // the whole picture, edge to edge
+      let ph = pw * CLIP.h / CLIP.w;
+      const ring = Math.max(64, BALL[2] * pw) * 0.56;
+      let top = band + 64 - BOARD * ph;         // lights glow under the words, then the backboard
+      const fold = screenProbe.offsetHeight ? screenProbe.offsetHeight - (stage.getBoundingClientRect().top + window.scrollY) : h;
+      top = Math.min(top, Math.min(footTop - 10, fold - 4) - ring - BALL[1] * ph);   // keep the ball clear of the button, and on the first screen
+      top = Math.max(top, band + 14 - BOARD * ph, h - ph);       // never under the words, never short of the floor
+      if (top > band - 12) {                    // a long screen: enlarge, so the picture's top edge stays hidden
+        top = band - 12;
+        ph = Math.max(ph, h - top);
+        pw = ph * CLIP.w / CLIP.h;
+      }
+      stage.style.setProperty("--band", `${band}px`);
+      stage.style.setProperty("--rest-y", `${(top - full[1]).toFixed(1)}px`);
+      stage.style.setProperty("--rest-s", (pw / full[2]).toFixed(4));
+      ball = [w / 2 + (BALL[0] - 0.5) * pw, top + BALL[1] * ph, pw];
     } else {
       const s = Math.max(w / PLATE.w, h / PLATE.h);
       const seen = w / (PLATE.w * s);
       const left = clamp(RECT[0] + RECT[2] / 2 - 0.66 * seen, 0, 1 - seen);   // keep the hoop right of centre
       const ox = -left * PLATE.w * s;                                          // top-aligned: keep the lights, lose floor
+      scene.style.top = "";
       scene.style.width = `${(PLATE.w * s).toFixed(1)}px`;
       scene.style.height = `${(PLATE.h * s).toFixed(1)}px`;
       scene.style.left = `${ox.toFixed(1)}px`;
-      box = [ox + RECT[0] * PLATE.w * s, 0, RECT[2] * PLATE.w * s, PLATE.h * s];
+      const cw = RECT[2] * PLATE.w * s;
+      ball = [ox + RECT[0] * PLATE.w * s + BALL[0] * cw, BALL[1] * PLATE.h * s, cw];
     }
     if (ballButton) {
-      ballButton.style.left = `${(film.offsetLeft + box[0] + BALL[0] * box[2]).toFixed(1)}px`;
-      ballButton.style.top = `${(film.offsetTop + box[1] + BALL[1] * box[3]).toFixed(1)}px`;
-      ballButton.style.width = ballButton.style.height = `${Math.max(64, BALL[2] * box[2]).toFixed(1)}px`;
+      ballButton.style.left = `${(film.offsetLeft + ball[0]).toFixed(1)}px`;
+      ballButton.style.top = `${(film.offsetTop + ball[1]).toFixed(1)}px`;
+      ballButton.style.width = ballButton.style.height = `${Math.max(64, BALL[2] * ball[2]).toFixed(1)}px`;
     }
   }
 
@@ -322,6 +361,9 @@ export async function start() {
   prepare();
 
   window.addEventListener("resize", layout);
+  tallQuery.addEventListener?.("change", layout);
+  // The resting picture hangs off the headline, so follow it if the words reflow (late fonts, text size).
+  if (copy && "ResizeObserver" in window) new ResizeObserver(layout).observe(copy);
   startButton?.addEventListener("click", () => shoot("button"));
   ballButton?.addEventListener("click", () => shoot("ball"));
   nextButton?.addEventListener("click", () => (made >= SHOTS ? finish() : shoot("next")));

@@ -100,11 +100,18 @@ html.court-on .court-ui { display: block; position: absolute; z-index: 3; inset:
 
 .court-confetti { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
-/* Portrait screens: the clip fills the screen and the panel docks at the bottom. */
+/* Portrait screens. At rest the headline sits on a solid dark band and the whole court is drawn
+   beneath it, so no words lie over the hoop. When the first shot starts the band fades, the picture
+   pushes in to fill the screen, and the panel docks at the bottom. The script measures the headline
+   and sets --band, --rest-y and --rest-s; the values here only place the still for the first paint. */
 @media (max-aspect-ratio: 4/5) {
-  html.court-on .court-stage { height: clamp(580px, calc(100svh - 64px), 900px); }
-  html.court-on .court-film { background-image: url("/assets/court/20261120/s1/start.webp"); background-position: 50% 50%; }
-  .court-film::after { background: linear-gradient(180deg, rgba(10,9,8,.86) 0, rgba(10,9,8,.62) 20%, rgba(10,9,8,0) 44%), linear-gradient(0deg, rgba(10,9,8,.7) 0, rgba(10,9,8,0) 34%); }
+  html.court-on .court-stage { --stage-h: clamp(580px, calc(100svh - 64px), 900px); --band: 188px; height: var(--stage-h); }
+  html.court-on .court-film { --rest-w: max(100vw, calc((var(--stage-h) - var(--band) + 12px) * .7469)); background-image: url("/assets/court/20261120/s1/start.webp"); background-size: var(--rest-w) auto; background-position: 50% calc(var(--band) + 64px - var(--rest-w) * .2209); }
+  .court-scene { isolation: isolate; transform: translateY(var(--rest-y, 0px)) scale(var(--rest-s, 1)); transform-origin: 50% 0; transition: transform .5s cubic-bezier(.22, 1, .36, 1); }
+  .court-stage.is-rolling .court-scene { transform: none; }
+  .court-film::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, #0a0908 0, #0a0908 var(--band), rgba(10,9,8,.5) calc(var(--band) + 26px), rgba(10,9,8,0) calc(var(--band) + 60px)); pointer-events: none; transition: opacity .4s ease; }
+  .court-stage.is-rolling .court-film::before { opacity: 0; }
+  .court-film::after { display: none; }
   html.court-on .hero-grid--hoops { justify-content: space-between; padding-block: 22px; }
   html.court-on .hero--hoops .hero-copy > p:not(.eyebrow), html.court-on .hero--hoops .hero-note, html.court-on .court-talk { display: none; }
   html.court-on .hero--hoops .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 0; }
@@ -121,4 +128,9 @@ html.court-on .court-ui { display: block; position: absolute; z-index: 3; inset:
   .court-card__solve { margin-top: 12px; padding-top: 11px; font-size: .92rem; }
   .court-final__actions { margin-top: 18px; }
   .court-next { min-height: 50px; padding: 13px 18px; }
+}
+
+/* Phones: the headline has the band to itself, so it can be a size larger than on the tap court. */
+@media (max-aspect-ratio: 4/5) and (max-width: 720px) {
+  html.court-on .hero--hoops .hero-headline__statement { font-size: clamp(2.2rem, 11.4vw, 3rem); letter-spacing: -.04em; }
 }
