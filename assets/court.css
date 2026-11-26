@@ -14,7 +14,7 @@ html.court-on .court-film { display: block; position: absolute; z-index: 0; inse
 .court-scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; }
 .court-stage.is-live .court-scene { opacity: 1; }
 .court-clip { position: absolute; top: 0; left: 47.187%; width: 41.667%; height: 100%; object-fit: cover; background: #0a0908; }
-.court-still { z-index: 1; opacity: 0; transition: opacity .35s ease; }
+.court-still { z-index: 1; opacity: 0; transition: opacity .25s ease; }
 .court-still.is-on { opacity: 1; }
 .court-still.is-instant { transition: none; }
 .court-still[data-court-still="confetti"] { transition-duration: .9s; }
