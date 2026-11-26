@@ -13,7 +13,7 @@
   --muted: #746c61;
   --container: 1240px;
   --serif: Georgia, "Times New Roman", serif;
-  --sans: "Arial Black", Impact, Haettenschweiler, sans-serif;
+  --sans: "Arial Black", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --condensed: "Arial Narrow", "Roboto Condensed", "Helvetica Neue", sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }

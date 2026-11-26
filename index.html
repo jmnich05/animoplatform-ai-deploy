@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
   <link rel="stylesheet" href="/assets/vendor/phosphor/style.css">
-  <link rel="stylesheet" href="/assets/site.css?v=20261126-smallbiz">
+  <link rel="stylesheet" href="/assets/site.css?v=20261126-phone">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,7 +59,7 @@
   }
   </script>
   <link rel="stylesheet" href="/assets/hoops.css?v=20261120-hoops">
-  <link rel="stylesheet" href="/assets/court.css?v=20261126-snappy">
+  <link rel="stylesheet" href="/assets/court.css?v=20261126-phone">
   <script>
     // The film hero plays video, so it is only for visitors who allow motion and have not asked to
     // save data. Decide before first paint, so nobody sees one hero swap for the other. Everyone
@@ -381,7 +381,7 @@
     const root = document.documentElement;
     const tapCourt = () => import("/assets/hoops.js?v=20261120-hoops");
     if (root.classList.contains("court-on")) {
-      import("/assets/court.js?v=20261126-snappy")
+      import("/assets/court.js?v=20261126-phone")
         .then((film) => film.start())
         .catch(() => { root.classList.remove("court-on"); tapCourt(); });
     } else {
