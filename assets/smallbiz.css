@@ -1,0 +1,165 @@
+/* Small Businesses page, November 2026. The work is shown on Tanager Auto Works, an auto shop
+   made up for this page. Everything branded for the shop uses the --shop colours; everything
+   Ánimo says about it uses the site's own. Mock-ups are drawn in the site's style on purpose:
+   they show what a search result, a page, a booking flow and an ad contain, without copying
+   any platform's look or logo. */
+.shop { --shop-navy: #13233f; --shop-red: #d8412f; --shop-cream: #f6efe2; --shop-steel: #93a0b4; }
+
+.demo-tag { display: inline-block; margin: 0 0 22px; padding: 7px 10px; border: 2px dashed currentColor; font: 900 .6rem/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.mock__tag { flex: none; padding: 4px 7px; border: 1px dashed currentColor; font: 900 .56rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+
+/* The shop's card in the page hero. */
+.shop-card { padding: 30px; border: 3px solid var(--ink); background: var(--shop-navy); color: var(--shop-cream); box-shadow: 10px 10px 0 var(--shop-red); }
+.shop-logo { display: flex; align-items: center; gap: 14px; }
+.shop-logo svg { flex: none; width: 68px; height: 68px; }
+.shop-logo__name { margin: 0; font: 900 1.9rem/.92 var(--sans); letter-spacing: -.03em; text-transform: uppercase; }
+.shop-logo__sub { display: block; margin-top: 7px; color: var(--shop-red); font: 900 .7rem/1 var(--condensed); letter-spacing: .36em; }
+.shop-card__tagline { margin: 22px 0 0; font: italic 1.2rem/1.35 var(--serif); }
+.shop-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; margin: 20px 0 0; padding: 0; border-top: 1px solid rgba(246,239,226,.28); list-style: none; }
+.shop-facts li { padding: 12px 0; border-bottom: 1px solid rgba(246,239,226,.28); font-size: .94rem; line-height: 1.35; }
+.shop-facts span { display: block; margin-bottom: 3px; color: var(--shop-steel); font: 900 .56rem/1.3 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+
+/* One step: the explanation beside its mock-up. */
+.walk { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 64px; align-items: center; }
+.walk--flip > :first-child { order: 2; }
+.walk__num { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--deep-coral); font: 900 .72rem/1.2 var(--condensed); letter-spacing: .2em; text-transform: uppercase; }
+.walk__num span { display: grid; width: 40px; height: 40px; place-items: center; border: 3px solid var(--ink); background: var(--marigold); color: var(--ink); font: 900 1.25rem/1 var(--sans); letter-spacing: 0; box-shadow: 4px 4px 0 var(--ink); }
+.walk__title { margin-top: 22px; font-size: clamp(2rem, 3.7vw, 3.3rem); }
+.walk__list { margin: 26px 0 0; }
+.walk__result { margin: 28px 0 0; padding: 14px 18px; border-left: 5px solid var(--shop-red); background: var(--paper); color: var(--ink); line-height: 1.45; }
+.section--paper .walk__result { background: var(--cream); }
+
+/* Mock-ups. */
+.mock { min-width: 0; margin: 0; border: 3px solid var(--ink); background: var(--paper); box-shadow: 10px 10px 0 var(--sage); }
+.mock__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: var(--ink); color: var(--paper); font: 900 .62rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.mock__foot { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; font-style: italic; }
+.mock__dots { display: flex; flex: none; gap: 5px; }
+.mock__dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(245,235,216,.5); }
+.mock__url { flex: 1; min-width: 0; overflow: hidden; padding: 6px 10px; background: rgba(245,235,216,.14); letter-spacing: .02em; text-overflow: ellipsis; text-transform: none; white-space: nowrap; }
+
+.kw { width: 100%; border-collapse: collapse; }
+.kw th, .kw td { padding: 13px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.kw thead th { color: var(--muted); font: 900 .58rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.kw tbody th { color: var(--ink); font: 700 .98rem/1.3 var(--serif); }
+.kw td { color: var(--charcoal); font: 800 .82rem/1.2 var(--mono); white-space: nowrap; }
+.kw td b { padding: 4px 7px; background: var(--marigold); color: var(--ink); }
+.kw tbody tr:last-child > * { border-bottom: 0; }
+.kw__bar { display: inline-block; width: calc(var(--w) * .5); max-width: 64px; height: 8px; margin-right: 8px; background: var(--sage); vertical-align: middle; }
+
+/* The shop's own service page, inside a browser frame. */
+.shop-page { background: var(--shop-cream); color: var(--shop-navy); }
+.shop-page__nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; background: var(--shop-navy); color: var(--shop-cream); }
+.shop-page__brand { display: inline-flex; align-items: center; gap: 8px; font: 900 .78rem/1 var(--sans); letter-spacing: -.01em; text-transform: uppercase; }
+.shop-page__brand svg { width: 26px; height: 26px; }
+.shop-page__call { font: 900 .62rem/1 var(--mono); letter-spacing: .06em; white-space: nowrap; }
+.shop-page__body { padding: 22px 24px 24px; }
+.shop-page__crumb { margin: 0; color: #5d6b82; font: 800 .62rem/1 var(--mono); letter-spacing: .06em; }
+.shop-page__h1 { margin: 10px 0 0; font: 900 clamp(1.6rem, 2.6vw, 2.2rem)/1 var(--sans); letter-spacing: -.04em; }
+.shop-page__lede { max-width: 44ch; margin: 12px 0 0; font-size: .98rem; line-height: 1.45; }
+.shop-page__row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 16px; }
+.shop-page__btn { padding: 11px 15px; background: var(--shop-red); color: #fff; font: 900 .68rem/1 var(--condensed); letter-spacing: .12em; text-transform: uppercase; }
+.shop-page__meta { font: 800 .66rem/1.3 var(--mono); }
+.shop-page__faq { display: grid; gap: 0; margin: 18px 0 0; padding: 0; border-top: 1px solid rgba(19,35,63,.22); list-style: none; }
+.shop-page__faq li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(19,35,63,.22); font-size: .9rem; }
+.shop-page__faq li::after { content: "+"; font: 900 1rem/1 var(--mono); }
+.rank { padding: 16px 18px 18px; border-top: 3px solid var(--ink); background: var(--paper); }
+.rank__label { margin: 0; color: var(--muted); font: 900 .58rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.rank__chart { display: block; width: 100%; height: 70px; margin-top: 8px; }
+.rank__ends { display: flex; justify-content: space-between; margin: 6px 0 0; font: 800 .7rem/1 var(--mono); }
+.rank__ends b { font-size: 1rem; }
+
+/* The booking demo, in a phone. */
+.phone-wrap { display: grid; justify-items: center; gap: 18px; min-width: 0; }
+.phone-wrap__note { display: flex; align-items: center; gap: 10px; max-width: 320px; margin: 0; color: var(--muted); font-size: .88rem; font-style: italic; }
+.phone { width: min(100%, 330px); overflow: hidden; border: 3px solid var(--ink); border-radius: 34px; background: var(--shop-cream); color: var(--shop-navy); box-shadow: 10px 10px 0 var(--shop-red); }
+.phone__top { display: flex; align-items: center; justify-content: space-between; padding: 22px 18px 14px; background: var(--shop-navy); color: var(--shop-cream); }
+.phone__call { padding: 7px 11px; border: 1px solid var(--shop-cream); font: 900 .6rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.phone__screen { display: grid; min-height: 420px; }
+.phone__step { grid-area: 1 / 1; padding: 22px 18px 24px; }
+.phone__step[hidden] { display: none; }
+.phone__kicker { margin: 0; color: var(--shop-red); font: 900 .58rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.phone__title { margin: 10px 0 0; font: 900 1.45rem/1.02 var(--sans); letter-spacing: -.04em; outline: 0; }
+.phone__options, .phone__times { display: grid; gap: 9px; margin-top: 18px; }
+.phone__times { grid-template-columns: 1fr 1fr; }
+.phone button { cursor: pointer; font: inherit; touch-action: manipulation; }
+.phone__options button, .phone__times button { display: grid; gap: 4px; padding: 13px 14px; border: 2px solid var(--shop-navy); background: #fff; color: var(--shop-navy); text-align: left; transition: background .15s ease, color .15s ease, transform .15s ease; }
+.phone__options button:hover, .phone__times button:hover, .phone__options button:focus-visible, .phone__times button:focus-visible { background: var(--shop-navy); color: var(--shop-cream); }
+.phone__options button:active, .phone__times button:active { transform: scale(.98); }
+.phone__options b { font: 900 .98rem/1.1 var(--sans); letter-spacing: -.02em; }
+.phone__options span { font: 800 .64rem/1.2 var(--mono); opacity: .8; }
+.phone__times button { font: 800 .64rem/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+.phone__times b { font: 900 1.05rem/1.1 var(--sans); letter-spacing: -.02em; text-transform: none; }
+.phone__back { margin-top: 18px; padding: 4px 0; border: 0; border-bottom: 2px solid currentColor; background: transparent; color: var(--shop-navy); font: 900 .64rem/1 var(--condensed) !important; letter-spacing: .12em; text-transform: uppercase; }
+.phone__step--done { text-align: center; }
+.phone__check { display: grid; width: 64px; height: 64px; margin: 14px auto 0; place-items: center; border-radius: 50%; background: var(--shop-red); color: #fff; font: 900 1.9rem/1 var(--sans); }
+.phone__step--done .phone__title { margin-top: 18px; font-size: 1.8rem; }
+.phone__summary { margin: 12px 0 0; font-size: 1rem; line-height: 1.45; }
+.phone__summary span { font-weight: 700; }
+.phone__fine { margin: 16px 0 0; color: #5d6b82; font-size: .8rem; font-style: italic; }
+
+/* Three ads. */
+.ads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; align-items: start; }
+.ad { display: grid; gap: 12px; min-width: 0; margin: 0; }
+.ad__where { color: var(--deep-sage); font: 900 .66rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.ad__body { padding: 20px; border: 3px solid var(--ink); background: #fff; box-shadow: 8px 8px 0 var(--sage); }
+.ad--social .ad__body { box-shadow: 8px 8px 0 var(--coral); }
+.ad--ai .ad__body { box-shadow: 8px 8px 0 var(--marigold); }
+.ad__note { margin: 6px 0 0; color: var(--muted); font-size: .9rem; font-style: italic; }
+.ad__sponsor { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--charcoal); font: 800 .7rem/1.35 var(--mono); }
+.ad__avatar svg { display: block; width: 38px; height: 38px; }
+.ad__headline { margin: 10px 0 0; color: #1a3fa8; font: 700 1.2rem/1.25 Arial, sans-serif; }
+.ad__text { margin: 8px 0 0; color: var(--charcoal); font: 400 .95rem/1.45 Arial, sans-serif; }
+.ad__links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 12px 0 0; color: #1a3fa8; font: 700 .86rem/1.2 Arial, sans-serif; }
+.ad__art { display: block; width: 100%; height: auto; margin-top: 12px; }
+.ad__cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 12px 14px; background: #eef0f3; color: var(--charcoal); font: 400 .8rem/1.3 Arial, sans-serif; }
+.ad__cta b { flex: none; padding: 9px 12px; background: var(--shop-navy); color: #fff; font-size: .78rem; }
+.ad__ask { width: fit-content; max-width: 92%; margin: 0 0 0 auto; padding: 11px 14px; border-radius: 16px 16px 4px 16px; background: var(--ink); color: var(--paper); font: 400 .92rem/1.4 Arial, sans-serif; }
+.ad__answer { margin: 14px 0 0; color: var(--charcoal); font: 400 .92rem/1.5 Arial, sans-serif; }
+.ad__sponsored { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; margin: 14px 0 0; padding: 12px 14px; border: 2px solid var(--ink); background: var(--cream); font: 400 .86rem/1.35 Arial, sans-serif; }
+.ad__sponsored b { grid-column: 1 / -1; color: var(--muted); font: 900 .56rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.ad__sponsored span { color: var(--ink); font-weight: 700; }
+.ad__sponsored i { padding: 8px 12px; background: var(--shop-red); color: #fff; font: 700 .78rem/1 Arial, sans-serif; }
+.ads-note { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 32px; align-items: start; margin-top: 44px; padding-top: 30px; border-top: 3px solid var(--ink); }
+.ads-note p { margin: 0; }
+.ads-note .walk__result { margin: 0; }
+
+/* The year-one numbers. */
+.sum { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 4px solid var(--paper); }
+.sum__item { padding: 26px 22px 28px; border-right: 1px solid rgba(245,235,216,.22); }
+.sum__item:first-child { border-left: 1px solid rgba(245,235,216,.22); }
+.sum__label { color: var(--marigold); font: 900 .64rem/1.3 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+.sum__item p { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 18px 0 0; }
+.sum__item s { color: rgba(245,235,216,.55); font: 800 1rem/1 var(--mono); }
+.sum__item b { color: var(--paper); font: 900 clamp(2.3rem, 4.2vw, 3.6rem)/.95 var(--sans); letter-spacing: -.05em; }
+.sum__note { max-width: 820px; margin: 30px 0 0; color: rgba(245,235,216,.74); font-size: .92rem; font-style: italic; }
+
+/* Other kinds of business. */
+.trades { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.trade { padding: 24px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); box-shadow: 7px 7px 0 var(--marigold); }
+.trade h3 { margin: 0; font: 900 1.3rem/1.05 Arial, sans-serif; letter-spacing: -.03em; }
+.trade p { margin: 12px 0 0; color: var(--muted); }
+
+@media (max-width: 1120px) {
+  .walk { grid-template-columns: 1fr; gap: 40px; }
+  .walk--flip > :first-child { order: 0; }
+  .ads { grid-template-columns: 1fr; max-width: 520px; }
+  .ads-note { grid-template-columns: 1fr; gap: 20px; }
+  .sum { grid-template-columns: 1fr 1fr; }
+  .sum__item { border-bottom: 1px solid rgba(245,235,216,.22); }
+  .sum__item:nth-child(odd) { border-left: 1px solid rgba(245,235,216,.22); }
+  .trades { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .shop-card { padding: 22px; box-shadow: 7px 7px 0 var(--shop-red); }
+  .shop-logo__name { font-size: 1.6rem; }
+  .mock { box-shadow: 7px 7px 0 var(--sage); }
+  .kw th, .kw td { padding: 11px 10px; }
+  .kw thead th:nth-child(2), .kw td:nth-child(2) { display: none; }
+  .kw tbody th { font-size: .92rem; }
+  .shop-page__body { padding: 18px; }
+  .phone { box-shadow: 7px 7px 0 var(--shop-red); }
+  .sum { grid-template-columns: 1fr; }
+  .sum__item { border-left: 1px solid rgba(245,235,216,.22); }
+  .trades { grid-template-columns: 1fr; }
+}

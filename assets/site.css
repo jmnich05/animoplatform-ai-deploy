@@ -404,6 +404,7 @@ body.hero-exploring::before {
 .fix-note { max-width: 780px; margin: 38px 0 0; color: var(--muted); font-size: .92rem; font-style: italic; }
 .fit-strip { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px 32px; margin-top: 44px; padding: 26px 30px; border: 2px solid var(--ink); background: var(--cream); }
 .fit-strip__copy { margin: 0; color: var(--ink); font-size: 1.12rem; line-height: 1.4; }
+.fit-strip__copy a { color: var(--deep-sage); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .client-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .client-tile { display: grid; grid-template-rows: auto 1fr; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); box-shadow: 10px 10px 0 var(--coral); transition: transform .18s ease, box-shadow .18s ease; }
 .client-tile:hover { transform: translate(-3px, -3px); box-shadow: 13px 13px 0 var(--coral); }
