@@ -727,3 +727,11 @@ body.hero-exploring::before {
   [data-reveal] { opacity: 1; transform: none; }
   .hero-growth__canvas { display: none !important; }
 }
+
+/* Phones and tablets have no Arial Black, so headings are drawn in the device's own heavy face
+   (San Francisco, Roboto). At the tight tracking set for Arial Black its words run together,
+   so give the spaces a little back. */
+@media (hover: none) and (pointer: coarse) {
+  h1, h2, h3, h4, .court-card__title, .court-final__title { word-spacing: .09em; }
+  .hero-headline__setup { word-spacing: normal; }
+}

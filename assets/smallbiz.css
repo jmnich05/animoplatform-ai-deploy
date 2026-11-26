@@ -5,13 +5,12 @@
    any platform's look or logo. */
 .shop { --shop-navy: #13233f; --shop-red: #d8412f; --shop-cream: #f6efe2; --shop-steel: #93a0b4; }
 
-.demo-tag { display: inline-block; margin: 0 0 22px; padding: 7px 10px; border: 2px dashed currentColor; font: 900 .6rem/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .mock__tag { flex: none; padding: 4px 7px; border: 1px dashed currentColor; font: 900 .56rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 
 /* The shop's card in the page hero. */
 .shop-card { padding: 30px; border: 3px solid var(--ink); background: var(--shop-navy); color: var(--shop-cream); box-shadow: 10px 10px 0 var(--shop-red); }
 .shop-logo { display: flex; align-items: center; gap: 14px; }
-.shop-logo svg { flex: none; width: 68px; height: 68px; }
+.shop-logo img { flex: none; width: 116px; height: 116px; }
 .shop-logo__name { margin: 0; font: 900 1.9rem/.92 var(--sans); letter-spacing: -.03em; text-transform: uppercase; }
 .shop-logo__sub { display: block; margin-top: 7px; color: var(--shop-red); font: 900 .7rem/1 var(--condensed); letter-spacing: .36em; }
 .shop-card__tagline { margin: 22px 0 0; font: italic 1.2rem/1.35 var(--serif); }
@@ -50,7 +49,7 @@
 .shop-page { background: var(--shop-cream); color: var(--shop-navy); }
 .shop-page__nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; background: var(--shop-navy); color: var(--shop-cream); }
 .shop-page__brand { display: inline-flex; align-items: center; gap: 8px; font: 900 .78rem/1 var(--sans); letter-spacing: -.01em; text-transform: uppercase; }
-.shop-page__brand svg { width: 26px; height: 26px; }
+.shop-page__brand img { width: 30px; height: 30px; }
 .shop-page__call { font: 900 .62rem/1 var(--mono); letter-spacing: .06em; white-space: nowrap; }
 .shop-page__body { padding: 22px 24px 24px; }
 .shop-page__crumb { margin: 0; color: #5d6b82; font: 800 .62rem/1 var(--mono); letter-spacing: .06em; }
@@ -106,7 +105,7 @@
 .ad--ai .ad__body { box-shadow: 8px 8px 0 var(--marigold); }
 .ad__note { margin: 6px 0 0; color: var(--muted); font-size: .9rem; font-style: italic; }
 .ad__sponsor { display: flex; align-items: center; gap: 10px; margin: 0; color: var(--charcoal); font: 800 .7rem/1.35 var(--mono); }
-.ad__avatar svg { display: block; width: 38px; height: 38px; }
+.ad__avatar img { display: block; width: 40px; height: 40px; }
 .ad__headline { margin: 10px 0 0; color: #1a3fa8; font: 700 1.2rem/1.25 Arial, sans-serif; }
 .ad__text { margin: 8px 0 0; color: var(--charcoal); font: 400 .95rem/1.45 Arial, sans-serif; }
 .ad__links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 12px 0 0; color: #1a3fa8; font: 700 .86rem/1.2 Arial, sans-serif; }
