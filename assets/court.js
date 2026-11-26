@@ -96,7 +96,7 @@ export async function start() {
   // ---------- Picture ----------
   // Fetch the whole clip up front, so it starts the instant the button is pressed.
   function prepare() {
-    videoReady = fetch(`${BASE}/shot.mp4`)
+    videoReady = fetch(`${BASE}/shot-quick.mp4`)
       .then((response) => (response.ok ? response.blob() : Promise.reject(new Error("clip missing"))))
       .then((blob) => new Promise((resolve, reject) => {
         video.addEventListener("loadeddata", () => resolve(true), { once: true });
@@ -179,7 +179,7 @@ export async function start() {
       if (n > 1) {
         // A fresh ball: fade the opening frame in over the last one, then rewind underneath it.
         show("start", true);
-        await wait(300);
+        await wait(200);
         show("end", false, true);
         await new Promise((resolve) => {
           video.addEventListener("seeked", resolve, { once: true });
@@ -188,9 +188,10 @@ export async function start() {
         });
         await nextPaint();
       }
-      // The clip is slow motion. Played at these rates the ball reaches the net about 2.2 seconds
-      // after the first press, and about 2.3 after the later ones (a fresh ball fades in first).
-      const flight = playClip(n === 1 ? 2 : 2.3, () => score(n));
+      // The clip is already cut to speed (1.5 seconds, 60 frames a second), so it plays at its own
+      // rate and every browser shows it smoothly. The ball reaches the net about 1.3 seconds after
+      // the first press. Later shots run a touch quicker to make up for the fresh ball fading in.
+      const flight = playClip(n === 1 ? 1 : 1.15, () => score(n));
       show("start", false, true);
       await flight;
       show("end", true, true);
